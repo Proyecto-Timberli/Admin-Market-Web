@@ -1,6 +1,7 @@
 
 import './App.css';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import {AuthProvider, } from './Context/authContext'
 import NavBar from './components/Navbar/NavBar'
 // import ErrorPage from './components/Error/ErrorPage'
 import Products from './components/Products/Products'
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <BrowserRouter> 
+    <AuthProvider>
       <NavBar/>
     <Routes>
       <Route path="/" element={<LandingPage/>}/>
@@ -29,6 +31,7 @@ function App() {
       <Route path="/sells" element={<Sells/>}/>
       {/* <Route path="/error" element={<ErrorPage/>}/> */}
     </Routes>
+    </AuthProvider>
     </BrowserRouter> 
   )
 }
