@@ -6,7 +6,7 @@ export const authContext = createContext();
 export function useAuth (){
     const context = useContext(authContext)
     return context
-}
+} 
 
  
 export function AuthProvider({children}){
@@ -17,7 +17,7 @@ export function AuthProvider({children}){
     const signup = (email , password ) => 
         createUserWithEmailAndPassword(auth, email, password);
     const login = async (email, password ) =>
-        signInWithEmailAndPassword(auth, email, password);
+        signInWithEmailAndPassword(auth, email, password)
     const logout = () => signOut(auth)
     const loginWithGoogle =  () => {
         const googleProvider =  new GoogleAuthProvider()
@@ -39,7 +39,7 @@ export function AuthProvider({children}){
             console.log("Combrobando si hay usuario logeado")
             console.log("currentUser.uid:")
             console.log(currentUser?.uid)
-            console.log("------------------------")
+            console.log("AuthProvider")
             setUserProfile(currentUser?.uid)
             setLoading(false)
         })

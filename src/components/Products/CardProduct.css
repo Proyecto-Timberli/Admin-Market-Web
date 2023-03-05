@@ -1,0 +1,27 @@
+
+.container-CardProduct {
+    flex-direction:row;
+    width:90%;
+    height:40px;
+    padding:10px;
+    margin: 5px;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(#F8E9E9,#B9C7CA);
+}
+container-CardProducto-selected{
+    flex-direction:row;
+    width:90%;
+    height:40px;
+    padding:10px;
+    margin: 5px;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(#206593,#25EADE);
+}
+.text1-CardProduct { font-weight: bold; color: black; width: 30%; }
+.text2-CardProduct { font-weight: bold; color: black; text-align: center; width: 30%; }
+.text3-CardProduct { font-weight: bold; color: black; text-align: right; width: 30%; }
+
+
+  

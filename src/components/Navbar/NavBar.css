@@ -1,0 +1,52 @@
+.container-navBar {
+   padding-top: 20px;
+   padding-bottom: 20px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   background: linear-gradient(#206593, #25EADE);
+   min-height:49px;
+   max-height:49px;
+}
+.container-navBar-login{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: linear-gradient(#206593, #25EADE);
+    min-height: 49px;
+    max-height:49px;
+}
+.button-navBar {
+    background-color: transparent;
+    margin: 15px;
+    color:azure;
+    font-weight: bold;
+    font-size: 15px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: transparent;
+}
+
+
+.button-navBar:hover {
+    color:aqua;
+}
+.button-navBar-selected {
+    background-color: transparent;
+    margin: 15px;
+    color:#fff;
+    font-weight: bold;
+    font-size: 15px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: white;
+}
+.button-navBar-selected:hover {
+    color:aqua;
+    border-bottom: black;
+}

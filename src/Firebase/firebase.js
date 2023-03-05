@@ -7,17 +7,16 @@ import { getAuth } from "firebase/auth";
 // import "firebase/compat/auth";
 // import "firebase/compat/firestore";
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyD657dGVLZMcitkc98GRDpdlPp_yVIaSRc",
   authDomain: "bussines-admin-prueba.firebaseapp.com",
   projectId: "bussines-admin-prueba",
   storageBucket: "bussines-admin-prueba.appspot.com",
   messagingSenderId: "908644981012",
-  appId: "1:908644981012:web:8574e03b2198a93aa40a01"
+  appId: "1:908644981012:web:098f2c8689b808bda40a01"
 };
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig)
-export const auth = getAuth(app)
+export const auth = getAuth()
 

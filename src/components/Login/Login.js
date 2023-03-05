@@ -1,23 +1,23 @@
 import './Login.css'
 import React, { useEffect, useState } from "react";
-import {useLocation, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import {ButtonLogin} from './ButtonLogin'
 import {ButtonLoginGoogle} from './ButtonLogin'
 import {useAuth} from '../../Context/authContext'
 // import validateForm from '../register/validation.js';
 
-function Login({}){
+function Login(){
   console.log("------------------------")
   console.log("Login")
  
   //////////////////////////////////////////////////////////////
-  const {user} = useAuth()
+  const {login, loginWithGoogle, user} = useAuth()
   //////////////////////////////////////////////////////////////
   // const initalState = null
   
   const [state, setState] = useState({
     email: "",
-    password: "",
+    password: "ss",
   });
 //   const [formErrors, setFormErrors] = useState({ 
 //     error: "" ,
@@ -25,11 +25,11 @@ function Login({}){
 //     password: "",
 //   })
   
-  const location = useLocation()
   const navigate = useNavigate()
+  
 
-  const handleChangeText = (value, name) => {
-    setState({ ...state, [name]: value });
+  const handleChangeText = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
   };
 //   const handleInputOnBlur = (e) => {
 //     setFormErrors({
@@ -37,14 +37,14 @@ function Login({}){
 //         [e.target.name]: validateForm(formData)[e.target.name],
 //     });
 //   }
-  const {login, loginWithGoogle} = useAuth()
   const handleSubmit = async () => {
       try{
         await login(state.email, state.password)
-        return navigate('/starting')
+        
+        navigate('/starting')
       }
       catch(error){
-        console.log(error.message)
+        console.log(error)
       }
       
   };
@@ -60,43 +60,42 @@ function Login({}){
 
   useEffect(() => {
     if (user){
-        return navigate('/starting')
+      navigate('/starting')
     }
   },[user])
+
 
  
 
   console.log("------------------------")
-  // if (user){
-  //   return navigation.navigate("LoadingScreen",{destiny:"MyProfiles"})
-  // }
+
     return (
-        <div className="container"> 
-            <h1 className="title">Hola!</h1>
-            <h2 className="sub-title">Logea con tu cuenta</h2>
+        <div className="container-login"> 
+            <h1 className="title-login">Hola!</h1>
+            <h2 className="sub-title-login">Logea con tu cuenta</h2>
             <input 
-                className="text-input" 
+                className="text-input-login" 
                 type='text'
                 name='email'
-                value={state.email}  
+                value={state.email}
                 placeholder="Ingresa un email" 
-                onChange={(value) => handleChangeText(value, "email")}
+                onChange={handleChangeText}
                 // onBlur={handleInputOnBlur}
             />
             <input 
-                className="text-input" 
-                type='text'
+                className="text-input-login" 
+                type='password'
                 name='password'
                 value={state.password}  
-                secureTextEntry={true}
+                // secureTextEntry={true}
                 placeholder="Ingresa una contraseña" 
-                onChange={(value) => handleChangeText(value, "password")}
+                onChange={handleChangeText}
                 // onBlur={handleInputOnBlur}
             />
             <ButtonLogin onPress={handleSubmit}/>
             <ButtonLoginGoogle onPress={handleGoogleLogin}/>
 
-            <button onClick={()=>navigate('/register')}className="text">No tengo cuenta!</button>
+            <button onClick={()=>navigate('/register')}className="text-login">No tengo cuenta!</button>
         </div>
     )
 }
