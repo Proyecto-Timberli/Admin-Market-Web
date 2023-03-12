@@ -1,4 +1,5 @@
 import React from "react";
+import './Loading.css'
 import { Spinner } from "react-activity";
 import "react-activity/dist/library.css";
 

@@ -1,0 +1,38 @@
+.container-MenuProductos{
+    display: flex;
+    flex-wrap: wrap;
+    
+   
+}
+.container-nav-MenuProductos{
+    width: 15%;
+    height:600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-style: solid;
+    border-color: black;
+
+}
+.button-Container-MenuProductos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin-top: 20px;
+}
+.button-MenuProductos{
+    background-color:transparent;
+    border: none;
+
+}
+.text-button-MenuProductos{
+    color: black;
+    font-weight: bold;
+}
+.container-screen-MenuProducts{
+    display: flex;
+    flex-wrap: wrap;
+    width: 84%;
+    background-color: #fff;
+}

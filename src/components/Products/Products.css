@@ -1,0 +1,73 @@
+
+.container-products{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    border-left-style: solid ;
+    width: 100%;
+}
+.caja-products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    width:100%;
+    margin-top: 2%;
+}
+.textInput-products{
+    padding: 10px;
+    width:40%;
+    height:25px;
+    margin-top:20px;
+    border-radius:30px;
+    background-color:#f1eaea;
+    margin-top:20px;
+    border-bottom-width:2;
+    border-bottom-color:#2C7DA0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.buttonTodos{
+    border:none;
+    margin-left: 10px;
+    background: linear-gradient(#206593,#25EADE);
+    border-radius: 10px;
+
+};
+
+.Loading-products {
+    justify-content:center;
+}
+.button-cardProduct-Products{
+    border: none;
+    background-color: transparent;
+    width: 92%;
+    
+}
+.container-cardProducts-MenuProducts{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    width: 100%;
+    background-color:#f1eaea;
+    margin-top: 10px;
+    border-radius: 25px;
+    width: 70%;
+    min-height: 83%;
+}
+.button-cardProduct-Products-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 5px;
+
+}
+.checkbox-products{
+  width: 5%;
+  border: none;
+  background: linear-gradient(#F8E9E9,#B9C7CA);
+  margin: 10px;
+  height:85%;
+}

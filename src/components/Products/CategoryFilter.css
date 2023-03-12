@@ -1,0 +1,63 @@
+.container-CategoriesSelect{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selectTouch-CategoryFilter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+}
+.selectTextOne-CategoryFilter{
+    font-weight: bold;
+}
+.title-CategoryFilter{
+    margin-right: 10px;
+}
+.modal-CategoryFilter{
+    margin-top: 2%;
+    background-color: #f1eaea;
+    position: absolute;
+    top:0;
+    width: 70%;
+    height: 98%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+
+}
+.container-CategoryFilter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.buttonBack-CategoryFilter{
+    border: none;
+    background-color: transparent;
+}
+.titleCategorias-CategoryFilter{
+    width: 100%;
+    text-align: center;
+}
+.selectContainer-CategoryFilter{
+    border:none;
+    width: 100%;
+    border-radius: 25px;
+    background: linear-gradient(#F8E9E9,#B9C7CA);
+}
+.selectContainerColor-CategoryFilter{
+    border:none;
+    width: 100%;
+    border-radius: 25px;
+    background: linear-gradient(#206593,#25EADE);
+}
+.selectText-CategoryFilter{
+    color: black;
+}
+.selectTextColor-CategoryFilter{
+    color:white;
+}

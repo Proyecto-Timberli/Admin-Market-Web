@@ -1,27 +1,30 @@
 
 .container-CardProduct {
+    display: flex;
     flex-direction:row;
-    width:90%;
-    height:40px;
-    padding:10px;
-    margin: 5px;
+    width:97%;
+    padding: 10px;
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(#F8E9E9,#B9C7CA);
+    border-radius: 20px;
 }
-container-CardProducto-selected{
+.container-CardProducto-selected{
+    display: flex;
     flex-direction:row;
-    width:90%;
-    height:40px;
-    padding:10px;
-    margin: 5px;
+    width:97%;
+    padding: 10px;
     justify-content: space-between;
     align-items: center;
+    border-radius: 20px;
     background: linear-gradient(#206593,#25EADE);
 }
-.text1-CardProduct { font-weight: bold; color: black; width: 30%; }
+.text1-CardProduct { font-weight: bold; color: black; text-align: left; width: 30%; }
 .text2-CardProduct { font-weight: bold; color: black; text-align: center; width: 30%; }
 .text3-CardProduct { font-weight: bold; color: black; text-align: right; width: 30%; }
+.text1-CardProduct-selected { font-weight: bold; color: white; text-align: left; width: 30%; }
+.text2-CardProduct-selected { font-weight: bold; color: white; text-align: center; width: 30%; }
+.text3-CardProduct-selected { font-weight: bold; color: white; text-align: right; width: 30%; }
 
 
   
