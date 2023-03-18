@@ -51,6 +51,8 @@ const Customers= () => {
   const onPressHandler=(params)=>{
     setIdSelect(params.id)
     console.log("Navigate Client-info","{...params}")
+    console.log(params)
+    navigate("clientinfoedit",{state:{...params}})
   }
   /////////////////////////////////////////////////////
   console.log("------------------------")
@@ -99,3 +101,7 @@ const Customers= () => {
 
 
 export default Customers;
+
+
+
+

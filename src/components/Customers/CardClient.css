@@ -1,4 +1,5 @@
 .containerCard-CardClient{
+    display: flex;
     flex-direction:row;
     width:90%;
     height:40;

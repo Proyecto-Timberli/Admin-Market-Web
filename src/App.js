@@ -16,8 +16,9 @@ import Starting from './components/Login/Starting'
 import MyProfiles from './components/Login/MyProfiles';
 import Sells from './components/Sells/Sells'
 
-
+// Customers
 import AddClient from './components/Customers/AddClient'
+import ClientInfoEdit from './components/Customers/ClientInfoEdit'
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
 
 
       <Route path="/customers/addclient" element={<AddClient/>}/>
+      <Route path="/customers/clientinfoedit" element={<ClientInfoEdit/>}/>
       {/* <Route path="/error" element={<ErrorPage/>}/> */}
     </Routes>
     </AuthProvider>

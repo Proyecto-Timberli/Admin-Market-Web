@@ -55,6 +55,9 @@
     justify-content: space-between;
 }
 .buttonCard-Customers{
+    display: flex;
+    margin-top: 15px;
+    width: 55%;
     border: none;
     background: linear-gradient(#F8E9E9,#B9C7CA);
 }

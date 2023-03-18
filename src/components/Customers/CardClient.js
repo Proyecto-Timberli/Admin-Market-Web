@@ -1,5 +1,5 @@
 import React from "react";
-
+import './CardClient.css'
 const CardClient = ({nombre, telefono, direccion}) => {
 
   return ( 

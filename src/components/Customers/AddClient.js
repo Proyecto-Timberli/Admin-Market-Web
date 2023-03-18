@@ -46,7 +46,7 @@ export default function AddClient() {
     postClient(editable)
     console.log("agregar")
     alert("Cliente Agregado");
-    console.log("Navigate MenuPrincipal")
+    navigate('/customers')
   }
   return (
        <div className='container-AddClient'>
