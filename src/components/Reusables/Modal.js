@@ -5,9 +5,9 @@ import { mdiCheckboxMarked } from '@mdi/js';
 import { mdiCloseBox } from '@mdi/js';
 
 
-export function Modal({functionChekOk, setStateModal,mensaje}){
+export function Modal({functionCheckOk, setStateModal,mensaje}){
   function checkOk(){
-    functionChekOk()
+    functionCheckOk()
     setStateModal(false)
   }
   function exit(){

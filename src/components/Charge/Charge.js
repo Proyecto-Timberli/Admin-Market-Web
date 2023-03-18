@@ -1,5 +1,6 @@
 ////////////////////////////////////////////////////
 import React, {useEffect, useState } from "react";
+import './Charge.css'
 ////////////////////////////////////////////////////
 import {useAuth} from '../../Context/authContext'
 import {getFirestore,getDocs, collection,doc,Timestamp} from 'firebase/firestore';
@@ -8,6 +9,8 @@ import {postFirestore,putFirestore} from '../../Firebase/ApiFunctions'
 import {Modal} from '../Reusables/Modal'
 ////////////////////Colors//////////////////////////
 import CardProducto from './Card-Product-In-Cart'
+
+import SearchProducts from './SearchProduct'
 
 
 import Icon from '@mdi/react';
@@ -48,9 +51,13 @@ const WayToPay = ({setStateModal, functionCheckOk})=> {
         </div>
     )
 }
-export default function MenuCobrar({route}){
+export default function MenuCobrar(){
     console.log("------------------------")
     console.log("MenuCobrar")
+    /////////////////////////////////////////////////////
+    const[route,setRoute]=useState({params:null});
+
+    /////////////////////////////////////////////////////
     const {userProfile} = useAuth()
     /////////////////////////////////////////////////////
     function existe(arrayDeObjetos,atributo,valor){
@@ -179,186 +186,85 @@ export default function MenuCobrar({route}){
         return Number.parseFloat(x).toFixed(2);
     }
     console.log("------------------------")
+    const [searchProductsState,setSearchProductsState] =useState(false)
     /////////////////////////////////////////////////////
     return(
         <div
             className='container-Cobrar'>
-                {modalCancelar&&<Modal functionCheckOk={limpiar} setStateModal={setModalCancelar} mensaje={"Limpiar Carro"}/>}
-                {modalRegistrar&&<Modal functionCheckOk={registar} setStateModal={setModalRegistrar} mensaje={"Registrar Venta"}/>}
-                {modalPay&&<WayToPay functionCheckOk={setWayToPays} setStateModal={setModalPay} />}
-           <div className='container2-Cobrar'>
-                <button onClick={() => console.log("BucarProductos")} className='buttomAgregar-cobrar'>
-                    <Icon path={mdiPlusBox} size={2} color="white" />
-                </button>
-                {shopingCart.map(item=>
-                <div>    
-                    <CardProducto
-                        key={item.id+"p"}
-                        id={item.id}
-                        nombre={item.name}
-                        categoria={item.category}
-                        precio={item.price?financial(item.price):null}
-                        product={item} 
-                        shopingCart={shopingCart}
-                        shopingCartSave={shopingCartSave}
-                        setShopingCart={setShopingCart} 
-                        venta={venta}
-                        setVenta={setVenta}
-                    />
-                </div>        
-                )}
-             <div
-             className='container3-cobrar'>
-                <div className='algo-cobrar'><p className='textTotal-cobrar'>Total</p></div>
-                <div className='algo-cobrar'><p className='textTotal-cobrar'>{total}</p></div>
-            </div>
-            <div className='container4-cobrar'>
-                <button 
-                   onClick={()=>console.log("Customers",{cobrar:true})}
-                >
-                    <p className='text-cobrar'>Asignar Cliente</p> 
-                </button>
+                    {modalCancelar&&<Modal functionCheckOk={limpiar} setStateModal={setModalCancelar} mensaje={"Limpiar Carro"}/>}
+                    {modalRegistrar&&<Modal functionCheckOk={registar} setStateModal={setModalRegistrar} mensaje={"Registrar Venta"}/>}
+                    {modalPay&&<WayToPay functionCheckOk={setWayToPays} setStateModal={setModalPay} />}
+                    {searchProductsState&&<SearchProducts setRoute={setRoute} setSearchProductsState={setSearchProductsState}/>}
+            <div className='container2-Cobrar'>
+                <div
+                    className='container3-cobrar'>
+                    <p className='textTotal-cobrar'>Total</p>
+                    <p className='textTotal-cobrar'>{total}</p>
+                </div>
+                    <button onClick={() => setSearchProductsState(true)} className='buttomAgregar-cobrar'>
+                        <Icon path={mdiPlusBox} size={2} color="white" />
+                    </button>
+                <div className='container4-cobrar'>
+                    <div className="container5-cobrar">
+                        <button 
+                            className='button2-cobrar'
+                            onClick={()=>console.log("Customers",{cobrar:true})}>
+                            <p className='text-cobrar'>Asignar Cliente</p> 
+                        </button>
 
-                <button onClick={()=>setModalPay(true)}>
-                    <div
-                        className='button2-cobrar'><p>Forma de Pago</p>
-                    </div>   
-                </button>
+                        <div
+                                className='button3-cobrar'><p className='text2-cobrar'>{client?.identifier}</p>
+                        </div>  
+                    </div>
+                    <div className="container5-cobrar">
+                        <button 
+                            className='button2-cobrar'
+                            onClick={()=>setModalPay(true)}>
+                            <p className='text-cobrar'>Forma de Pago</p>  
+                        </button>
+
+                            <div
+                                className='button3-cobrar'><p className='text2-cobrar'>{wayToPays}</p>
+                            </div> 
+                    </div>  
                 </div>
-                <div className='container5-Cobrar'>
-                    <div
-                        className='button2-cobrar'><p>{client?.identifier}</p>
-                    </div>                                         
-                    <div
-                        className='button2-cobrar'><p>{wayToPays}</p>
-                    </div>   
-                </div>
-            </div>
-            {/* NavBar() -------------------------------------------*/}
-                    <div className = 'containerNavbar-Cobrar'>   
-                            <button
-                                onClick={() => setModalCancelar(true)}
-                            >
-                                <Icon path={mdiAutorenew} size={2} color="black" />
-                                <p>Limpiar</p>
+                <div className = 'containerNavbar-Cobrar'>   
+                            <button 
+                                className = 'buttonNavbar-Cobrar'
+                                onClick={() => setModalCancelar(true)}>
+                                <Icon path={mdiAutorenew} size={2} color="white" />
+                                <p className="textNavBar-cobrar">Limpiar</p>
                             </button>
                             <button 
+                                className = 'buttonNavbar-Cobrar'
                                 onClick={()=> setModalRegistrar(true)}
                                 iconSelect={"cash-register"}
-                                buttonSize={30}
-                            >
-                                <Icon path={mdiCashRegister} size={2} color="black" />
-                                <p>Registrar</p>
+                                buttonSize={30}>
+                                <Icon path={mdiCashRegister} size={2} color="white" />
+                                <p className="textNavBar-cobrar">Registrar</p>
                             </button>
-                    </div> 
-               </div>  
-        
+                </div> 
+            </div>
+                {/* NavBar() -------------------------------------------*/}
+            <div className="container-cart">
+                    {shopingCart.map(item=>
+  
+                        <CardProducto
+                            key={item.id+"p"}
+                            id={item.id}
+                            nombre={item.name}
+                            categoria={item.category}
+                            precio={item.price?financial(item.price):null}
+                            product={item} 
+                            shopingCart={shopingCart}
+                            shopingCartSave={shopingCartSave}
+                            setShopingCart={setShopingCart} 
+                            venta={venta}
+                            setVenta={setVenta}
+                        />
+     
+                    )}
+            </div>
+        </div>  
     );
 }
-// const styles = StyleSheet.create({
-//     container:{
-//         marginTop:-15,
-//         flex:1,
-//         width:width, height:height,
-//         alignItems:"center",
-//       },
-//     contenedorBtonones: {
-//         width:"100%",
-//         flexDirection: "row",
-//         justifyContent: "space-around",  
-//     },
-//     botonPosition:{
-//         zIndex:1,
-//         position: "absolute",
-//         bottom: height*0.30,
-//         right: width*0.1,
-//         width: width*0.15,
-//         height: height*0.07,
-//     },
-//     boton:{
-//         width: width*0.15,
-//         height: height*0.07,
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         borderRadius: 10,
-//         marginVertical: 15,
-//         marginHorizontal: 10,
-//         shadowColor: "#000",
-//         shadowOffset: {
-//             width: 0,
-//             height: 12,
-//         },
-//         shadowOpacity: 0.58,
-//         shadowRadius: 16.00,
-//         elevation: 24,
-//         backgroundColor: "aqua",
-        
-        
-//     },
-//     boton2:{
-//         width: width*0.30,
-//         height: height*0.03,
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         borderRadius: 10,
-//         // marginVertical: 15,
-//         // marginHorizontal: 10,
-//         // backgroundColor: "aqua",
-//     },
-//     p:{
-//         fontSize: 20,
-//         fontWeight: 'bold',
-//         color: 'white',   
-//         textAlign:"center",            
-//     },
-//     /* NavBar() -------------------------------------*/
-//     textNavBar : {
-//         textAlign: "center",
-//         fontSize: 14,
-//         fontWeight: 'bold',
-//         color: 'black',               
-//     } ,
-//           containerNavBar: {
-//             position: "absolute",
-//             bottom: 0,
-//             width: '100%',
-//             height: 70,
-//             backgroundColor: '#fff',
-//             justifyContent: 'space-around',
-//             alignItems: 'center',
-//             flexDirection: 'row',
-//           },
-//           Modal:{
-//             zIndex: 10,
-//             marginTop: "60%",
-//             position: "absolute",
-//             width: '90%',
-//             marginLeft: '5%',
-//             height: "30%",
-//             backgroundColor: 'black',
-//             justifyContent: 'space-around',
-//             alignItems: 'center',
-//             paddingHorizontal: 0,
-//             elevation: 10,
-//             flexDirection: 'column',
-//           },
-//           modalButtonsContainers:{
-//               width: '100%',
-//               justifyContent: 'space-around',
-//               flexDirection: 'row',
-//           },
-//           modalContainer:{
-//             marginTop:25,
-//             zIndex: 10,
-//             width: width,
-//             height: height,
-//             backgroundColor: 'rgba(0, 0, 0, 0.5)',
-//           },
-//           textTitle : {
-//             fontSize: 20,
-//             fontWeight: 'bold',
-//             color: 'black',            
-//           } ,
-
-
-// })

@@ -1,0 +1,13 @@
+.containerCard-CardClient{
+    flex-direction:row;
+    width:90%;
+    height:40;
+    padding:10px;
+    margin: 5px;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+.text1-CardClient { font-weight: 600; color: black; width: 30% }
+.text2-CardClient { font-weight: 600; color: black; text-align: center; width: 30% }
+.text3-CardClient { font-weight: 600; color: black; text-align: right; width: 30% }

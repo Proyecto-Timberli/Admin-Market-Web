@@ -1,0 +1,23 @@
+
+.container-CardProductCharge {
+    display: flex;
+    flex-direction:row;
+    width:90%;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(#F8E9E9,#B9C7CA);
+    border-radius: 20px;
+}
+
+.text1-CardProductCharge { color: black; text-align: left; width: 30%; }
+.text2-CardProductCharge { color: black; text-align: center; width: 30%; }
+.text3-CardProductCharge { color: black; text-align: right; width: 30%; }
+
+
+.buttonCartPlus-cobrar{
+    border: none;
+    background-color: transparent;
+    margin-left: 20px;
+}
+  

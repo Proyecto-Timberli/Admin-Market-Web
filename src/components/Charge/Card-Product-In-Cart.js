@@ -1,6 +1,6 @@
 
 
-
+import './Card-Product-In-Cart.css'
 import React , {useEffect, useState} from "react";
 import Icon from '@mdi/react';
 import { mdiCartPlus } from '@mdi/js';
@@ -65,7 +65,7 @@ const CardProducto = (
       setCantidad(cantidad-1)
     }
     return (
-      <>
+      <div className='container-CardProductInCart'>
         <div
           className='lista-CardProductInCart'>
           <p className='texto1-CardProductInCart'>{nombre}</p>
@@ -74,11 +74,11 @@ const CardProducto = (
         </div >
         <div 
           className="listaCart-CardProductInCart"> 
-          <button onPress={()=>remove()}><Icon path={mdiCartRemove } size={1} color={'white'}/></button>
+          <button onClick={()=>remove()} className='button-CardProductInCart'><Icon path={mdiCartRemove } size={1} color={'white'}/></button>
             <p className="TextWhite-CardProductInCart">Cantidad: {cantidad}</p>
-          <button onPress={()=>add()}><Icon path={mdiCartPlus } size={1} color={'white'}/></button>
+          <button onClick={()=>add()} className='button-CardProductInCart'><Icon path={mdiCartPlus } size={1} color={'white'}/></button>
         </div>
-      </>
+      </div>
     );
   
 

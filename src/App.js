@@ -8,13 +8,16 @@ import Products from './components/Products/Products'
 import Account from './components/Account/Account'
 import Charge from './components/Charge/Charge'
 import Customers from './components/Customers/Customers'
-import Providers from './components/Providers/Provider'
+import Providers from './components/Providers/Providers'
 import LandingPage from './components/LandingPage/LandingPage';
 import Login from './components/Login/Login'
 import Register from './components/Login/Register'
 import Starting from './components/Login/Starting'
 import MyProfiles from './components/Login/MyProfiles';
 import Sells from './components/Sells/Sells'
+
+
+import AddClient from './components/Customers/AddClient'
 
 function App() {
   return (
@@ -33,6 +36,9 @@ function App() {
       <Route path="/charge" element={<Charge/>}/>
       <Route path="/account" element={<Account/>}/>
       <Route path="/sells" element={<Sells/>}/>
+
+
+      <Route path="/customers/addclient" element={<AddClient/>}/>
       {/* <Route path="/error" element={<ErrorPage/>}/> */}
     </Routes>
     </AuthProvider>

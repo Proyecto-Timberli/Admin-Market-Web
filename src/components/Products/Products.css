@@ -6,6 +6,7 @@
     align-items:center;
     border-left-style: solid ;
     width: 100%;
+    min-height: 100%;
 }
 .caja-products{
     display: flex;
@@ -50,7 +51,6 @@
     display: flex;
     flex-direction: column;
     align-items:center;
-    width: 100%;
     background-color:#f1eaea;
     margin-top: 10px;
     border-radius: 25px;
@@ -62,6 +62,7 @@
     flex-wrap: wrap;
     width: 100%;
     margin: 5px;
+    justify-content: center;
 
 }
 .checkbox-products{
