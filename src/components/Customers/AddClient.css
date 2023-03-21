@@ -15,7 +15,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #e0e5e6;
     border-radius: 25px;
 }
 .textTitle-AddClient{
@@ -24,12 +23,15 @@
     font-size: 17px;
 }
 .containerIcon-AddClient{
-    background: linear-gradient(#F8E9E9,#B9C7CA);
+    width: 50%;
     display: flex;
     flex-direction: row;
-    width: 80%;
-    justify-content: center;
-    margin: 10px;
+    
+    /* align-items: center; */
+    padding:5px;
+    margin:10px;
+    border-bottom-style: solid;
+    border-color: #2C7DA0;
 }
 .text-AddClient{
     font-weight: bold;
@@ -49,13 +51,13 @@
 .buttonNavBar-AddClient{
     border: none;
     background-color: transparent;
-    background: linear-gradient(#206593,#25EADE);
+    background: none;
     border-radius: 10px;
 }
 .button2-AddClient{
     border: none;
     width: 23%;
-    background: linear-gradient(#206593,#25EADE);
+    background: black;
     border-radius: 15px;
     margin-bottom: 15px;
     margin-top: 10px;

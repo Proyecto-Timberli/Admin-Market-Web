@@ -78,11 +78,11 @@ export default function AddClient() {
               <button
                   className='buttonNavBar-AddClient'
                   onClick={()=>salir()}
-                ><Icon path={mdiArrowLeft} size={2} color='white'/><p className="textWhite">Salir</p></button>
+                ><Icon path={mdiArrowLeft} size={2} color='black'/><p >Salir</p></button>
               <button 
                   className='buttonNavBar-AddClient'
                   onClick={()=>agregar()}
-                ><Icon path={mdiContentSave} size={2} color='white'/><p className="textWhite">Agregar</p></button>
+                ><Icon path={mdiContentSave} size={2} color='black'/><p >Agregar</p></button>
             </div>
             </div>
       </div>

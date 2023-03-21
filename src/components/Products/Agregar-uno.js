@@ -220,7 +220,7 @@ export default function AgregarUno({navigation}) {
             <button
                 className='button-agregarUno'
                 onClick={()=>agregar()}
-                ><Icon path={mdiContentSave} size={2} color='black'/><p className='text-button-agregarUno'>Agregar</p></button>
+                ><Icon path={mdiContentSave} size={2} color='white'/><p className='text-button-agregarUno'>Agregar</p></button>
           </div>
       
     </div>

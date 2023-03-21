@@ -10,6 +10,7 @@
     align-items: center;
     background-color: transparent;
     border: none;
+
 }
 .selectTextOne-CategoryFilter{
     font-weight: bold;
@@ -19,25 +20,30 @@
 }
 .modal-CategoryFilter{
     margin-top: 2%;
-    background-color: #f1eaea;
+    background-color: #fff;
     position: absolute;
     top:0;
-    width: 70%;
+    width: 60%;
     height: 98%;
     z-index: 10;
     display: flex;
     flex-direction: column;
     border-radius: 25px;
+    align-items: center;
 
 }
 .container-CategoryFilter{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    width: 80%;
 }
 .buttonBack-CategoryFilter{
     border: none;
     background-color: transparent;
+    margin-right: -6%;
+    z-index: 10;
 }
 .titleCategorias-CategoryFilter{
     width: 100%;
@@ -45,13 +51,13 @@
 }
 .selectContainer-CategoryFilter{
     border:none;
-    width: 100%;
+    width: 60%;
     border-radius: 25px;
     background: linear-gradient(#F8E9E9,#B9C7CA);
 }
 .selectContainerColor-CategoryFilter{
     border:none;
-    width: 100%;
+    width: 60%;
     border-radius: 25px;
     background: linear-gradient(#206593,#25EADE);
 }

@@ -94,14 +94,14 @@ export default function EditInfo({params,visible}) {
   console.log("------------------------")
   return (
     <div className='container-agregarUno'>
-      <div className='containerColor-agregarUno'>
+      
         {modalSalir&&<ModalSalir deleteFunction={deleteProducts} stateModal={setModalSalir}/>}
         <div className='containerBack-agregaruno'>
         <button
                 className='buttonBack-agregarUno'
                 onClick={()=>back()}
                 ><Icon path={mdiArrowLeft} size={2} /></button>
-          <h2 className='textTitle--agregarUno'>Informacion del Producto: {id}</h2>    
+          <h2 className='textTitle-agregarUno'>Informacion del Producto: {id}</h2>    
         </div>
         <div 
           className='cotainerIcon-agregarUno'>       
@@ -160,13 +160,13 @@ export default function EditInfo({params,visible}) {
             <button
                 className='button-agregarUno'
                 onClick={()=>eliminar()}
-                ><Icon path={mdiDeleteForever} size={2} color='black'/><p>Eliminar</p></button>
+                ><Icon path={mdiDeleteForever} size={2} color='white'/><p className='text-button-agregarUno'>Eliminar</p></button>
             <button
                 className='button-agregarUno'
                 onClick={()=>guardar()}
-                ><Icon path={mdiContentSave} size={2} color='black'/><p className='text-button-agregarUno'>Guardar</p></button>
+                ><Icon path={mdiContentSave} size={2} color='white'/><p className='text-button-agregarUno'>Guardar</p></button>
           </div>
-          </div>
+          
     </div>
            
 )

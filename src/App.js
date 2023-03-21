@@ -6,7 +6,6 @@ import NavBar from './components/Navbar/NavBar'
 // import ErrorPage from './components/Error/ErrorPage'
 import Products from './components/Products/Products'
 import Account from './components/Account/Account'
-import Charge from './components/Charge/Charge'
 import Customers from './components/Customers/Customers'
 import Providers from './components/Providers/Providers'
 import LandingPage from './components/LandingPage/LandingPage';
@@ -14,11 +13,18 @@ import Login from './components/Login/Login'
 import Register from './components/Login/Register'
 import Starting from './components/Login/Starting'
 import MyProfiles from './components/Login/MyProfiles';
-import Sells from './components/Sells/Sells'
+
 
 // Customers
 import AddClient from './components/Customers/AddClient'
 import ClientInfoEdit from './components/Customers/ClientInfoEdit'
+
+import AddProvider from './components/Providers/AddProvider';
+import ProviderInfoEdit from './components/Providers/ProviderInfoEdit'
+
+// charge
+import Charge from './components/Charge/Charge'
+import Sells from './components/Charge/Sells';
 
 function App() {
   return (
@@ -42,6 +48,9 @@ function App() {
       <Route path="/customers/addclient" element={<AddClient/>}/>
       <Route path="/customers/clientinfoedit" element={<ClientInfoEdit/>}/>
       {/* <Route path="/error" element={<ErrorPage/>}/> */}
+      <Route path="/providers/addprovider" element={<AddProvider/>}/>
+      <Route path="/providers/providerinfoedit" element={<ProviderInfoEdit/>}/>
+
     </Routes>
     </AuthProvider>
     </BrowserRouter> 

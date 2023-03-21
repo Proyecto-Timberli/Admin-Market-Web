@@ -12,12 +12,14 @@ import CardProducto from './Card-Product-In-Cart'
 
 import SearchProducts from './SearchProduct'
 
+import Customers from '../Customers/Customers'
 
 import Icon from '@mdi/react';
 import { mdiCashRegister, mdiCheckboxMarked } from '@mdi/js';
 import { mdiCloseBox } from '@mdi/js';
 import { mdiPlusBox } from '@mdi/js';
 import { mdiAutorenew } from '@mdi/js';
+import { useNavigate } from "react-router";
 
 
 
@@ -55,6 +57,7 @@ export default function MenuCobrar(){
     console.log("------------------------")
     console.log("MenuCobrar")
     /////////////////////////////////////////////////////
+    const navigate = useNavigate()
     const[route,setRoute]=useState({params:null});
 
     /////////////////////////////////////////////////////
@@ -165,6 +168,7 @@ export default function MenuCobrar(){
     const [modalRegistrar,setModalRegistrar] = useState(false)
     const [modalPay,setModalPay]= useState(false)
     const [wayToPays,setWayToPays] = useState(null)
+    const [modalClient,setModalClient] = useState(false)
     const [client,setClient] = useState(null)
     
     
@@ -188,13 +192,18 @@ export default function MenuCobrar(){
     console.log("------------------------")
     const [searchProductsState,setSearchProductsState] =useState(false)
     /////////////////////////////////////////////////////
+    const functionModal= (item)=>{
+        setClient(item)
+        setModalClient(false)
+    }
     return(
         <div
             className='container-Cobrar'>
                     {modalCancelar&&<Modal functionCheckOk={limpiar} setStateModal={setModalCancelar} mensaje={"Limpiar Carro"}/>}
                     {modalRegistrar&&<Modal functionCheckOk={registar} setStateModal={setModalRegistrar} mensaje={"Registrar Venta"}/>}
                     {modalPay&&<WayToPay functionCheckOk={setWayToPays} setStateModal={setModalPay} />}
-                    {searchProductsState&&<SearchProducts setRoute={setRoute} setSearchProductsState={setSearchProductsState}/>}
+                    {searchProductsState&&<div className='modaldiv-Cobrar'><SearchProducts setRoute={setRoute} setSearchProductsState={setSearchProductsState}/></div>}
+                    {modalClient&&<div className='modaldiv-Cobrar'><Customers desde={'charge'} functionModal={functionModal}/></div>}
             <div className='container2-Cobrar'>
                 <div
                     className='container3-cobrar'>
@@ -202,13 +211,13 @@ export default function MenuCobrar(){
                     <p className='textTotal-cobrar'>{total}</p>
                 </div>
                     <button onClick={() => setSearchProductsState(true)} className='buttomAgregar-cobrar'>
-                        <Icon path={mdiPlusBox} size={2} color="white" />
+                        <Icon path={mdiPlusBox} size={2} color="black" />
                     </button>
                 <div className='container4-cobrar'>
                     <div className="container5-cobrar">
                         <button 
                             className='button2-cobrar'
-                            onClick={()=>console.log("Customers",{cobrar:true})}>
+                            onClick={()=>setModalClient(true)}>
                             <p className='text-cobrar'>Asignar Cliente</p> 
                         </button>
 
@@ -232,7 +241,7 @@ export default function MenuCobrar(){
                             <button 
                                 className = 'buttonNavbar-Cobrar'
                                 onClick={() => setModalCancelar(true)}>
-                                <Icon path={mdiAutorenew} size={2} color="white" />
+                                <Icon path={mdiAutorenew} size={2} color="black" />
                                 <p className="textNavBar-cobrar">Limpiar</p>
                             </button>
                             <button 
@@ -240,7 +249,7 @@ export default function MenuCobrar(){
                                 onClick={()=> setModalRegistrar(true)}
                                 iconSelect={"cash-register"}
                                 buttonSize={30}>
-                                <Icon path={mdiCashRegister} size={2} color="white" />
+                                <Icon path={mdiCashRegister} size={2} color="black" />
                                 <p className="textNavBar-cobrar">Registrar</p>
                             </button>
                 </div> 

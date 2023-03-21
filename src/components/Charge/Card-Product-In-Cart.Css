@@ -26,9 +26,9 @@
       justify-content:space-between;
       background: linear-gradient(#F8E9E9,#B9C7CA);
 } 
-.texto2-CardProductInCart { color: black; text-align: center; width:30%; font-weight: bold;}
-.texto3-CardProductInCart { color: black; text-align: right; width: 30%; font-weight: bold;}
-.texto1-CardProductInCart { color: black; width: 30%; font-weight: bold;}
+.texto2-CardProductInCart { color: black; text-align: center; width:30%; }
+.texto3-CardProductInCart { color: black; text-align: right; width: 30%; }
+.texto1-CardProductInCart { color: black; width: 30%; }
 .button-CardProductInCart{
   border: none;
   background-color: transparent;

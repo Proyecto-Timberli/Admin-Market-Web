@@ -7,7 +7,6 @@
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(#F8E9E9,#B9C7CA);
-    border-radius: 20px;
 }
 
 .text1-CardProductCharge { color: black; text-align: left; width: 30%; }

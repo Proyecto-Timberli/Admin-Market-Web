@@ -84,22 +84,26 @@ export default function ClientInfoEdit() {
               <p className = 'text-AddClient'> Ubicacion: </p>
               <input className='input-AddClient' placeholder="Escribe aqui" name="location" onChange={(e)=>handleChangeInput(e)} value={editable.location}/>
             </div>
-            <button className="button2-AddClient"><p className="textWhite">Historial de ventas</p></button>
+            <button 
+              className="button2-AddClient"
+              onClick={() => navigate("/sells",{state:id})}
+            
+            ><p className="textWhite">Historial de ventas</p></button>
             <button className="button2-AddClient"><p className="textWhite">Pedidos</p></button>
             <div 
                 className = 'containerNavBar-AddClient'>   
               <button
                   className='buttonNavBar-AddClient'
                   onClick={()=>salir()}
-                ><Icon path={mdiArrowLeft} size={2} color='white'/><p className="textWhite">Salir</p></button>
+                ><Icon path={mdiArrowLeft} size={2} color='black'/><p >Salir</p></button>
               <button
                   className='buttonNavBar-AddClient'
                   onClick={()=>setModalSalir(true)}
-                ><Icon path={mdiDeleteForever} size={2} color='white'/><p className="textWhite">Eliminar</p></button>
+                ><Icon path={mdiDeleteForever} size={2} color='black'/><p >Eliminar</p></button>
               <button 
                   className='buttonNavBar-AddClient'
                   onClick={()=>guardar()}
-                ><Icon path={mdiContentSave} size={2} color='white'/><p className="textWhite">Guardar</p></button>
+                ><Icon path={mdiContentSave} size={2} color='black'/><p >Guardar</p></button>
             </div>
             </div>
       </div>

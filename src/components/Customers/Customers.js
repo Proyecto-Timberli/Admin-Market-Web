@@ -4,16 +4,17 @@ import CardClient from "./CardClient";
 import {useAuth} from '../../Context/authContext'
 import {getFirestore, collection, getDocs} from 'firebase/firestore';
 import Loading from '../Reusables/Loading'
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 
-const Customers= () => {
+const Customers= ({desde,functionModal}) => {
   console.log("------------------------")
   console.log("Customers")
   const route ={params:null}
   const {userPermissions} = useAuth() 
   const {userProfile} = useAuth()
   const [customersApi,setCustomersApi]= useState(null)
+  const locate = useLocation()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -49,10 +50,13 @@ const Customers= () => {
   const [IdSelect, setIdSelect] = useState(null);
  
   const onPressHandler=(params)=>{
+   
     setIdSelect(params.id)
     console.log("Navigate Client-info","{...params}")
     console.log(params)
     navigate("clientinfoedit",{state:{...params}})
+    
+    
   }
   /////////////////////////////////////////////////////
   console.log("------------------------")
@@ -82,8 +86,7 @@ const Customers= () => {
             arrayAMostrar.map(item => 
                 <button
                   className='buttonCard-Customers'
-                //   onLongPress={route.params?()=>console.log("Navigate MenuCobrar",{client:{id:item.id,identifier:item.identifier}}): null}
-                  onClick={() => onPressHandler(item)}>
+                    onClick={desde==='charge'?()=>functionModal({id:item.id,identifier:item.identifier}): () => onPressHandler(item)}>
                   <CardClient
                     key={item.id}
                     id={item.id}

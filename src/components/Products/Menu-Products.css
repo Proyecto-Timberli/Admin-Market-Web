@@ -5,13 +5,13 @@
    
 }
 .container-nav-MenuProductos{
+    position: absolute;
     width: 15%;
     height:600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-top-style: solid;
-    border-color: black;
+    z-index: 10;
 
 }
 .button-Container-MenuProductos{
@@ -24,7 +24,7 @@
 .button-MenuProductos{
     background-color:transparent;
     border: none;
-
+    z-index: 10;
 }
 .text-button-MenuProductos{
     color: black;
@@ -33,6 +33,6 @@
 .container-screen-MenuProducts{
     display: flex;
     flex-wrap: wrap;
-    width: 84%;
+    width: 100%;
     background-color: #fff;
 }
