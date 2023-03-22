@@ -1,0 +1,50 @@
+.container-ConfigProfile{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.containerInput-ConfigProfile{
+    width: 22%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-style: solid;
+    border-color: #2C7DA0;
+}
+.input-ConfigProfile{
+    height: 25px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+}
+.textBold-ConfigProfile{
+    font-weight: bold;
+}
+.containerOption-ConfigProfile{
+    background-color: white;
+    width: 30%;
+    display: flex;
+    justify-content:space-between;
+    padding-left: 10px;
+}
+.containerChecks-ConfigProfile{
+    display: flex;
+}
+.buttonIcon-ConfigProfile{
+    border:none;
+    background-color: transparent;
+}
+.buttonColor-ConfigProfile{
+    border: none;
+    background-color: transparent;
+    border-radius: 15px;
+    background: linear-gradient(#206593,#25EADE);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.textWhite-ConfigProfile{
+    color: white;
+    font-weight: bold;
+}

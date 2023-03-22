@@ -1,0 +1,87 @@
+.container-LinkProfile{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.containerList-LinkProfile{
+    width: 30%;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profileButtonColor-LinkProfile{
+    background: linear-gradient(#206593,#25EADE);
+    width: 70%;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    margin-bottom: 5px;
+}
+.profileButton-LinkProfile{
+    background: linear-gradient(#F8E9E9,#B9C7CA);
+    width: 70%;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    margin-bottom: 5px;
+}
+.textWhite-LinkProfile{
+    color: white;
+    font-weight: bold;
+
+}
+.text-LinkProfile{
+  color: black;
+}
+.button-LinkProfile{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    background-color:  white;
+    height: 30px;
+}
+.input-LinkProfile{
+    padding: 10px;
+    width:18%;
+    height:25px;
+    background-color:transparent;
+    margin-top:2%;
+    border-bottom-width:2;
+    border-bottom-color:#2C7DA0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-align: center;
+}
+.buttonColor-LinkProfile{
+    background: linear-gradient(#206593,#25EADE);
+    width: 22%;
+    border: none;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.textWhite-LinkProfile{
+    color:white;
+    font-weight: bold;
+}
+.buttonNoColor-LinkProfile{
+    background: linear-gradient(#b9c7cadc,#b9c7cadc);
+    width: 22%;
+    border: none;
+    border-radius: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.textBold-LinkProfile{
+    font-weight: bold;
+}

@@ -1,0 +1,8 @@
+responsive
+boton atras en varias screens
+categorias filter margin
+ver colores
+landing page
+login imagen
+register imagen
+cobrar imagen carro de compras
