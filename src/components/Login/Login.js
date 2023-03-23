@@ -70,6 +70,7 @@ function Login(){
   console.log("------------------------")
 
     return (
+      <div className='container1-login'>
         <div className="container-login"> 
             <h1 className="title-login">Hola!</h1>
             <h2 className="sub-title-login">Logea con tu cuenta</h2>
@@ -97,6 +98,7 @@ function Login(){
 
             <button onClick={()=>navigate('/register')}className="text-login">No tengo cuenta!</button>
         </div>
+    </div>
     )
 }
 

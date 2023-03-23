@@ -70,7 +70,7 @@ const ConfigProfile = ({active})=>{
             </div>
     
             <div className='containerOption-ConfigProfile'>
-                <p>Modificar Productos</p>
+                <p className='text1-ConfigProfile'>Modificar Productos</p>
                 {permissions.modifyProducts?
                 <div className='containerChecks-ConfigProfile'>
                     <button className='buttonIcon-ConfigProfile' onClick={()=>checkOk("modifyProducts")}><Icon path={mdiCheckboxMarked} size={1.5} color="green"/></button> 
@@ -83,7 +83,7 @@ const ConfigProfile = ({active})=>{
                 }
             </div>
             <div className='containerOption-ConfigProfile'>
-                <p>Modificar Clientes</p>
+                <p className='text1-ConfigProfile'>Modificar Clientes</p>
                 {permissions.modifyClients?
                 <div className='containerChecks-ConfigProfile'>
                     <button className='buttonIcon-ConfigProfile' onClick={()=>checkOk("modifyClients")}><Icon path={mdiCheckboxMarked} size={1.5} color="green"/></button> 
@@ -96,7 +96,7 @@ const ConfigProfile = ({active})=>{
                 }
              </div>
             <div className='containerOption-ConfigProfile'>
-                <p>Modificar Provedores</p>
+                <p className='text1-ConfigProfile'>Modificar Provedores</p>
                 {permissions.modifyProviders?
                 <div className='containerChecks-ConfigProfile'>
                     <button className='buttonIcon-ConfigProfile' onClick={()=>checkOk("modifyProviders")}><Icon path={mdiCheckboxMarked} size={1.5} color="green"/></button> 
@@ -109,7 +109,7 @@ const ConfigProfile = ({active})=>{
                 }
             </div>
             <div className='containerOption-ConfigProfile'>
-                <p>Modificar Ventas</p>
+                <p className='text1-ConfigProfile'>Modificar Ventas</p>
                 {permissions.modifySales?
                 <div className='containerChecks-ConfigProfile'>
                     <button className='buttonIcon-ConfigProfile' onClick={()=>checkOk("modifySales")}><Icon path={mdiCheckboxMarked} size={1.5} color="green"/></button> 
@@ -122,7 +122,7 @@ const ConfigProfile = ({active})=>{
                 }
             </div>
             <div className='containerOption-ConfigProfile'>
-                <p>Modificar Compras</p>
+                <p className='text1-ConfigProfile'>Modificar Compras</p>
                 {permissions.modifyBuys?
                 <div className='containerChecks-ConfigProfile'>
                     <button className='buttonIcon-ConfigProfile' onClick={()=>checkOk("modifyBuys")}><Icon path={mdiCheckboxMarked} size={1.5} color="green"/></button> 
@@ -135,7 +135,7 @@ const ConfigProfile = ({active})=>{
                 }
             </div>
             <div className='containerOption-ConfigProfile'>
-                <p>Acceso a las estadisticas</p>
+                <p className='text1-ConfigProfile'>Acceso a las estadisticas</p>
                 {permissions.accessToStatistics?
                 <div className='containerChecks-ConfigProfile'>
                     <button className='buttonIcon-ConfigProfile' onClick={()=>checkOk("accessToStatistics")}><Icon path={mdiCheckboxMarked} size={1.5} color="green"/></button> 
@@ -148,7 +148,7 @@ const ConfigProfile = ({active})=>{
                 }
             </div>
             <div className='containerOption-ConfigProfile'>
-                <p>Acceso a las compras</p>
+                <p className='text1-ConfigProfile'>Acceso a las compras</p>
                 {permissions.accessToBuys?
                 <div className='containerChecks-ConfigProfile'>
                     <button className='buttonIcon-ConfigProfile' onClick={()=>checkOk("accessToBuys")}><Icon path={mdiCheckboxMarked} size={1.5} color="green"/></button> 
@@ -161,7 +161,7 @@ const ConfigProfile = ({active})=>{
                 }
             </div>
             <div className='containerOption-ConfigProfile'>
-                <p>Acceso a los provedores</p>
+                <p className='text1-ConfigProfile'>Acceso a los provedores</p>
                 {permissions.accesToProviders?
                 <div className='containerChecks-ConfigProfile'>
                     <button className='buttonIcon-ConfigProfile' onClick={()=>checkOk("accesToProviders")}><Icon path={mdiCheckboxMarked} size={1.5} color="green"/></button> 

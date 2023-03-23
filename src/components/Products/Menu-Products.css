@@ -1,8 +1,6 @@
 .container-MenuProductos{
     display: flex;
-    flex-wrap: wrap;
-    
-   
+    flex-direction: column;
 }
 .container-nav-MenuProductos{
     position: absolute;
@@ -35,4 +33,34 @@
     flex-wrap: wrap;
     width: 100%;
     background-color: #fff;
+}
+@media screen and (max-width: 700px) {
+    .container-MenuProductos{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-nav-MenuProductos{
+        margin-top: 2%;
+        position: relative;
+        width: 100%;
+        height: 3%;
+        display: flex;
+        flex-direction: row;
+        align-items: none;
+        justify-content: space-around;
+        z-index: 10;
+        margin-bottom: 4%;
+    }
+    .button-Container-MenuProductos{
+        display: flex;
+        width: 20%;
+        align-items: center;
+        margin-top: 0px;
+        justify-content: center;
+    }
+    .text-button-MenuProductos{
+        font-size: 0px;
+    }
+
 }

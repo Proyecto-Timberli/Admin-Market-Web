@@ -14,3 +14,21 @@
     margin-top: 20px;
     margin-bottom: 10px;
 }
+@media screen and (max-width: 900px) {
+    .login-button {
+        background: linear-gradient(#206593, #25EADE);
+        width: 70%;
+        height:50px;
+        border-radius: 25px;
+        justify-content: 'space-around';
+        align-items: center;
+        color: white;
+        cursor: pointer;
+        transition: 0.4s;
+        border: none;
+        font-size: 15px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    
+}

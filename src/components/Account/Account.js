@@ -38,32 +38,32 @@ const Cuenta=()=>{
                 <div className='button-Container-MenuProductos'>
                     <button  className='button-MenuProductos' onClick={()=>setScreen("myaccount")}>    
                         <Icon path={mdiAccountBox} size={2} color="black" />   
-                        <p className>Mi cuenta</p>
+                        <p className='text-button-MenuProductos'>Mi cuenta</p>
                     </button>
                 </div>
             
                 <div className='button-Container-MenuProductos'>
                     <button  className='button-MenuProductos' onClick={()=>setScreen("mybusiness")}>    
                         <Icon path={mdiStorefront} size={2} color="black" />   
-                        <p className>Mi Negocio</p>
+                        <p className='text-button-MenuProductos'>Mi Negocio</p>
                     </button>   
                 </div>
                 <div className='button-Container-MenuProductos'>
                     <button  className='button-MenuProductos' onClick={()=>setScreen("myprofiles")}>    
                         <Icon path={mdiAccountConvert} size={2} color="black" />   
-                        <p className>Mis Perfiles</p>
+                        <p className='text-button-MenuProductos'>Mis Perfiles</p>
                     </button>  
                 </div>
                 <div className='button-Container-MenuProductos'>
                     <button  className='button-MenuProductos' onClick={()=>setScreen("linkprofile")}>    
                         <Icon path={mdiLinkVariantPlus} size={2} color="black" />   
-                        <p>Vincular Usuario</p>
+                        <p className='text-button-MenuProductos'>Vincular Usuario</p>
                     </button>
                 </div>
                 <div className='button-Container-MenuProductos'>
                     <button  className='button-MenuProductos' onClick={()=>handleLogout()}>    
                         <Icon path={mdiLogout} size={2} color="black" />   
-                        <p className>Logout</p>
+                        <p className='text-button-MenuProductos'>Logout</p>
                     </button>  
                 </div>
             </div>

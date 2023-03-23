@@ -155,7 +155,7 @@ export default function AgregarUno({navigation}) {
         {modal&&<Modal dato={dato} state={editable} setState={setEditable} stateModal={setModal}/>}
         {/* {modalSalir&&<ModalSalir navigation={navigation}stateModal={setModalSalir}/>} */}
         
-          <h2 className='textTitle--agregarUno'>Agregar Producto</h2>
+          <h2 className='textTitle-agregarUno'>Agregar Producto</h2>
         
 
         <div 

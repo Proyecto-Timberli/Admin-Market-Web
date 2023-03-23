@@ -26,8 +26,6 @@
     width: 50%;
     display: flex;
     flex-direction: row;
-    
-    /* align-items: center; */
     padding:5px;
     margin:10px;
     border-bottom-style: solid;
@@ -56,7 +54,7 @@
 }
 .button2-AddClient{
     border: none;
-    width: 23%;
+    width: 30%;
     background: black;
     border-radius: 15px;
     margin-bottom: 15px;
@@ -65,4 +63,96 @@
 .textWhite{
     color: white;
     font-weight: bold;
+}
+@media screen and (max-width: 900px) {
+    .container2-AddClient{
+        margin-top: 20px;
+        padding: 20px;
+        width: 70%;
+        height: 95%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 25px;
+    }
+    .containerIcon-AddClient{
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        padding:5px;
+        margin:10px;
+        border-bottom-style: solid;
+        border-color: #2C7DA0;
+    }
+    .textTitle-AddClient{
+        color: black;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .text-AddClient{
+        font-weight: bold;
+        margin-right: 5px;
+        font-size: 12px;
+    }
+    .input-AddClient{
+        text-align: center;
+        background-color: transparent;
+        border: none
+    }
+    .containerNavBar-AddClient{
+        margin-top: 20px;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .button2-AddClient{
+        border: none;
+        width: 46%;
+        background: black;
+        border-radius: 15px;
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+    .textWhite{
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .containerIcon-AddClient{
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        padding:5px;
+        margin:10px;
+        border-bottom-style: solid;
+        border-color: #2C7DA0;
+    }
+}
+@media screen and (max-width: 550px) {
+    .containerIcon-AddClient{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding:5px;
+        margin:10px;
+        border-bottom-style: solid;
+        border-color: #2C7DA0;
+    }
+    .button2-AddClient{
+        border: none;
+        width: 66%;
+        background: black;
+        border-radius: 15px;
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+    .containerNavBar-AddClient{
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
 }

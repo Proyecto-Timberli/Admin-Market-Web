@@ -31,6 +31,7 @@ function Register(){
       };
   
     return (
+      <div className='container1-login'>
         <div className="container-login"> 
             <h1 className="title-login">Hola!</h1>
             <h2 className="sub-title-login">Registra tu cuenta</h2>
@@ -64,6 +65,7 @@ function Register(){
 
             <button onClick={()=>navigate('/login')}className="text-login">Ya tengo cuenta!</button>
         </div>
+      </div>
     )
 }
 

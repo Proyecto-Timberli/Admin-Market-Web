@@ -53,7 +53,7 @@ const LinkProfile=()=>{
     return( 
         <>{configProfile?<ConfigProfile active={setConfigProfile}/>:
         <div className='container-LinkProfile'>
-            <h3>Vincular Usuario</h3>
+            <h3 className='title-LinkProfile'>Vincular Usuario</h3>
             <button 
                 className='button-LinkProfile'
                 onClick={()=>setConfigProfile(true)}
@@ -62,7 +62,7 @@ const LinkProfile=()=>{
                 <Icon path={mdiChevronRight} size={1} color={"black"}/>    
             </button>
             <div className='containerList-LinkProfile'>
-                <p>Selecciona un perfil para vincularlo</p>
+                <p className='text1-LinkProfile'>Selecciona un perfil para vincularlo</p>
             {!profileSettings?<Loading/>:
             dataRender.map(item=>
                 <>
@@ -83,9 +83,9 @@ const LinkProfile=()=>{
                 value={userCode}
                 placeholder='Ingrese codigo de usuario...'
             />
-            <p>Usuario: {userCode?userCode:'*seleccione usuario'}</p>
+            <p className='text1-LinkProfile'>Usuario: {userCode?userCode:'*seleccione usuario'}</p>
             {valideCode=="null"&&<p>*El usuario no existe</p>}
-            <p>Perfil: {profileSelected?profileSelected.name:'*seleccione perfil'}</p>
+            <p className='text1-LinkProfile'>Perfil: {profileSelected?profileSelected.name:'*seleccione perfil'}</p>
                 {(profileSelected&&(valideCode&&valideCode!="null"))?
                 <button
                 className='buttonColor-LinkProfile'

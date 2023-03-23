@@ -10,3 +10,8 @@
 .texto2-CardVenta { color: black; text-align: center; width:30%; font-weight: bold;}
 .texto3-CardVenta { color: black; text-align: right; width: 30%; font-weight: bold;}
 .texto1-CardVenta { color: black; width: 30%; font-weight: bold;}
+@media screen and (max-width: 900px) {
+    .texto2-CardVenta { color: black; text-align: center; width:30%; font-weight: bold; font-size: 10px;}
+    .texto3-CardVenta { color: black; text-align: right; width: 30%; font-weight: bold; font-size: 10px;}
+    .texto1-CardVenta { color: black; width: 30%; font-weight: bold; font-size: 10px;}
+}

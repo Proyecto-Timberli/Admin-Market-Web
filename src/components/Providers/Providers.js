@@ -77,9 +77,9 @@ const Providers= ({desde,functionModal}) => {
             </button>
             {/* :null} */}
             <div className='container2-Customers'>
-              <p>Cliente</p>
-              <p>Telefono</p>
-              <p>Direccion</p>
+              <p className='text-customer'>Cliente</p>
+              <p className='text-customer'>Telefono</p>
+              <p className='text-customer'>Direccion</p>
             </div>
           </div>
           {!customersApi?<Loading/>:

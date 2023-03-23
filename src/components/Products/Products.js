@@ -34,15 +34,13 @@ export default function MenuProductos(){
                     </button>
                 </div>:<div className='button-Container-MenuProductos'></div>}
                 {true?
-                // userPermissions.modifyProducts?
+                // userPermissions.modifyProducts?W
                 <div className='button-Container-MenuProductos'>
                     <button className='button-MenuProductos' onClick={() => setScreen('Agregar Producto')}>    
                         <Icon path={mdiPlusBox} size={2} color="black" />   
                         <p className='text-button-MenuProductos'>Agregar Producto</p>
                     </button>
                 </div>:<div className='button-Container-MenuProductos'></div>}
-                <div div className='button-Container-MenuProductos'>
-                </div>
             </div>
             <div className='container-screen-MenuProducts'>
                 {screen==='Products'&&<Products/>}

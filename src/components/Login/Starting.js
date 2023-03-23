@@ -40,8 +40,10 @@ const Starting =  ()=> {
     },[state])
     console.log("------------------------")
     return (
-        <div className="container-login"> 
-            <Loading/>
+        <div className='container1-login'>
+            <div className="container-login"> 
+                <Loading/>
+            </div>
         </div>
     )
 }

@@ -6,7 +6,7 @@
     align-items: center;
 }
 .containerInput-ConfigProfile{
-    width: 22%;
+    width: 28%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,4 +47,80 @@
 .textWhite-ConfigProfile{
     color: white;
     font-weight: bold;
+}
+@media screen and (max-width: 900px) {
+    .containerInput-ConfigProfile{
+        width: 38%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom-style: solid;
+        border-color: #2C7DA0;
+    }
+    .text1-ConfigProfile{
+        font-size: 13px;
+    }
+    .containerOption-ConfigProfile{
+        background-color: white;
+        width: 40%;
+        display: flex;
+        justify-content:space-between;
+        padding-left: 10px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .containerInput-ConfigProfile{
+        width: 48%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom-style: solid;
+        border-color: #2C7DA0;
+    }
+    .containerOption-ConfigProfile{
+        background-color: white;
+        width: 50%;
+        display: flex;
+        justify-content:space-between;
+        padding-left: 10px;
+    }
+    .textWhite-ConfigProfile{
+        color: white;
+        font-weight: bold;
+        font-size: 0;
+    }
+}
+@media screen and (max-width: 500px) {
+    .containerInput-ConfigProfile{
+        width: 63%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom-style: solid;
+        border-color: #2C7DA0;
+    }
+    .containerOption-ConfigProfile{
+        background-color: white;
+        width: 65%;
+        display: flex;
+        justify-content:space-between;
+        padding-left: 10px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .containerInput-ConfigProfile{
+        width: 73%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom-style: solid;
+        border-color: #2C7DA0;
+    }
+    .containerOption-ConfigProfile{
+        background-color: white;
+        width: 75%;
+        display: flex;
+        justify-content:space-between;
+        padding-left: 10px;
+    }
 }
