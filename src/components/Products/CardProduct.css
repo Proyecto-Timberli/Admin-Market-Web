@@ -24,6 +24,7 @@
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(#206593,#25EADE);
+    background:  #1a6b91;
 }
 .text1-CardProduct { font-weight: bold; color: black; text-align: left; width: 30%; }
 .text2-CardProduct { font-weight: bold; color: black; text-align: center; width: 30%; }

@@ -60,6 +60,7 @@
 } 
 .button-agregarUno{
     background: linear-gradient(#206593,#25EADE);
+    background:  #1a6b91;
     border: none;
     border-radius: 15px;
     margin:5px;

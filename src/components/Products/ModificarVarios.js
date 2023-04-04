@@ -23,10 +23,9 @@ function ModalLoading(){
     )
 }
 
-export default function ModificarVarios({estado,listaSeleccionados,setListaSeleccionados,listaCompleta,recargarLista,navigation}){
+export default function ModificarVarios({estado,listaSeleccionados,setListaSeleccionados,listaCompleta,recargarLista,visible,setVisible}){
     const {userProfile} = useAuth()
     const [todos,setTodos]=useState(false)// check todos
-    const [visible,setVisible]=useState(false)// modal on o off
     const [aumentar,setAumentar]=useState(true)// aumentar o bajar precios
     const [valor,setValor]=useState(0)// valor input
     const handleChangeInput=(e)=>{
@@ -105,9 +104,7 @@ export default function ModificarVarios({estado,listaSeleccionados,setListaSelec
                 } 
                 
             {visible&&<div className='modal-ModificarVarios'>
-                {loading&&<ModalLoading/>}
-                
-                    
+                {loading&&<ModalLoading/>}                   
                         {/* Opciones aumentar bajar() -------------------------------------*/}
                         <div className='container2-ModificarVarios'>               
                             <button onClick={()=>setAumentar(true)}  className={!aumentar?'botonOpciones-ModificarVarios':'botonOpcionesColor-ModificarVarios'}>                              

@@ -1,32 +1,38 @@
+
 .container-Cobrar {
         display:flex;
-        flex-wrap: wrap;
         width:100%; 
         height:100%;
         align-items:center;
         justify-content: center;
 }
 .container2-Cobrar{
-    padding-top: 50px;
-    padding-bottom: 50px;
+    background-color: white;
     position:fixed;
-    top: 17%;
-    left:5%;
-    width: 20%;
+    bottom:5%;
+    width: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    z-index: 0;
+}
+.totalAgregar-cobrar{
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -15px;
 }
 .container3-cobrar{
     background: linear-gradient(#F8E9E9,#B9C7CA);
     height: 35px;
-    width:90%;
+    width:70%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin:10px;
+    
 }
 .textTotal-cobrar{
     color:black;
@@ -36,16 +42,19 @@
     background: none;
     border-radius: 9px;
     border: none;
-    margin: 15px;  
 }
 .container4-cobrar{
-    display: flex;
-    flex-direction: column;
-}
-.container5-cobrar{
-    width: 100%;
+    width: 60%;
     display: flex;
     flex-direction: row;
+    justify-content:right;
+    align-items:center;
+    
+}
+.container5-cobrar{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
 }
 .button2-cobrar{
     display: flex;
@@ -53,10 +62,11 @@
     justify-content: center;
     border-radius: 15px;
     border:none;
-    background: black;
+    background: rgb(52, 51, 72);
     min-width: 110px;
     height: 35px;
-    margin: 5px;
+    margin-left: 10px;
+    margin-bottom: 5px;
 }
 .button3-cobrar{
     display: flex;
@@ -67,7 +77,7 @@
     background: linear-gradient(#F8E9E9,#B9C7CA);
     min-width: 110px;
     height: 35px;
-    margin: 5px;
+    margin-left: 10px;
 }
 .text-cobrar{
     color: white;
@@ -79,45 +89,206 @@
 
 }
 .container-cart{
-    margin-left: 2%;
     width: 60%;
     min-height: 600px;
     border-radius: 25px;
+    margin-bottom: 190px;
     margin-top: 15px;
-    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 15px;
     padding-bottom: 15px;
+    background-image: url(../../assets/buyCart.png);
+    background-image: fixed;
+    background-image: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-size : contain;
+    background-repeat : no-repeat;
+    background-image: no-repeat;
 }
 .containerNavbar-Cobrar{
     margin-top: 15px;
-    width: 100%;
+    width: 40%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: left;
 }
 .buttonNavbar-Cobrar{
     background: linear-gradient(#206593,#25EADE);
+    background:  #1a6b91;
     background: none;
     border: none;
     border-radius: 15px;
-    margin:5px;
+    margin-left: 15px;
+    
 }
 .textNavBar-cobrar{
     color: black;
 }
 .modaldiv-Cobrar{
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: sticky;
     width: 100%;
-    min-height: 800px;
     z-index: 10;
-    padding-top: 6.5%;
     background-color: rgba(0, 0, 0, 0.5);
     
+}
+
+
+@media screen and (max-width: 900px) {
+    .container-cart{
+        width: 80%;
+        min-height: 600px;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }.totalAgregar-cobrar{
+        width: 85%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -15px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .container2-Cobrar{
+        background-color: white;
+        position:fixed;
+        bottom:5%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        z-index: 0;
+    }
+    
+    .container-cart{
+        width: 90%;
+        min-height: 600px;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }.totalAgregar-cobrar{
+        width: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -15px;
+    }
+    .container5-cobrar{
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+    }
+    .buttonNavbar-Cobrar{
+        background: linear-gradient(#206593,#25EADE);
+        background:  #1a6b91;
+        background: none;
+        border: none;
+        border-radius: 15px;
+        margin-left: 0;
+        
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .container-cart{
+        width: 100%;
+        min-height: 600px;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }.totalAgregar-cobrar{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -15px;
+    }
+    .container5-cobrar{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        }
+    .containerNavbar-Cobrar{
+        margin-top: 15px;
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+    }
+    .text-cobrar{
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .container5-cobrar{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        }
+        .containerNavbar-Cobrar{
+            margin-top: 35px;
+            margin-bottom: 10px;
+            width: 40%;
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+        }
+        .container4-cobrar{
+            width: 54%;
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between;
+            align-items:center;
+            
+        }
+        .textNavBar-cobrar{
+            display: none;
+        }
+        .text-cobrar{
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .button2-cobrar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            border:none;
+            min-width: 0;
+            height: 35px;
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
+        .button3-cobrar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            border:none;
+            background: linear-gradient(#F8E9E9,#B9C7CA);
+            min-width: 0px;
+            height: 35px;
+            margin-left: 10px;
+        }
 }
 
 

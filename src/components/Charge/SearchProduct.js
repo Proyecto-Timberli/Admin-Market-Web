@@ -14,8 +14,7 @@ import Loading from '../Reusables/Loading'
 import {useNavigate } from 'react-router-dom';
 
 import Icon from '@mdi/react';
-import { mdiCheckboxBlankOutline } from '@mdi/js';
-import { mdiCheckboxMarkedOutline } from '@mdi/js';
+import { mdiArrowLeft } from '@mdi/js';
 
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
@@ -140,37 +139,46 @@ const SearchProducts = ({setRoute,setSearchProductsState}) => {
   
     return (
         <div className='modal-searchProducts'>
+           <div className = 'container-nav-MenuProductos'>              
+                  <div className='button-Container-MenuProductos'>
+                        <button  className='button-MenuProductos' onClick={() => setSearchProductsState(false)}>
+                          <Icon path={mdiArrowLeft} size={2} color='rgb(52, 51, 72)'/>
+                          <p className='text-button-MenuProductos'></p>
+                        </button>
+                  </div>
+            </div>
+        
         <div className='container-searchProducts'>
-        <div className="container-products"> 
-          <div className='caja-products'>
-              <input
-              className='textInput-products'
-              onChange={(e) => filtroBusqueda(e.target.value)}
-              value={filterBySearch}
-              placeholder="Buscar..."
-              />
-            
-            <CategoriesSelect filtrar={filtroCategory}/> 
+          <div className="container-products"> 
+            <div className='caja-products'>
+                <input
+                className='textInput-products'
+                onChange={(e) => filtroBusqueda(e.target.value)}
+                value={filterBySearch}
+                placeholder="Buscar..."
+                />
+              
+              <CategoriesSelect filtrar={filtroCategory}/> 
+            </div>
+            <div className='container-cardProducts-MenuProducts'>
+              {!productsApi?<Loading/>:<>
+              
+              {arrayAMostrar.map(item=>
+                  <div className='button-cardProduct-Products-container'>
+                          <CardProduct
+                                  key={item.id}
+                                  id={item.id}
+                                  nombre={item.name}
+                                  categoria={item.category?item.category:null}
+                                  precio={item.price?financial(item.price):null}
+                                  product={item}
+                                  onPress={addToCart}
+                          />
+                  </div> 
+                  )}
+                  </>}
+            </div>
           </div>
-          <div className='container-cardProducts-MenuProducts'>
-            {!productsApi?<Loading/>:<>
-            
-            {arrayAMostrar.map(item=>
-                <div className='button-cardProduct-Products-container'>
-                        <CardProduct
-                                key={item.id}
-                                id={item.id}
-                                nombre={item.name}
-                                categoria={item.category?item.category:null}
-                                precio={item.price?financial(item.price):null}
-                                product={item}
-                                onPress={addToCart}
-                        />
-                </div> 
-                )}
-                </>}
-          </div>
-        </div>
         </div>
         </div>
     );

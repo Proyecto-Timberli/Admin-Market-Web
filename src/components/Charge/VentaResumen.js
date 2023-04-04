@@ -1,41 +1,48 @@
 
-
+import './VentaResumen.css'
 ////////////////////////////////////////////////////
 import React, {useEffect, useState } from "react";
 ////////////////////////////////////////////////////
 import {useAuth} from '../../Context/authContext'
 import {getFirestore, doc ,getDoc} from 'firebase/firestore';
-import {deleteFirestore,putFirestore} from '../../Firebase/apiFunctions'
+import {deleteFirestore,putFirestore} from '../../Firebase/ApiFunctions'
 ////////////////////////////////////////////////////
-////////////////////////////////////////////////////
-import * as Print from 'expo-print';
-import { shareAsync } from 'expo-sharing';
+import { useNavigate } from 'react-router';
+import {useLocation} from 'react-router-dom';
 
+import Icon from '@mdi/react';
+import { mdiContentSave } from '@mdi/js';
+import { mdiDeleteForever } from '@mdi/js';
+import { mdiArrowLeft } from '@mdi/js';
 
-
+import QRCode  from  "react-qr-code" ;
+import ResumenPdf from './ResumenPdf';
+import { PDFViewer } from '@react-pdf/renderer';
+import CanvasQR from './canvasQR';
 ////////////////////////////////////////////////////
 const VentaResumen = ()=>{
-  console.log("------------------------")
-  console.log("VentaResumen")
   const {userProfile} = useAuth()
 /////////////////////////////////////////////////////////
-  const {id,resumen,fecha,total,client,idClient,wayToPay}=route.params
-  const data = resumen
+const navigate = useNavigate()
+const locate = useLocation()
+const {id,sellProducts,createdDate,total,client,idClient,wayToPay} = locate.state
+const data = sellProducts
 /////////////////////////////////////////////////////////
 const [businessApi,setBusinessApi] = useState(null)
 const getMyBusinessApi = ()=>{
   const selectedDoc = doc(getFirestore(), "users/"+userProfile)
   getDoc(selectedDoc).then(res => setBusinessApi(res.data()))
 }
+const [elemento,setElemento] = useState(false)
 useEffect(()=>{
   getMyBusinessApi()
+  setElemento(document.getElementById(id+'D'))
 },[])
   const deleteSale = ()=>{
     const selected = doc(getFirestore(), "users/"+userProfile+"/sales", id)
     deleteFirestore(selected)
     // putproduct stoock
   }
-  
   const putProductsStock = (data)=>{
     data.forEach(product=>{
         const selectedDoc = doc(getFirestore(), "users/"+userProfile+"/products", product.id)
@@ -59,168 +66,88 @@ useEffect(()=>{
   }
 
 /////////////////////////////////////////////////////////
-  const html = `
-  <html>
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    </head>
-    <body className="width:100%;text-align: center;justify-content: center;">
-    <div className="display:flex;flex-wrap: wrap;background-color:#F8E9E9;margin-bottom:15px; ">
-      <div className="width:59%;height:28%;padding:10px;text-align:left;">
-        <p className="text-align:right;">No valido como factura</p>
-        <p>${businessApi?.myBusiness?.negocio?businessApi.myBusiness.negocio:null}</p>
-        <p>${businessApi?.myBusiness?.de?businessApi.myBusiness.de:null}</p>
-        <p>Cuit: ${businessApi?.myBusiness?.cuit?businessApi.myBusiness.cuit:null}</p>
-        <p>Telefono: ${businessApi?.myBusiness?.telefono?businessApi.myBusiness.telefono:"Ninguno"}</p>
-        <p>Fecha: ${fecha}</p>
-        <p>Nro de venta: ${id}</p>
-        <p>Cliente: ${client}</p>
-        <p>Nro de Cliente: ${idClient}</p>
-        <p>Forma de pago: ${wayToPay}</p>
-      </div>
-      <div className="width:35%;height:28%;">
-        <img className="margin-top:36px;"src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Codigo_QR.svg/2048px-Codigo_QR.svg.png" alt="QR" width="250" height="250">
-      </div>
-    </div>
-      ${resumen.map(product=> 
-        ` <div className="background-color:#F8E9E9;width:100%;height:9%;margin-bottom:5px;display:flex;flex-wrap: wrap;">
-            <p className="width:100%;text-align:center;">${product.name}</p>
-            <p className="width:33%;text-align:center;">Precio por unidad: $ ${product.price}</p>            
-            <p className="width:33%;text-align:center;">Cantidad: ${product.amount}</p>          
-            <p className="width:33%;text-align:center;">Precio Final $ ${product.price*product.amount}</p>
-            
-          </div>`
-      )}
-      
-      <p className="background-color:#F8E9E9;width:100%;margin-bottom:15px; padding:10px;">Total: $ ${total}</p>
-    </body>
-  </html>
-  `;
-  const [selectedPrinter, setSelectedPrinter] = React.useState();
 
-  const print = async () => {
-    // On iOS/android prints the given html. On web prints the HTML from the current page.
-    // getMyBusinessApi()
-    await Print.printAsync({
-      html,
-      height: 92, 
-      width:192,
-      printerUrl: selectedPrinter?.url, // iOS only
-    });
-  };
-
-  const printToFile = async () => {
-    // On iOS/android prints the given html. On web prints the HTML from the current page.
-    const { uri } = await Print.printToFileAsync({ html });
-    console.log('File has been saved to:', uri);
-    await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
-  };
-
-  const selectPrinter = async () => {
-    const printer = await Print.selectPrinterAsync(); // iOS only
-    setSelectedPrinter(printer);
-  };
       //hacer global
       function financial(x) {
         return Number.parseFloat(x).toFixed(2);
       }
-  console.log("------------------------")
-  
 
+  const [pdfVisible,setPdfVisible] = useState(false)
+  const algoprueba = ()=>{
+    console.log('-businessDate-----------------------------')
+    console.log(businessApi)
+    console.log(pdfVisible)
+    console.log('-businessDate-----------------------------')
+    setPdfVisible(!pdfVisible)
+  }
     return (
-            <div className='container-VentaResumen'>
+      <>
+      {pdfVisible&&businessApi? 
+      <div style={{position:'absolute',width:'100%',height:'auto',top:'0',left:'0',backgroundColor:'#fff'}}>
+        <Icon onClick={()=>{algoprueba()}}path={mdiArrowLeft} size={2} color='rgb(52, 51, 72)'/>
+        <PDFViewer style={{width:'100%' ,height:'90vh'}}><ResumenPdf sell={locate.state} businessDate={businessApi}/></PDFViewer>
+      </div>:
+      <div className='container-MenuProductos'>
+          <div className = 'container-nav-MenuProductos'>              
+                  <div className='button-Container-MenuProductos'>
+                        <button  className='button-MenuProductos' onClick={() => navigate(-1)}>
+                          <Icon path={mdiArrowLeft} size={2} color='rgb(52, 51, 72)'/>
+                          <p className='text-button-MenuProductos'>Volver</p>
+                        </button>
+                  </div>
+                  <div className='button-Container-MenuProductos'>
+                        <button  className='button-MenuProductos' onClick={()=>anular(data)}>
+                          <Icon path={mdiDeleteForever} size={2} color='rgb(52, 51, 72)'/>
+                          <p className='text-button-MenuProductos'>Anular</p>
+                        </button>
+                  </div>
+                  <div className='button-Container-MenuProductos'>
+                        <button  className='button-MenuProductos' 
+                        onClick={()=>{algoprueba()}}
+                        // onClick={()=>{console.log(elemento.toDataURL('image/svg+xml'))}}       
+                        >
+                          
+                          <Icon path={mdiContentSave} size={2} color='rgb(52, 51, 72)'/>
+                          <p className='text-button-MenuProductos'>Comprobante</p>
+                        </button>
+                  </div>
+        </div>  
+        <div className='container-VentaResumen'>
                 <div className='lista-VentaResumen'>
+                  <div>
                     <p className='text-VentaResumen'>Nro de venta: {id}</p>
-                    <p className='text-VentaResumen'>Fecha: {fecha} </p>
+                    <p className='text-VentaResumen'>Fecha: {createdDate} </p>
                     <p className='text-VentaResumen'>Cliente: {client?client:"ninguno"}</p>
                     <p className='text-VentaResumen'>Nro de Cliente: {idClient?idClient:"ninguno"}</p>
                     <p className='text-VentaResumen'>Forma de Pago: {wayToPay?wayToPay:"ninguna"} </p>
-                </div >
-                
-                
-                <div className='container2-VentaResumen'>
+                  </div>
+                  <div className='qrContainer-VentaResumen'>
+                    < QRCode 
+                    id={id+'D'}
+                    size = { 256 } 
+                    style = { {  height : "auto" ,  maxWidth : "100%" ,  width : "100%"  } }
+                    value = {id} 
+                    viewBox = { `0 0 256 256` } 
+                  />                 
+                  </div>  
+                  
+                  
+                </div >       
+            <div className='container2-VentaResumen'>
                 {data.map(item => 
-                          <div 
-                            className='lista2-VentaResumen'>
-                                    <p className='text-VentaResumen'>{item.name}</p>
-                                    <p className='text-VentaResumen'>Precio por unidad: {item.price?financial(item.price):null}</p>
-                                    <p className='text-VentaResumen'>Cantidad: {item.amount}</p>
-                                    <p className='text-VentaResumen'>Total Producto: {item.price?financial(item.price*item.amount):null}</p>
-                          </div>)}
-                <p className='TextTotal-VentaResumen'>Total:{total}</p>
-                   {/* NavBar() -------------------------------------------*/}
-                   <div className = 'containerNavBar-VentaResumen'>   
-                    <button
-                        className='buttonNavBar-AddClient'
-                        onClick={()=>salir()}
-                        ><Icon path={mdiArrowLeft} size={2} color='white'/><p className="textWhite">Volver</p></button>
-                    <button
-                        className='buttonNavBar-AddClient'
-                        onClick={()=>anular(data)}
-                        ><Icon path={mdiDeleteForever} size={2} color='white'/><p className="textWhite">Anular</p></button>
-                    <button 
-                        className='buttonNavBar-AddClient'
-                        onClick={()=>{Platform.OS === 'ios'?selectPrinter: print}}
-                        ><Icon path={mdiContentSave} size={2} color='white'/><p className="textWhite">Comprobante</p></button>
-                </div> 
-            </div>  
-            </div>  
-        
+                <div className='lista2-VentaResumen'>
+                                    <p className='textProductName-VentaResumen'>{item.name}</p>
+                                    <p className='textPorducto-VentaResumen'>Precio por unidad: {item.price?financial(item.price):null}</p>
+                                    <p className='textPorducto-VentaResumen'>Cantidad: {item.amount}</p>
+                                    <p className='textPorducto-VentaResumen'>Total Producto: {item.price?financial(item.price*item.amount):null}</p>
+                </div>)}
+                <p className='TextTotal-VentaResumen'>Total: {total}</p>
+          </div> 
+      </div>  
+    </div>}
+    </>
     );
 };
   
-
-//   const styles = StyleSheet.create({
-//     container:{
-//       marginTop:-35,
-//       flex:1,
-//       alignItems: "center",
-//     },
-    
-//     lista: {
-//       width:width*0.9,
-//       marginTop:30,
-//       marginBottom: 20,
-//       height:height*0.15,
-//       backgroundColor: "#F8E9E9",
-//       flexDirection: "column",
-//       alignItems: "center",
-//       justifyContent: "center",
-//     },
-//       lista2: {
-//       width: width*0.9,
-//       height: height*0.13,
-//       marginBottom: 5,
-//       padding: 10,
-//       flexWrap: "wrap"
-//     },
-//     text: { color: "black"},
-//     textTotal:{
-//       color: "black",
-//       fontSize: 18,
-//     },
-
-  
-//       /* NavBar() -------------------------------------*/
-//          textNavBar : {
-//             textAlign: "center",
-//             fontSize: 14,
-//             fontWeight: 'bold',
-//             color: 'black',               
-//           } ,
-//           containerNavBar: {
-//             position: "absolute",
-//             bottom: 0,
-//             width: '100%',
-//             height: 70,
-//             backgroundColor: '#fff',
-//             justifyContent: 'space-around',
-//             alignItems: 'center',
-//             flexDirection: 'row',
-//           },
-// })
-
-
-
 
 export default VentaResumen;

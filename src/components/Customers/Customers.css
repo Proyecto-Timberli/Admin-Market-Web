@@ -1,3 +1,10 @@
+.modal-container-Customers{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color:#fff;
+
+}
 .container-Customers{
     width: 100%;
     min-height: 800px;
@@ -38,6 +45,7 @@
     margin:10px;
     border-radius:15px;
     background: linear-gradient(#206593,#25EADE);
+    background:  #1a6b91;
     border: none;
 }
 .textButton-Customers{
@@ -103,6 +111,7 @@
         margin:10px;
         border-radius:15px;
         background: linear-gradient(#206593,#25EADE);
+        background:  #1a6b91;
         border: none;
     }
     .textButton-Customers{

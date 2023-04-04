@@ -13,7 +13,7 @@ import Login from './components/Login/Login'
 import Register from './components/Login/Register'
 import Starting from './components/Login/Starting'
 import MyProfiles from './components/Login/MyProfiles';
-
+import Statistics from './components/Statistics/Statistics'
 
 // Customers
 import AddClient from './components/Customers/AddClient'
@@ -25,6 +25,7 @@ import ProviderInfoEdit from './components/Providers/ProviderInfoEdit'
 // charge
 import Charge from './components/Charge/Charge'
 import Sells from './components/Charge/Sells';
+import SellResumen from './components/Charge/VentaResumen'
 
 function App() {
   return (
@@ -44,12 +45,16 @@ function App() {
       <Route path="/account" element={<Account/>}/>
       <Route path="/sells" element={<Sells/>}/>
 
+      <Route path="/sellresumen" element={<SellResumen/>}/>
+
 
       <Route path="/customers/addclient" element={<AddClient/>}/>
       <Route path="/customers/clientinfoedit" element={<ClientInfoEdit/>}/>
       {/* <Route path="/error" element={<ErrorPage/>}/> */}
       <Route path="/providers/addprovider" element={<AddProvider/>}/>
       <Route path="/providers/providerinfoedit" element={<ProviderInfoEdit/>}/>
+
+      <Route path="/statistics" element={<Statistics/>}/>
 
     </Routes>
     </AuthProvider>

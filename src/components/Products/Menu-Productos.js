@@ -132,7 +132,7 @@ const Productos = () => {
     return Number.parseFloat(x).toFixed(2);
   }
   /////////////////////////////////////////////////////
-  
+  const [visibleModificarVarios,setVisibleModificarVarios]=useState(false)
     return (
         <>
         {productInfo?<EditInfo params={selectProduct} visible={setProductInfo}/>:
@@ -148,12 +148,12 @@ const Productos = () => {
               placeholder="Buscar..."
               />
             
-            <ModificarVarios estado={seleccionarVarios} listaSeleccionados={arraySeleccionados} setListaSeleccionados={setArraySeleccionados} listaCompleta={arrayAMostrar} recargarLista={getProducts} />
+            <ModificarVarios estado={seleccionarVarios} listaSeleccionados={arraySeleccionados} setListaSeleccionados={setArraySeleccionados} listaCompleta={arrayAMostrar} recargarLista={getProducts} visible={visibleModificarVarios} setVisible={setVisibleModificarVarios} />
             <CategoriesSelect filtrar={filtroCategory}/> 
           </div>
           <div className='container-cardProducts-MenuProducts'>
-            {!productsApi?<Loading/>:<>
-            
+            {!productsApi||visibleModificarVarios?<Loading/>:<>
+            {/* se mokio el modal modificar varios para que se renderize sin bugs visuales */}
             {arrayAMostrar.map(item=>
                 <div className='button-cardProduct-Products-container'>
                   <button className='button-cardProduct-Products'

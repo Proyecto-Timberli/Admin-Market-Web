@@ -7,7 +7,10 @@ import Loading from '../Reusables/Loading'
 import { useLocation, useNavigate } from 'react-router';
 
 
-const Customers= ({desde,functionModal}) => {
+import Icon from '@mdi/react';
+import { mdiArrowLeft } from '@mdi/js';
+
+const Customers= ({desde,functionModal,setModalClient}) => {
   console.log("------------------------")
   console.log("Customers")
   const route ={params:null}
@@ -62,6 +65,15 @@ const Customers= ({desde,functionModal}) => {
   console.log("------------------------")
   
     return (
+      <div className='modal-container-Customers'>
+        <div className = 'container-nav-MenuProductos'>              
+                  <div className='button-Container-MenuProductos'>
+                        <button  className='button-MenuProductos' onClick={() => setModalClient(false)}>
+                          <Icon path={mdiArrowLeft} size={2} color='rgb(52, 51, 72)'/>
+                          <p className='text-button-MenuProductos'></p>
+                        </button>
+                  </div>
+        </div>
         <div className='container-Customers'>
           <div className='caja-Customers'>
             <input
@@ -96,6 +108,7 @@ const Customers= ({desde,functionModal}) => {
                   />
                 </button> )
         }
+        </div>
         </div>
     );
   

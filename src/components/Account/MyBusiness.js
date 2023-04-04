@@ -7,7 +7,7 @@ import Icon from '@mdi/react';
 import { useNavigate } from 'react-router';
 import { mdiStorefront } from '@mdi/js';
 import { mdiContentSave } from '@mdi/js';
-
+const inconColor =("rgb(52, 51, 72)")
 
 
 const MyBusiness=()=>{
@@ -64,7 +64,7 @@ const MyBusiness=()=>{
         <div className='container-mybusiness'>
             
                 <button  className='button-MenuProductos'>    
-                    <Icon path={mdiStorefront} size={4} color="black" />   
+                    <Icon path={mdiStorefront} size={4} color={inconColor} />   
                 </button>
                 <div  className='cotainerIcon-agregarUno'>
                     <p className='text-agregarUno'>Negocio:</p>

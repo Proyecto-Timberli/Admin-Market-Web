@@ -6,13 +6,16 @@ import {useAuth} from '../../Context/authContext'
 import {getFirestore, collection, getDocs, Timestamp} from 'firebase/firestore';
 import Loading from '../Reusables/Loading'
 import CardVenta from './CardSell'
-import { useLocation } from 'react-router';
+import { useNavigate } from 'react-router';
+import {useLocation} from 'react-router-dom';
+
 
 export default function Ventas(){
     console.log("------------------------")
     console.log("Ventas")
     const {userProfile} = useAuth()
     const location = useLocation()
+    const navigate = useNavigate()
     //////////////////////filtro por cliente///////////////////////////////
 
     const idClient = location.state? location.state : null
@@ -81,7 +84,7 @@ export default function Ventas(){
             dataRender.map(item=>
                 <button 
                     className='buttonCard-Sells'
-                    onClick={() => console.log("ventaResumen")}>   
+                    onClick={() => navigate("/sellresumen",{state:item})}>  
                     <CardVenta
                         key={item.id+"p"}
                         id={item.id}

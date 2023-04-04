@@ -13,8 +13,8 @@ import { useNavigate } from 'react-router';
 import {useLocation} from 'react-router-dom';
 import { mdiDeleteForever } from '@mdi/js';
 export default function ClientInfoEdit() {
-    const navigate = useNavigate()
-    const locate = useLocation()
+  const navigate = useNavigate()
+  const locate = useLocation()
   const {id, identifier, phone, location} = locate.state
   const {userPermissions} = useAuth() 
   const {userProfile} = useAuth()

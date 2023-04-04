@@ -1,0 +1,170 @@
+
+.container-LandingPage{
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.ipsu-LandingPage{
+    padding-left: 4%;
+    width: 46%; 
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+.title-LandingPage{
+    font-size: 50px;
+    color: rgb(52, 51, 72);
+    font-family: proxima-nova, sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+.subTitle-LandingPage{
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: rgb(106, 117, 135);
+}
+.buttonscontainer-LandingPage{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+.button-LandingPage{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 40px;
+    width: 40%;
+    background-color: rgb(52, 51, 72);
+    padding: 10px;
+    padding-right: 25px;
+    border-radius: 10px;
+}
+.imagen1-LandingPage{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.textbutton-LandingPage{
+    color: white;
+}
+.imagen-LandingPage{
+    width: 50%;
+}
+.imagen-LandingPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* position: absolute; */
+    /* left: 6vw;
+    transform: rotate(-18deg);
+    z-index: -1;
+    width: 642px;
+    height: 295px;
+    bottom: 29vw;
+    opacity: 0.04;
+    background: rgb(52, 51, 72);
+    border-radius: 400px; */
+}
+.img-LandingPage{
+    width: 603px;
+    height:345px;
+}
+
+@media screen and (max-width: 1100px) {
+    .ipsu-LandingPage{
+        padding-right: 4%;
+        width: 92%; 
+        justify-content: center;
+        height: 400px;
+    }
+    .imagen-LandingPage{
+        width: 100%;
+    }
+    .title-LandingPage{
+        font-size: 40px;
+
+    }
+    .subTitle-LandingPage{
+        font-size: 20px;
+
+    }
+    .textbutton-LandingPage{
+        font-size: 15px;
+    }
+    .button-LandingPage{
+        width: 30%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .buttonscontainer-LandingPage{
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+    } 
+
+}
+@media screen and (max-width: 780px) {
+   
+    .img-LandingPage{
+        width: 422px;
+        height:241px;
+    }
+    .title-LandingPage{
+        font-size: 35px;
+
+    }
+    .subTitle-LandingPage{
+        font-size: 20px;
+
+    }
+    .textbutton-LandingPage{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 670px) {
+    .button-LandingPage{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 535px) {
+    .title-LandingPage{
+        font-size: 30px;
+
+    }
+    .subTitle-LandingPage{
+        font-size: 18px;
+
+    }
+    .ipsu-LandingPage{
+        height: 500px;
+    }
+    .buttonscontainer-LandingPage{
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    } 
+    .button-LandingPage{
+        width: 49%;
+    }
+    .img-LandingPage{
+        width: 337px;
+        height:193px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .ipsu-LandingPage{
+        height: 600px;
+    }
+    .img-LandingPage{
+        width: 269px;
+        height:154px;
+    }
+    .button-LandingPage{
+        width: 60%;
+    }
+}
+

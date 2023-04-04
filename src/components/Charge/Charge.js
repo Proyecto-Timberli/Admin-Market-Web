@@ -21,7 +21,9 @@ import { mdiPlusBox } from '@mdi/js';
 import { mdiAutorenew } from '@mdi/js';
 import { useNavigate } from "react-router";
 
+import imagenCart from '../../assets/buyCart.png'
 
+const inconColor =("rgb(52, 51, 72)")
 
 
 const WayToPay = ({setStateModal, functionCheckOk})=> {
@@ -197,22 +199,17 @@ export default function MenuCobrar(){
         setModalClient(false)
     }
     return(
-        <div
-            className='container-Cobrar'>
-                    {modalCancelar&&<Modal functionCheckOk={limpiar} setStateModal={setModalCancelar} mensaje={"Limpiar Carro"}/>}
-                    {modalRegistrar&&<Modal functionCheckOk={registar} setStateModal={setModalRegistrar} mensaje={"Registrar Venta"}/>}
-                    {modalPay&&<WayToPay functionCheckOk={setWayToPays} setStateModal={setModalPay} />}
-                    {searchProductsState&&<div className='modaldiv-Cobrar'><SearchProducts setRoute={setRoute} setSearchProductsState={setSearchProductsState}/></div>}
-                    {modalClient&&<div className='modaldiv-Cobrar'><Customers desde={'charge'} functionModal={functionModal}/></div>}
+        <>
+        {(modalCancelar||modalRegistrar||modalPay||searchProductsState||modalClient)?
+        <div className='container-Cobrar'>                   
+            {modalCancelar&&<Modal functionCheckOk={limpiar} setStateModal={setModalCancelar} mensaje={"Limpiar Carro"}/>}
+            {modalRegistrar&&<Modal functionCheckOk={registar} setStateModal={setModalRegistrar} mensaje={"Registrar Venta"}/>}
+            {modalPay&&<WayToPay functionCheckOk={setWayToPays} setStateModal={setModalPay} />}
+            {searchProductsState&&<div className='modaldiv-Cobrar'><SearchProducts setRoute={setRoute} setSearchProductsState={setSearchProductsState}/></div>}
+            {modalClient&&<div className='modaldiv-Cobrar'><Customers desde={'charge'} functionModal={functionModal} setModalClient={setModalClient}/></div>}
+        </div> :
+        <div className='container-Cobrar'>
             <div className='container2-Cobrar'>
-                <div
-                    className='container3-cobrar'>
-                    <p className='textTotal-cobrar'>Total</p>
-                    <p className='textTotal-cobrar'>{total}</p>
-                </div>
-                    <button onClick={() => setSearchProductsState(true)} className='buttomAgregar-cobrar'>
-                        <Icon path={mdiPlusBox} size={2} color="black" />
-                    </button>
                 <div className='container4-cobrar'>
                     <div className="container5-cobrar">
                         <button 
@@ -222,7 +219,7 @@ export default function MenuCobrar(){
                         </button>
 
                         <div
-                                className='button3-cobrar'><p className='text2-cobrar'>{client?.identifier}</p>
+                            className='button3-cobrar'><p className='text2-cobrar'>{client?.identifier}</p>
                         </div>  
                     </div>
                     <div className="container5-cobrar">
@@ -237,11 +234,12 @@ export default function MenuCobrar(){
                             </div> 
                     </div>  
                 </div>
+                
                 <div className = 'containerNavbar-Cobrar'>   
                             <button 
                                 className = 'buttonNavbar-Cobrar'
                                 onClick={() => setModalCancelar(true)}>
-                                <Icon path={mdiAutorenew} size={2} color="black" />
+                                <Icon path={mdiAutorenew} size={2} inconColor />
                                 <p className="textNavBar-cobrar">Limpiar</p>
                             </button>
                             <button 
@@ -249,13 +247,23 @@ export default function MenuCobrar(){
                                 onClick={()=> setModalRegistrar(true)}
                                 iconSelect={"cash-register"}
                                 buttonSize={30}>
-                                <Icon path={mdiCashRegister} size={2} color="black" />
+                                <Icon path={mdiCashRegister} size={2} color={inconColor} />
                                 <p className="textNavBar-cobrar">Registrar</p>
                             </button>
                 </div> 
+                <div className="totalAgregar-cobrar">
+                    <div
+                        className='container3-cobrar'>
+                        <p className='textTotal-cobrar'>Total</p>
+                        <p className='textTotal-cobrar'>{total}</p>
+                    </div>
+                    <button onClick={() => setSearchProductsState(true)} className='buttomAgregar-cobrar'>
+                        <Icon path={mdiPlusBox} size={2} color={inconColor} />
+                    </button>
+                </div>
             </div>
                 {/* NavBar() -------------------------------------------*/}
-            <div className="container-cart">
+            <div className="container-cart" >
                     {shopingCart.map(item=>
   
                         <CardProducto
@@ -274,6 +282,7 @@ export default function MenuCobrar(){
      
                     )}
             </div>
-        </div>  
+        </div> }
+        </>
     );
 }

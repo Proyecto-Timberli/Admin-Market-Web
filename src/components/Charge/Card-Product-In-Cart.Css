@@ -15,6 +15,7 @@
       padding: 10px;
       justify-content:space-around;
       background: linear-gradient(#206593,#25EADE);
+      background:  #1a6b91;
   }
 .TextWhite-CardProductInCart{color: white;  font-weight:bold;}
 .lista-CardProductInCart {
@@ -32,4 +33,10 @@
 .button-CardProductInCart{
   border: none;
   background-color: transparent;
+}
+@media screen and (max-width: 500px) {
+  .texto2-CardProductInCart { color: black; text-align: center; width:30%;font-size: 12px; }
+  .texto3-CardProductInCart { color: black; text-align: right; width: 30%;font-size: 12px;  }
+  .texto1-CardProductInCart { color: black; width: 30%;font-size: 12px;  }
+  .TextWhite-CardProductInCart{color: white;  font-weight:bold;font-size: 13px; }
 }

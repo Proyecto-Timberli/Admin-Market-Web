@@ -2,27 +2,28 @@
    padding-top: 20px;
    padding-bottom: 20px;
    display: flex;
-   flex-wrap: wrap;
+   flex-direction: row;
+   align-items: center;
    justify-content: center;
-   background: linear-gradient(#206593, #25EADE);
+   background:  #1a6b91;
    min-height:49px;
    max-height:49px;
 }
 .container-navBar-login{
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 70%;
+    padding-right: 6%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background: linear-gradient(#206593, #25EADE);
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    background:  #1a6b91;
     min-height: 49px;
     max-height:49px;
 }
 .button-navBar {
     background-color: transparent;
-    margin: 15px;
-    color:azure;
+    margin-right: 60px;
     font-weight: bold;
     font-size: 15px;
     border-top: none;
@@ -30,6 +31,15 @@
     border-left: none;
     border-color: transparent;
     transition: all .6s ease;
+}
+.textButton-Navbar{
+    font-size: 16px;
+    font-family: proxima-nova, sans-serif;
+    color:azure;
+    letter-spacing: 0.5px;
+}
+.textButton-Navbar:hover{
+    color: aqua;
 }
 .buttonOculto-navBar{
     background-color: transparent;
@@ -41,10 +51,6 @@
     border-right: none;
     border-left: none;
     border-color: transparent;
-}
-
-.button-navBar:hover {
-    color:aqua;
 }
 .button-navBar-selected {
     background-color: transparent;
@@ -69,29 +75,32 @@
 @media screen and (max-width: 700px) {
     .burger-navBar{
         padding: 10px;
+        position: absolute;
+        top: 0;
+        right: 10px;
     }
     .container-navBar {
         padding-top: 7px;
         padding-bottom: 7px;
-        padding-right: 10%;
+        padding-right: 0%;
         display: flex;
         justify-content: right;
         align-items: center;
-        background: linear-gradient(#206593, #25EADE);
+        background:  #1a6b91;
         min-height:49px;
         max-height:49px;
      }
     .container-navBar.active-navBar{
         padding-top: 23px;
         padding-bottom: 7px;
-        padding-right: 10%;
+        padding-right: 0%;
         min-height:none;
         max-height:none;
         display: flex;
         flex-direction: column;
         justify-content: right;
         align-items: center;
-        background: linear-gradient(#206593, #25EADE);
+        background:  #1a6b91;
      }
     .buttonOculto-navBar{
         background-color: transparent;
@@ -113,5 +122,17 @@
         font-size: 2rem;
         display: block;
         transition: all 6s ease-out;
+    }
+    .container-navBar-login{
+        padding-top: 7px;
+        padding-bottom: 7px;
+        padding-right: 0%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: right;
+        background:  #1a6b91;
+        min-height: 49px;
+        max-height:49px;
     }
 }

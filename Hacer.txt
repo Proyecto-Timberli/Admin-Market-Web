@@ -1,14 +1,15 @@
-#1 responsive  falta cobrar y boton login, registrarse
+
 #2 categorias filter mejorar estilos
 #3 boton atras en varias screens localizarlas
+
 #4 falta venta resumen
 #5 categorias agregar modificar diseño
+    
+
 #6 falta estadisticas
 
+#9  terminar landing page
 
-#7 definir colores
-#8 cobrar imagen carro de compras
-#9 landing page
 #10 login imagen
 #11 register imagen
 
