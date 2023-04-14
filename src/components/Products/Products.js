@@ -19,6 +19,7 @@ export default function MenuProductos(){
     const [screen, setScreen] = useState('Products')
     return(
         <div className='container-MenuProductos'>
+            <div className='imgBackGroundCustom'></div>
             <div className='container-nav-MenuProductos'>
                 <div className='button-Container-MenuProductos'>
                     <button  className='button-MenuProductos' onClick={() => setScreen('Products')}>    

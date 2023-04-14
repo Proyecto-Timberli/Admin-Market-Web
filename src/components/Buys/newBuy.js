@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////
 import React, {useEffect, useState } from "react";
-import './Charge.css'
+import '../Charge/Charge.css'
 ////////////////////////////////////////////////////
 import {useAuth} from '../../Context/authContext'
 import {getFirestore,getDocs, collection,doc,Timestamp} from 'firebase/firestore';
@@ -12,14 +12,20 @@ import CardProducto from './Card-Product-In-Cart'
 
 import SearchProducts from './SearchProduct'
 
-import Customers from '../Customers/Customers'
+import Providers from '../Providers/Providers'
+
+
 
 import Icon from '@mdi/react';
 import { mdiCashRegister, mdiCheckboxMarked } from '@mdi/js';
 import { mdiCloseBox } from '@mdi/js';
 import { mdiPlusBox } from '@mdi/js';
 import { mdiAutorenew } from '@mdi/js';
+import { mdiArrowLeft } from '@mdi/js';
+import { mdiMagnifyExpand } from '@mdi/js';
+import { mdiShape } from '@mdi/js';
 import { useNavigate } from "react-router";
+
 
 import imagenCart from '../../assets/buyCart.png'
 
@@ -55,9 +61,9 @@ const WayToPay = ({setStateModal, functionCheckOk})=> {
         </div>
     )
 }
-export default function MenuCobrar(){
+export default function NewBuy(){
     console.log("------------------------")
-    console.log("MenuCobrar")
+    console.log("NewBuy")
     /////////////////////////////////////////////////////
     const navigate = useNavigate()
     const[route,setRoute]=useState({params:null});
@@ -113,22 +119,26 @@ export default function MenuCobrar(){
         });
     }
     const postSale =(data)=>{
-        const selectedCollection = collection(getFirestore(), "users/"+userProfile+"/sales")
+        const selectedCollection = collection(getFirestore(), "users/"+userProfile+"/buys")
         postFirestore(selectedCollection,data)
     }
+
+    
     
     function registar(ventar=venta, productos=shopingCart){
         if(!ventar[0]){
-            alert("No hay venta para registrar")
+            alert("No hay compra para registrar")
         }else{
             let postVentar =  {
-                idClient:client?.id?client.id:null,
-                client:client?.identifier?client.identifier:null,
+                idProvider:client?.id?client.id:null,
+                provider:client?.identifier?client.identifier:null,
                 total:total,
-                sellProducts:ventar,
+                buyProducts:ventar,
                 createdDate:Timestamp.now().toDate().toString(),
                 wayToPay:wayToPays?wayToPays:null
             }
+            console.log(postVentar)
+            console.log(productos)
             postSale(postVentar)
             putProductsStock(productos)
             limpiar()
@@ -206,12 +216,20 @@ export default function MenuCobrar(){
     }
     return(
         <>
-        <div className='imgBackGroundCustom'></div>
+         <div className='modal-container-Customers'>
+            <div className='imgBackGroundCustom'></div>
+            {!searchProductsState&& <div className = 'container-nav-MenuProductos'>              
+                  <div className='button-Container-MenuProductos'>
+                    <button className='button-MenuProductos' onClick={() => navigate('/buys')}>    
+                        <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
+                    </button>
+                  </div>
+            </div>}
         {searchProductsState&&<div className='modaldiv-Cobrar'><SearchProducts setRoute={setRoute} setSearchProductsState={setSearchProductsState}/></div>}
         {modalCancelar&&<Modal functionCheckOk={limpiar} setStateModal={setModalCancelar} mensaje={"Limpiar Carro"}/>}
         {modalRegistrar&&<Modal functionCheckOk={registar} setStateModal={setModalRegistrar} mensaje={"Registrar Venta"}/>}
         {modalPay&&<WayToPay functionCheckOk={setWayToPays} setStateModal={setModalPay} />}
-        {modalClient&&<div className='modaldiv-Cobrar'><Customers desde={'charge'} functionModal={functionModal} setModalClient={setModalClient}/></div>}
+        {modalClient&&<div className='modaldiv-Cobrar'><Providers desde={'charge'} functionModal={functionModal} setModalClient={setModalClient}/></div>}
         <div className={(modalCancelar||modalRegistrar||modalPay||modalClient||searchProductsState)?'container-Cobrar oculto':'container-Cobrar'  }>
             <div className='container2-Cobrar'>
                 <div className='container4-cobrar'>
@@ -219,7 +237,7 @@ export default function MenuCobrar(){
                         <button 
                             className='button2-cobrar'
                             onClick={()=>setModalClient(true)}>
-                            <p className='text-cobrar'>Asignar Cliente</p> 
+                            <p className='text-cobrar'>Asignar Provedor</p> 
                         </button>
 
                         <div
@@ -276,7 +294,7 @@ export default function MenuCobrar(){
                             id={item.id}
                             nombre={item.name}
                             categoria={item.category}
-                            precio={item.price?financial(item.price):null}
+                            precio={item.buyprice?financial(item.buyprice):null}
                             product={item} 
                             shopingCart={shopingCart}
                             shopingCartSave={shopingCartSave}
@@ -288,7 +306,8 @@ export default function MenuCobrar(){
      
                     )}
             </div>
-        </div> }
+        </div> 
+        </div>
         </>
     );
 }

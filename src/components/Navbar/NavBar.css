@@ -5,7 +5,6 @@
    flex-direction: row;
    align-items: center;
    justify-content: center;
-   background:  #1a6b91;
    min-height:49px;
    max-height:49px;
 }
@@ -17,7 +16,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: right;
-    background:  #1a6b91;
+    /* background:  #1a6b91; */
     min-height: 49px;
     max-height:49px;
 }
@@ -34,9 +33,11 @@
 }
 .textButton-Navbar{
     font-size: 16px;
-    font-family: proxima-nova, sans-serif;
-    color:azure;
-    letter-spacing: 0.5px;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    color:#1a6b91;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    
 }
 .textButton-Navbar:hover{
     color: aqua;
@@ -67,16 +68,72 @@
     color:aqua;
     border-bottom: black;
 }
+.logo-navBar{
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 30%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height:49px;
+    max-height:49px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.imgLogo-navBar{
+    padding-left: 14%;
+    width: 20%;
+    height: auto;
+    max-width: 60px;
+    min-width: 33px;
+}
+.logo2-navBar{
+    padding-left: 5%;
+    align-items: center;
+    justify-content: left;
+    z-index: -1;
+}
+.textContainerLogo-navBar{
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60px;
+}
+.textLogo-navBar{
+    font-size: 15px;
+    font-weight:600;
+}
+.textLogo2-navBar{
+    margin-top: -10%;
+    font-size: 10px;
+    font-weight:600;
+    letter-spacing: 1px;
+    color: #4798C8;
+}
 @media screen and (min-width: 700px) {
     .burger-navBar{
         display: none;
     }
+    
 }
 @media screen and (max-width: 700px) {
+    .logo-navBar{
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+    .textContainerLogo-navBar{
+       display: none;
+    }
+    .imgLogo-navBar{
+        width: 30%;
+        height: auto;
+    }
     .burger-navBar{
         padding: 10px;
         position: absolute;
-        top: 0;
+        top: 1%;
         right: 10px;
     }
     .container-navBar {
@@ -86,13 +143,12 @@
         display: flex;
         justify-content: right;
         align-items: center;
-        background:  #1a6b91;
         min-height:49px;
         max-height:49px;
      }
     .container-navBar.active-navBar{
-        padding-top: 23px;
-        padding-bottom: 7px;
+        padding-top: 65px;
+        padding-bottom: 0px;
         padding-right: 0%;
         min-height:none;
         max-height:none;
@@ -100,7 +156,8 @@
         flex-direction: column;
         justify-content: right;
         align-items: center;
-        background:  #1a6b91;
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.75) 0px 6px 6px -6px;
      }
     .buttonOculto-navBar{
         background-color: transparent;
@@ -131,8 +188,15 @@
         flex-direction: row;
         align-items: center;
         justify-content: right;
-        background:  #1a6b91;
         min-height: 49px;
         max-height:49px;
+    }
+    .button-navBar {
+        width: 100%;
+        border: none;
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-color: rgb(222, 227, 236);
+        margin-right: 0;
     }
 }

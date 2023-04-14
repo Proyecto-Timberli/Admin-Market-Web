@@ -36,6 +36,7 @@ const Cuenta=()=>{
 
     return(
         <div className='container-account'>
+            <div className='imgBackGroundCustom'></div>
             <div className='container-nav-MenuProductos'>
                 <div className='button-Container-MenuProductos'>
                     <button  className='button-MenuProductos' onClick={()=>setScreen("myaccount")}>    

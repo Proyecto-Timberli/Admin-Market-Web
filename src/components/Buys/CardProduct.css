@@ -1,0 +1,46 @@
+
+.container-CardProductCharge {
+    display: flex;
+    flex-direction:row;
+    width:90%;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(#F8E9E9,#B9C7CA);
+}
+
+.text1-CardProductCharge { color: black; text-align: left; width: 30%; }
+.text2-CardProductCharge { color: black; text-align: center; width: 30%; }
+.input-CardProductCharge{
+    width: 30%;
+    min-width: 60px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    border-bottom-style:solid ;
+    border-width: 1px;
+}
+
+.buttonCartPlus-cobrar{
+    border: none;
+    background-color: transparent;
+    margin-left: 0px;
+}
+
+@media screen and (max-width: 700px) {
+    .text1-CardProductCharge { color: black; text-align: left; width: 30%; font-size: 12px; }
+    .text2-CardProductCharge { color: black; text-align: center; width: 30%;font-size: 12px;  }
+    .container-CardProductCharge {
+        display: flex;
+        flex-direction:row;
+        width:100%;
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(#F8E9E9,#B9C7CA);
+    }
+    .input-CardProductCharge{
+       font-size: 12px;
+    }
+    
+}

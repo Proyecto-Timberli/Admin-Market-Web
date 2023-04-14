@@ -27,15 +27,15 @@ const CardProducto = (
     let productos = shopingCart
     for(let i=0;i<productos.length;i++){
         if(productos[i].id===id){
-            productos[i]={...productos[i],stock:productoSave[0].stock-productoCantidad[0].amount}
+            productos[i]={...productos[i],stock:productoSave[0].stock+productoCantidad[0].amount}
         }
     }
     setShopingCart([...productos])  
   }   
-
   function removee(Producto){
     setShopingCart(shopingCart.filter(p=>p.id!=Producto.id))     
   }
+  
   ////////////////////////////////////////////////////////////////
   useEffect(() => {
     //Cuando cantidad vea cambios
@@ -43,8 +43,8 @@ const CardProducto = (
       //Se carga el producto dentro de la venta
       setVenta([...venta,{id:id,name:nombre,amount:cantidad,price:precio}])
       //Refleja el stock cuando entra un producto nuevo dentro de venta
-        let productoSave = shopingCart.filter(i=>i.id===id)
-        setShopingCart([...shopingCart.filter(i=>i.id!=id),{...productoSave[0],stock:productoSave[0].stock-cantidad}])
+      let productoSave = shopingCart.filter(i=>i.id===id)
+      setShopingCart([...shopingCart.filter(i=>i.id!=id),{...productoSave[0],stock:productoSave[0].stock+cantidad}])
     }else{
       if(cantidad===0){
         //El producto se elimina de la venta y de el carro
@@ -61,7 +61,6 @@ const CardProducto = (
             }
           }
           setVenta(ventaEdit)
-          //Refleja Stocks 
           addd(ventaEdit) 
       }
     }
@@ -78,7 +77,9 @@ const CardProducto = (
           className='lista-CardProductInCart'>
           <p className='texto1-CardProductInCart'>{nombre}</p>
           <p className='texto2-CardProductInCart'>{categoria}</p>
-          <p className='texto3-CardProductInCart'>{precio} </p>
+          <p className='texto3-CardProductInCart'>{precio}</p>
+          
+          
         </div >
         <div 
           className="listaCart-CardProductInCart"> 

@@ -23,54 +23,56 @@
     font-size: 22px;
     letter-spacing: 1px;
     color: rgb(106, 117, 135);
+    font-weight: 600;
 }
 .buttonscontainer-LandingPage{
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: left
 }
 .button-LandingPage{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     height: 40px;
     width: 40%;
     background-color: rgb(52, 51, 72);
-    padding: 10px;
-    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-radius: 10px;
-}
-.imagen1-LandingPage{
-    padding-right: 15px;
-    padding-left: 15px;
+    margin-right: 5%;
 }
 .textbutton-LandingPage{
     color: white;
+    margin-left: 4%;
+    font-weight: 600;
+    letter-spacing: 0.3px ;
 }
+
 .imagen-LandingPage{
     width: 50%;
-}
-.imagen-LandingPage{
     display: flex;
-    align-items: center;
+    align-items:end;
     justify-content: center;
-    
-    /* position: absolute; */
-    /* left: 6vw;
-    transform: rotate(-18deg);
-    z-index: -1;
-    width: 642px;
-    height: 295px;
-    bottom: 29vw;
-    opacity: 0.04;
-    background: rgb(52, 51, 72);
-    border-radius: 400px; */
 }
 .img-LandingPage{
-    width: 603px;
-    height:345px;
+    width: 740px;
+    height: auto;
+    margin-bottom: 4% ;
+}
+.imgBackGroundCustom{
+    position: absolute; 
+    left: 50vw;
+    transform: rotate(-18deg);
+    z-index: -1;
+    width: 1284px;
+    height: 590px;
+    bottom: 20vw;
+    opacity: 0.09;
+    background: rgb(52, 51, 72);
+    border-radius: 400px;
 }
 
 @media screen and (max-width: 1100px) {
@@ -109,8 +111,8 @@
 @media screen and (max-width: 780px) {
    
     .img-LandingPage{
-        width: 422px;
-        height:241px;
+        width: 500px;
+        height: auto;
     }
     .title-LandingPage{
         font-size: 35px;
@@ -139,29 +141,40 @@
 
     }
     .ipsu-LandingPage{
-        height: 500px;
+        height: 400px;
     }
     .buttonscontainer-LandingPage{
         width: 100%;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-around;
         align-items: center;
     } 
     .button-LandingPage{
         width: 49%;
     }
+    .imagen-LandingPage{
+        display: flex;
+        align-items:start;
+        justify-content: center;
+    }
     .img-LandingPage{
-        width: 337px;
-        height:193px;
+        width: 400px;
+        height: auto;
     }
 }
 @media screen and (max-width: 400px) {
+    .buttonscontainer-LandingPage{
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    } 
     .ipsu-LandingPage{
-        height: 600px;
+        height: 500px;
     }
     .img-LandingPage{
-        width: 269px;
-        height:154px;
+        width: 340px;
+        height:auto;
     }
     .button-LandingPage{
         width: 60%;

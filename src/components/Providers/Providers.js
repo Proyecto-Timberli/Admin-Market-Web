@@ -5,9 +5,10 @@ import {useAuth} from '../../Context/authContext'
 import {getFirestore, collection, getDocs} from 'firebase/firestore';
 import Loading from '../Reusables/Loading'
 import { useLocation, useNavigate } from 'react-router';
+import Icon from '@mdi/react';
+import { mdiArrowLeft } from '@mdi/js';
 
-
-const Providers= ({desde,functionModal}) => {
+const Providers= ({desde,functionModal,setModalClient}) => {
   console.log("------------------------")
   console.log("Providers")
   const route ={params:null}
@@ -62,6 +63,16 @@ const Providers= ({desde,functionModal}) => {
   console.log("------------------------")
   
     return (
+        <div className='modal-container-Customers'>
+          <div className='imgBackGroundCustom'></div>
+          {desde&&<div className = 'container-nav-MenuProductos'>              
+                  <div className='button-Container-MenuProductos'>
+                        <button  className='button-MenuProductos' onClick={() => setModalClient(false)}>
+                          <Icon path={mdiArrowLeft} size={2} color='rgb(52, 51, 72)'/>
+                          <p className='text-button-MenuProductos'></p>
+                        </button>
+                  </div>
+        </div>}
         <div className='container-Customers'>
           <div className='caja-Customers'>
             <input
@@ -96,6 +107,7 @@ const Providers= ({desde,functionModal}) => {
                   />
                 </button> )
         }
+        </div>
         </div>
     );
   

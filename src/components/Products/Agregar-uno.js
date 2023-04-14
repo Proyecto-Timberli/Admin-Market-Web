@@ -84,7 +84,7 @@ function Editar({dato, setState, stateModal }){
   )
 }
 
-export default function AgregarUno({navigation}) {
+export default function AgregarUno() {
   console.log("------------------------")
   console.log("AgregarUno")
   const {userProfile}= useAuth()

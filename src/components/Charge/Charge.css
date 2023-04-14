@@ -99,7 +99,7 @@
     align-items: center;
     padding-top: 15px;
     padding-bottom: 15px;
-    background-image: url(../../assets/buyCart.png);
+    /* background-image: url(../../assets/buyCart.png);
     background-image: fixed;
     background-image: center;
     -webkit-background-size: cover;
@@ -108,7 +108,13 @@
     background-size: cover;
     background-size : contain;
     background-repeat : no-repeat;
-    background-image: no-repeat;
+    background-image: no-repeat; */
+}
+.BuyCartImage-Charge{
+    position: absolute;
+    z-index: -1;
+    width: 70%;
+    height: auto;
 }
 .containerNavbar-Cobrar{
     margin-top: 15px;
@@ -135,6 +141,9 @@
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.5);
     
+}
+.oculto{
+    display: none;
 }
 
 

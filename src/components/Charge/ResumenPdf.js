@@ -23,7 +23,7 @@ return(
         <Page size='A4'>
         <View style={{width:'100%',height:'auto',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
             <Text style={{fontSize:'12px',marginTop:'1%'}}>No valido como factura</Text>
-            <View style={{width:'100%',display:'flex',flexDirection:'row'}}>
+            <View style={{width:'100%',display:'flex',flexDirection:'row',marginBottom:'4%'}}>
                 <View style={{width:'59%',height:'auto',paddingLeft:'5%',paddingTop:'5%'}}>
                     <Text style={{fontSize:'12px',textAlign:'left'}}>{negocio}</Text>
                     <Text style={{fontSize:'12px',textAlign:'left'}}>{de}</Text>

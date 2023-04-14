@@ -1,16 +1,15 @@
 
-#2 categorias filter mejorar estilos
-#3 boton atras en varias screens localizarlas
 
-#4 falta venta resumen
+QUEDA POR HACER
+
+#1 Falta compras resumen
+#2 Select estadisticas y categorias filter mejorar estilos 
 #5 categorias agregar modificar diseño
-    
-
-#6 falta estadisticas
-
-#9  terminar landing page
-
+#4 falta venta resumen qr
+#6 profundizar estadisticas
+#9 profundizar landing page
 #10 login imagen
 #11 register imagen
+
 
 #12 analizar como seguir

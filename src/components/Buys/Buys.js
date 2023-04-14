@@ -8,9 +8,10 @@ import Loading from '../Reusables/Loading'
 import CardVenta from './CardSell'
 import { useNavigate } from 'react-router';
 import {useLocation} from 'react-router-dom';
-
-
-export default function Ventas(){
+import Icon from '@mdi/react';
+import { mdiPlusBox } from '@mdi/js';
+const inconColor =("rgb(52, 51, 72)")
+export default function Buys(){
     console.log("------------------------")
     console.log("Ventas")
     const {userProfile} = useAuth()
@@ -18,11 +19,11 @@ export default function Ventas(){
     const navigate = useNavigate()
     //////////////////////filtro por cliente///////////////////////////////
 
-    const idClient = location.state? location.state : null
+    const idProvider = location.state? location.state : null
     ////////////////////conexion Api////////////////////////////
     const [salesApi,setSalesApi]=useState(null)
     const getVentas =  ()=>{
-      const selectedC = collection(getFirestore(), "users/"+userProfile+"/sales")
+      const selectedC = collection(getFirestore(), "users/"+userProfile+"/buys")
         getDocs(selectedC)
         .then(res => setSalesApi(res.docs.map(sale=>({id:sale.id,...sale.data()}))))
     }
@@ -32,8 +33,8 @@ export default function Ventas(){
         }
     },[])
     let dataRender = []
-    if(idClient){
-        dataRender= salesApi?.filter(sale=> sale.idClient===idClient)
+    if(idProvider){
+        dataRender= salesApi?.filter(sale=> sale.idProvider===idProvider)
     }else{
         dataRender = salesApi
     }
@@ -65,18 +66,27 @@ export default function Ventas(){
    console.log("------------------------")
    /////////////////////////////////////////////////////
     return(
-        <div className='container-Sells'>
+        <div className='modal-container-Customers'>
             <div className='imgBackGroundCustom'></div>
-           
-            {!idClient&&<input
+            <div className = 'container-nav-MenuProductos'>              
+                  <div className='button-Container-MenuProductos'>
+                    <button className='button-MenuProductos' onClick={() => navigate('/newbuy')}>    
+                        <Icon path={mdiPlusBox} size={2} color={inconColor} />   
+                        <p className='text-button-MenuProductos'>Nueva Compra</p>
+                    </button>
+                  </div>
+            </div>
+
+        <div className='container-Sells'>
+            {!idProvider&&<input
                     className='textInput-Sells'
                     onChangeText={(e) => filtroBusqueda(e)}
                     value={filterBySearch}
-                    placeholder="Buscar venta..."
+                    placeholder="Buscar compra..."
                 /> }                      
             
             <div className='lista-Sells'>
-                <p className='text-Sells'>Nro Venta</p>
+                <p className='text-Sells'>Nro Compra</p>
                 <p className='text-Sells'>Total</p>
                 <p className='text-Sells'>Fecha </p>
             </div>
@@ -99,6 +109,7 @@ export default function Ventas(){
                 </button> )}
             </div>     
         </div>   
+        </div>
     )
 
 }

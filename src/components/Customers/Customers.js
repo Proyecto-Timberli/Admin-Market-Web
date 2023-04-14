@@ -66,14 +66,15 @@ const Customers= ({desde,functionModal,setModalClient}) => {
   
     return (
       <div className='modal-container-Customers'>
-        <div className = 'container-nav-MenuProductos'>              
+        <div className='imgBackGroundCustom'></div>
+        {desde&&<div className = 'container-nav-MenuProductos'>              
                   <div className='button-Container-MenuProductos'>
                         <button  className='button-MenuProductos' onClick={() => setModalClient(false)}>
                           <Icon path={mdiArrowLeft} size={2} color='rgb(52, 51, 72)'/>
                           <p className='text-button-MenuProductos'></p>
                         </button>
                   </div>
-        </div>
+        </div>}
         <div className='container-Customers'>
           <div className='caja-Customers'>
             <input

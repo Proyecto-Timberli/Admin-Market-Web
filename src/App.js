@@ -26,7 +26,9 @@ import ProviderInfoEdit from './components/Providers/ProviderInfoEdit'
 import Charge from './components/Charge/Charge'
 import Sells from './components/Charge/Sells';
 import SellResumen from './components/Charge/VentaResumen'
-
+//buys
+import Buys from './components/Buys/Buys'
+import NewBuy from './components/Buys/newBuy'
 function App() {
   return (
     <BrowserRouter> 
@@ -55,6 +57,9 @@ function App() {
       <Route path="/providers/providerinfoedit" element={<ProviderInfoEdit/>}/>
 
       <Route path="/statistics" element={<Statistics/>}/>
+
+      <Route path="/buys" element={<Buys/>}/>
+      <Route path="/newbuy" element={<NewBuy/>}/>
 
     </Routes>
     </AuthProvider>
