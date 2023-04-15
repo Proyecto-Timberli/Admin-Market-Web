@@ -7,6 +7,7 @@ import Loading from '../Reusables/Loading'
 import Icon from '@mdi/react';
 import { mdiChevronRight } from '@mdi/js';
 import ConfigProfile from './ConfigProflie'
+import {alertConfirmacion} from '../Reusables/Alerts'
 
 const LinkProfile=()=>{
     console.log("------------------------")
@@ -18,6 +19,7 @@ const LinkProfile=()=>{
     const [configProfile,setConfigProfile]=useState(false)
     useEffect(()=>{
         if (userCode){getUserExist(userCode)}
+        console.log(valideCode)
     },[userCode])
     ////////////////////////////////////////////////////////////////////
     const [profileSelected,setProfileSelected]=useState(null)
@@ -89,7 +91,7 @@ const LinkProfile=()=>{
                 {(profileSelected&&(valideCode&&valideCode!="null"))?
                 <button
                 className='buttonColor-LinkProfile'
-                    onClick={()=>postLinkProfile(profileSelected,userCode)}>
+                    onClick={()=>alertConfirmacion('Vincular perfil seleccionado al usuario?',null,()=>postLinkProfile(profileSelected,userCode))}>
                     <p className='textWhite-LinkProfile'>Vincular</p>
                 </button>:
                 <button

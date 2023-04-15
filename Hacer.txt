@@ -2,14 +2,17 @@
 
 QUEDA POR HACER
 
-#1 Falta compras resumen
 #2 Select estadisticas y categorias filter mejorar estilos 
-#5 categorias agregar modificar diseño
+#3 categorias plantear 
+#5 formatear todas las fechas
 #4 falta venta resumen qr
+
 #6 profundizar estadisticas
-#9 profundizar landing page
+
 #10 login imagen
 #11 register imagen
+
+#9 profundizar landing page
 
 
 #12 analizar como seguir

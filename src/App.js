@@ -29,11 +29,12 @@ import SellResumen from './components/Charge/VentaResumen'
 //buys
 import Buys from './components/Buys/Buys'
 import NewBuy from './components/Buys/newBuy'
+import BuyResumen from './components/Buys/BuyResmune'
 function App() {
   return (
     <BrowserRouter> 
-    <NavBar/>
     <AuthProvider>
+    <NavBar/>
     <Routes>
       <Route path="/" element={<LandingPage/>}/>
       <Route path="/login" element={<Login/>}/>
@@ -60,6 +61,7 @@ function App() {
 
       <Route path="/buys" element={<Buys/>}/>
       <Route path="/newbuy" element={<NewBuy/>}/>
+      <Route path="/buyresumen" element={<BuyResumen/>}/>
 
     </Routes>
     </AuthProvider>

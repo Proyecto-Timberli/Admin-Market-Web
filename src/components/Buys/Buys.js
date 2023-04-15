@@ -95,7 +95,7 @@ export default function Buys(){
             dataRender.map(item=>
                 <button 
                     className='buttonCard-Sells'
-                    onClick={() => navigate("/sellresumen",{state:item})}>  
+                    onClick={() => navigate("/buyresumen",{state:item})}>  
                     <CardVenta
                         key={item.id+"p"}
                         id={item.id}
