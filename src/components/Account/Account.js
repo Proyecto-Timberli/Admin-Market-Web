@@ -63,13 +63,13 @@ const Cuenta=()=>{
                         <p className='text-button-MenuProductos'>Vincular Usuario</p>
                     </button>
                 </div>
-                <div className='button-Container-MenuProductos'>
+                {/* <div className='button-Container-MenuProductos'>
                     <button  className='button-MenuProductos' onClick={()=>handleLogout()}>    
                         <Icon path={mdiLogout} size={2} color={inconColor} />   
                         <p className='text-button-MenuProductos'>Logout</p>
                     </button>  
-                </div>
-            </div>
+                </div> */}
+            </div>  
             <div className='container-screen-MenuProducts'>
                 {screen==='myprofiles'&&<MyProfiles/>}
                 {screen==='mybusiness'&&<MyBusiness/>}

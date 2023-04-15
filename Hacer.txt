@@ -2,17 +2,17 @@
 
 QUEDA POR HACER
 
-#2 Select estadisticas y categorias filter mejorar estilos 
-#3 categorias plantear 
 #5 formatear todas las fechas
-#4 falta venta resumen qr
-
-#6 profundizar estadisticas
+#3 Categorias plantear 
+#7 pasar llos modales de confirmacion a alertConfirmacion
+#8 Navbar en mis perfiles al inicio
 
 #10 login imagen
 #11 register imagen
+#4 falta venta resumen qr
+#7 Estilos en vincular perfil analizar
 
+#6 profundizar estadisticas
 #9 profundizar landing page
-
 
 #12 analizar como seguir

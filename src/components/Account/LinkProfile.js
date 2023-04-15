@@ -6,6 +6,7 @@ import {useAuth} from '../../Context/authContext'
 import Loading from '../Reusables/Loading'
 import Icon from '@mdi/react';
 import { mdiChevronRight } from '@mdi/js';
+import { mdiArrowLeft } from '@mdi/js';
 import ConfigProfile from './ConfigProflie'
 import {alertConfirmacion} from '../Reusables/Alerts'
 
@@ -18,9 +19,13 @@ const LinkProfile=()=>{
     const [valideCode,setValideCode]= useState(null)
     const [configProfile,setConfigProfile]=useState(false)
     useEffect(()=>{
-        if (userCode){getUserExist(userCode)}
         console.log(valideCode)
+        if (userCode){getUserExist(userCode)
+        }
     },[userCode])
+    const handleSetCode=(e)=>{
+        setUserCode(e.target.value)
+    }
     ////////////////////////////////////////////////////////////////////
     const [profileSelected,setProfileSelected]=useState(null)
     ////////////////////////////////////////////////////////////////////
@@ -48,6 +53,9 @@ const LinkProfile=()=>{
         const selectedCollection2 = collection(getFirestore(), "users/"+user.uid+"/linkedProfiles")
         const selectedDoc= doc(getFirestore(), "users/"+uid)
         getDoc(selectedDoc).then(res=>postFirestore(selectedCollection2,{...data,uidLinked:uid,identifierLinked:(res.data().identifier) }))
+        setProfileSelected(null)
+        setUserCode("")
+        setValideCode(null)
     }   
     console.log("------------------------")
     ////////////////////////////////////////////////////////////////////
@@ -81,11 +89,11 @@ const LinkProfile=()=>{
             </div>
             <input 
                 className='input-LinkProfile'
-                onChange={(e)=>setUserCode(e.value)}
+                onChange={(e)=>handleSetCode(e)}
                 value={userCode}
                 placeholder='Ingrese codigo de usuario...'
             />
-            <p className='text1-LinkProfile'>Usuario: {userCode?userCode:'*seleccione usuario'}</p>
+            <p className='text1-LinkProfile'>Usuario: {userCode?userCode:'*Ingrese codigo de usuario'}</p>
             {valideCode=="null"&&<p>*El usuario no existe</p>}
             <p className='text1-LinkProfile'>Perfil: {profileSelected?profileSelected.name:'*seleccione perfil'}</p>
                 {(profileSelected&&(valideCode&&valideCode!="null"))?

@@ -10,19 +10,19 @@ const Touchable = (text='Select a option',onPress)=>{
       return (
         <button 
           onClick={onPress}
-          className='selectTouch-CategoryFilter'>
-          <p className='selectTextOne-CategoryFilter'>{text}</p>
+          className='selectTouch-Select'>
+          <p className='selectTextOne-Select'>{text}</p>
           <Icon path={mdiChevronRight} size={1} color={"black"}/>
         </button>
       )
     }
     return {TouchableComponent}
   }
-  const Option =(item, value , selected ,onPress) =>{
+  const Option =(item, value ,selected,onPress) =>{
     const OptionComponent =()=>{
       return (
-        <button className={!selected?'selectContainer-CategoryFilter':'selectContainerColor-CategoryFilter'} onClick={()=>onPress()}>
-          <p className={!selected?'selectText-CategoryFilter':'selectTextColor-CategoryFilter'}>{item?.[value]}</p>
+        <button className={'selectContainer-Select'} onClick={()=>onPress()}>
+          <p className={'selectText-Select'}>{item?.[value]}</p>
         </button>
       )
     }
@@ -49,10 +49,10 @@ function Select (
     }
     function toggleSelect(item){
         if(item?.[objKey] === selected?.[objKey]){
-            setSelected(item)
+            setSelected(item?.[objKey])
             selectFunction(item)
         }else{
-            setSelected(item)
+            
             selectFunction(item)
             setVisible(false)
         }
@@ -60,26 +60,28 @@ function Select (
     return(
       <>
        <TouchableComponent/>  
-       {visible&&<div className="modal-CategoryFilter">
-           <div className='container-CategoryFilter'>
-             <button onClick={()=> setVisible(false)} className='buttonBack-CategoryFilter'>
-             <Icon path={mdiArrowLeft} size={2} />
+       {visible&&<div className="modal-Select">
+       <div className="container1-Select">
+           <div className='container-Select'>
+             <button onClick={()=> setVisible(false)} className='buttonBack-Select'>
+             <Icon path={mdiArrowLeft} size={1.5} />
              </button>
-            <p className='titleCategorias-CategoryFilter'>{title}</p>
+            <p className='titleCategorias-Select'>{title}</p>
            </div>
            {data.map(item=>renderOption(item))}
+       </div>
        </div>}
       </>
     )
 }
 
 
-export default function CategoriesSelect({text='Seleccionar',text2='',arraySelects,selectFunction}){
+export default function ModalSelect({text='Seleccionar',text2='',arraySelects,selectFunction}){
 
     return(
         <>
-        <div className='container-CategoriesSelect'>
-          <p className='title-CategoryFilter'>{text}</p>
+        <div className='containerButtonActive-Select'>
+          <p className='title-Select'>{text}</p>
           <Select touchableText = {text2}
             title="Selecciona una opcion" 
             objKey='id' 

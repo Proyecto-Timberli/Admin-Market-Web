@@ -7,6 +7,7 @@ import Icon from '@mdi/react';
 import { mdiCheckboxMarked } from '@mdi/js';
 import { mdiCloseBox } from '@mdi/js';
 import { mdiContentSaveCheck } from '@mdi/js';
+import { mdiArrowLeft } from '@mdi/js';
 ////////////////////////////////////////////////////
 const ConfigProfile = ({active})=>{
     console.log("------------------------")
@@ -58,7 +59,12 @@ const ConfigProfile = ({active})=>{
     return (
         <>
         <div className='container-ConfigProfile'>
-             
+                        {/* <div className = 'container-nav-MenuProductos'>              
+                  <div className='button-Container-MenuProductos'> */}
+                        <button  className='button-ConfigPofile' onClick={() => active(false)}>
+                          <Icon path={mdiArrowLeft} size={1.5} color='rgb(52, 51, 72)'/>
+                        </button>
+                  {/* </div> */}
             <div className='containerInput-ConfigProfile'>
                 <p className='textBold-ConfigProfile'>Perfil:</p>
                 <input
