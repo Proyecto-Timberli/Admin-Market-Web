@@ -6,17 +6,20 @@ import {useAuth} from '../../Context/authContext'
 import {getFirestore,getDocs, collection,doc,Timestamp} from 'firebase/firestore';
 import {postFirestore,putFirestore} from '../../Firebase/ApiFunctions'
 ////////////////////////////////////////////////////
-import {Modal} from '../Reusables/Modal'
+
 ////////////////////Colors//////////////////////////
 import CardProducto from './Card-Product-In-Cart'
 
+import {alertConfirmacion} from '../Reusables/Alerts'
+import SelectComponent from '../Reusables/Select'
 import SearchProducts from './SearchProduct'
+
 
 import Customers from '../Customers/Customers'
 
 import Icon from '@mdi/react';
-import { mdiCashRegister, mdiCheckboxMarked } from '@mdi/js';
-import { mdiCloseBox } from '@mdi/js';
+import { mdiCashRegister,  } from '@mdi/js';
+
 import { mdiPlusBox } from '@mdi/js';
 import { mdiAutorenew } from '@mdi/js';
 import { useNavigate } from "react-router";
@@ -26,35 +29,7 @@ import imagenCart from '../../assets/buyCart.png'
 const inconColor =("rgb(52, 51, 72)")
 
 
-const WayToPay = ({setStateModal, functionCheckOk})=> {
-    const wayToPay=["Efectivo","Debito","Credito","Transferencia"]
-    const [pay,setPay] = useState(null)
-    function checkOk(){
-        functionCheckOk(pay)
-        setStateModal(false)
-    }
-    function exit(){
-        setStateModal(false)
-    }
-    return (
-        <div className='modalContainer'>
-        <div
-          className='Modal'>
-          <p className='textModal-wayToPay'>Selecciona una forma de pago</p>
-          {wayToPay.map(item=>
-            <div>    
-                <button className={{margin:5}}onClick={()=>{setPay(item)}}>
-                    <p className={pay===item?'textBlack-wayToPay':'text-wayToPay'}>{item}</p>
-                </button>
-            </div>  )}
-          <div className='modalButtonsContainers'>
-          <button onClick={()=>checkOk()}><Icon path={mdiCheckboxMarked} size={2} color="green"/></button> 
-        <button onClick={()=>exit()}><Icon path={mdiCloseBox} size={2} color="red" /></button> 
-          </div> 
-        </div>
-        </div>
-    )
-}
+
 export default function MenuCobrar(){
     console.log("------------------------")
     console.log("MenuCobrar")
@@ -119,7 +94,8 @@ export default function MenuCobrar(){
     
     function registar(ventar=venta, productos=shopingCart){
         if(!ventar[0]){
-            alert("No hay venta para registrar")
+            return false
+            
         }else{
             let postVentar =  {
                 idClient:client?.id?client.id:null,
@@ -127,11 +103,12 @@ export default function MenuCobrar(){
                 total:total,
                 sellProducts:ventar,
                 createdDate:Timestamp.now().toDate().toString(),
-                wayToPay:wayToPays?wayToPays:null
+                wayToPay:wayToPays?wayToPays.name:null
             }
             postSale(postVentar)
             putProductsStock(productos)
             limpiar()
+            return true
         }
             
         }
@@ -172,10 +149,7 @@ export default function MenuCobrar(){
     }
     /////////////////////////////////////////////////////
     /////////////////////////////////////////////////////
-    const [modalCancelar,setModalCancelar] = useState(false)
-    const [modalRegistrar,setModalRegistrar] = useState(false)
-    const [modalPay,setModalPay]= useState(false)
-    const [wayToPays,setWayToPays] = useState(null)
+    const [wayToPays,setWayToPays] = useState({id:"Efectivo",name:"Efectivo"})
     const [modalClient,setModalClient] = useState(false)
     const [client,setClient] = useState(null)
     
@@ -189,8 +163,9 @@ export default function MenuCobrar(){
         setShopingCart([])
         setShopingCartSave([])
         setVenta([])
-        setWayToPays(null)
+        setWayToPays({id:"Efectivo",name:"Efectivo"})
         setClient(null)
+        return true
     }
         //////////////////////////////////////////////////////////
     //hacer global
@@ -208,11 +183,8 @@ export default function MenuCobrar(){
         <>
         <div className='imgBackGroundCustom'></div>
         {searchProductsState&&<div className='modaldiv-Cobrar'><SearchProducts setRoute={setRoute} setSearchProductsState={setSearchProductsState}/></div>}
-        {modalCancelar&&<Modal functionCheckOk={limpiar} setStateModal={setModalCancelar} mensaje={"Limpiar Carro"}/>}
-        {modalRegistrar&&<Modal functionCheckOk={registar} setStateModal={setModalRegistrar} mensaje={"Registrar Venta"}/>}
-        {modalPay&&<WayToPay functionCheckOk={setWayToPays} setStateModal={setModalPay} />}
         {modalClient&&<div className='modaldiv-Cobrar'><Customers desde={'charge'} functionModal={functionModal} setModalClient={setModalClient}/></div>}
-        <div className={(modalCancelar||modalRegistrar||modalPay||modalClient||searchProductsState)?'container-Cobrar oculto':'container-Cobrar'  }>
+        <div className={(modalClient||searchProductsState)?'container-Cobrar oculto':'container-Cobrar'  }>
             <div className='container2-Cobrar'>
                 <div className='container4-cobrar'>
                     <div className="container5-cobrar">
@@ -227,28 +199,30 @@ export default function MenuCobrar(){
                         </div>  
                     </div>
                     <div className="container5-cobrar">
-                        <button 
-                            className='button2-cobrar'
-                            onClick={()=>setModalPay(true)}>
-                            <p className='text-cobrar'>Forma de Pago</p>  
-                        </button>
-
-                            <div
-                                className='button3-cobrar'><p className='text2-cobrar'>{wayToPays}</p>
-                            </div> 
-                    </div>  
+                        <SelectComponent
+                            text={'Forma de pago'}
+                            text2={wayToPays.name}
+                            arraySelects={[
+                                {id:"Efectivo",name:"Efectivo"},
+                                {id:"Debito",name:"Debito"},
+                                {id:"Credito",name:"Credito"},
+                                {id:"Transferencia",name:"Transferencia"}
+                            ]}
+                            selectFunction={setWayToPays}
+                        />
+                    </div>
                 </div>
                 
                 <div className = 'containerNavbar-Cobrar'>   
                             <button 
                                 className = 'buttonNavbar-Cobrar'
-                                onClick={() => setModalCancelar(true)}>
+                                onClick={() => alertConfirmacion("Vaciar Carro",null,limpiar)}>
                                 <Icon path={mdiAutorenew} size={2} inconColor />
                                 <p className="textNavBar-cobrar">Limpiar</p>
                             </button>
                             <button 
                                 className = 'buttonNavbar-Cobrar'
-                                onClick={()=> setModalRegistrar(true)}
+                                onClick={()=>alertConfirmacion("Registrar Venta?",null,registar,"No hay nada en el carro")}
                                 iconSelect={"cash-register"}
                                 buttonSize={30}>
                                 <Icon path={mdiCashRegister} size={2} color={inconColor} />

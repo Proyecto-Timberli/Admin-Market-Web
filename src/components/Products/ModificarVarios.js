@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import {useAuth} from '../../Context/authContext'
 import {getFirestore, doc} from 'firebase/firestore';
 import {putFirestore, deleteFirestore} from '../../Firebase/ApiFunctions'
+import {alertConfirmacion} from '../Reusables/Alerts'
 ////////////////////////////////////////////////////
 import Icon from '@mdi/react';
 import { mdiCheckboxBlankOutline } from '@mdi/js';
@@ -82,7 +83,8 @@ export default function ModificarVarios({estado,listaSeleccionados,setListaSelec
             setListaSeleccionados([])
             setLoading(false)
             setVisible(false)
-            alert("Cambios guardados")}, 1000);
+            }, 1000);
+        return true
 
     }
 
@@ -144,8 +146,10 @@ export default function ModificarVarios({estado,listaSeleccionados,setListaSelec
                                 <Icon path={mdiArrowLeft} size={2} />
                                 <p>Salir</p>
                             </button>
-                            <button onClick={()=>guardar()} className='buttonNavBar-ModificarVarios'>
-                                <Icon path={mdiContentSave} size={2} color={"black"}/>
+                            <button 
+                                onClick={()=>alertConfirmacion("Actualizar Precios?",null,guardar,"Complete los campos y Aplica los cambios")}
+                                className='buttonNavBar-ModificarVarios'>
+                                <Icon path={mdiContentSave} size={2} color={"rgb(52, 51, 72)"}/>
                                 <p>Guardar</p>
                             </button>
                         </div>                  

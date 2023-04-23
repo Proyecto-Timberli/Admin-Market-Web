@@ -4,42 +4,22 @@ import {useAuth} from '../../Context/authContext'
 import Icon from '@mdi/react';
 import { mdiContentSave } from '@mdi/js';
 import { mdiDeleteForever } from '@mdi/js';
-import { mdiCheckboxMarked } from '@mdi/js';
-import { mdiCloseBox } from '@mdi/js';
 import { mdiArrowLeft } from '@mdi/js';
 import {getFirestore, doc, } from 'firebase/firestore';
 import {deleteFirestore,putFirestore} from '../../Firebase/ApiFunctions'
+import {alertConfirmacion} from '../Reusables/Alerts'
+import { useLocation, useNavigate } from 'react-router';
+const inconColor =("rgb(52, 51, 72)")
 ////////////////////////////////////////////////////
 
-function ModalSalir({deleteFunction,stateModal}){
-  function checkOk(){
-    deleteFunction()
-    alert("Producto Eliminado");
-    stateModal(false)
-  }
-  function exit(){
-    stateModal(false)
-  }
-  return (
-    <div className='modalContainer-agregarUno'>
-    <div className='modal'>
-      <p>Desea eliminar el producto?</p>
-      <div className='modalButtonsContainers'>
-        <button onClick={()=>checkOk()}><Icon path={mdiCheckboxMarked} size={2} color="green"/></button> 
-        <button onClick={()=>exit()}><Icon path={mdiCloseBox} size={2} color="red" /></button> 
-      </div> 
-    </div>
-    </div>
-  )
-}
 
 
-export default function EditInfo({params,visible}) {
-  console.log("------------------------")
-  console.log("AgregarUno")
+export default function EditInfo() {
   const {userProfile}= useAuth()
+  const locate = useLocation()
+  const navigate = useNavigate()
   /////////////////////////////////////////////////
-  const {barCode, buyprice, category, description,id,image, make, name, price, stock} = params
+  const {barCode, buyprice, category, description,id,image, make, name, price, stock} = locate.state
   
   const[editable,setEditable]= useState({
     id:id,
@@ -69,21 +49,16 @@ export default function EditInfo({params,visible}) {
     deleteFirestore(selected)
   }
 
-  /////////////////////////////////////////////////
-  const[modalSalir,setModalSalir]= useState(false)
-  const[modal,setModal]= useState(false)
-  const[dato,setDato]= useState(false)
 
-  const back=()=>{
-    visible(false)
-  }
+
+
   const eliminar = () => {
-    console.log("eliminar")
-    setModalSalir(true)
+    deleteProducts()
+    return true
   }
   const guardar = () => {
     putProducts(editable)
-    alert("Producto Actualizado");
+    return true;
   }
 
   //////////////////////////////////////////////////////////
@@ -93,14 +68,32 @@ export default function EditInfo({params,visible}) {
   }
   console.log("------------------------")
   return (
+    <div className='container-MenuProductos'>
+    <div className='imgBackGroundCustom'></div>
+          <div className='container-nav-MenuProductos'>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos' onClick={() => navigate(-1)}>    
+                      <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
+                  </button>
+              </div>
+
+              <div className='button-Container-MenuProductos'>
+                  <button  className='button-MenuProductos'onClick={()=>alertConfirmacion("Eliminar Producto?",null,eliminar)}>    
+                      <Icon path={mdiDeleteForever} size={2}  color='#1a6b91' />  
+                      <p className='text-button-MenuProductos'>Eliminar</p> 
+                  </button>
+              </div>
+
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos' onClick={()=>alertConfirmacion("Actualizar Producto?",null,guardar)}>    
+                      <Icon path={mdiContentSave} size={2}  color='#1a6b91' />   
+                      <p className='text-button-MenuProductos'>Guardar</p>
+                  </button>
+              </div>
+          </div>
     <div className='container-agregarUno'>
       
-        {modalSalir&&<ModalSalir deleteFunction={deleteProducts} stateModal={setModalSalir}/>}
         <div className='containerBack-agregaruno'>
-        <button
-                className='buttonBack-agregarUno'
-                onClick={()=>back()}
-                ><Icon path={mdiArrowLeft} size={2} /></button>
           <h2 className='textTitle-agregarUno'>Informacion del Producto: {id}</h2>    
         </div>
         <div 
@@ -115,11 +108,11 @@ export default function EditInfo({params,visible}) {
           <input className='input-agregarUno' name="price" onChange={(e)=>handleChangeInput(e)} value={editable.price}/>
         </div>
 
-        <div
+        {/* <div
           className='cotainerIcon-agregarUno'>       
           <p className='text-agregarUno'> Stock: </p>
           <input className='input-agregarUno' name="stock" onChange={(e)=>handleChangeInput(e)} value={editable.stock}/>
-        </div>
+        </div> */}
 
         <div
           className='cotainerIcon-agregarUno'> 
@@ -133,11 +126,11 @@ export default function EditInfo({params,visible}) {
           <input className='input-agregarUno' name="make" onChange={(e)=>handleChangeInput(e)} value={editable.make}/>
         </div>
 
-        <div 
+        {/* <div 
           className='cotainerIcon-agregarUno'> 
           <p className='text-agregarUno'> Precio de compra: </p>
           <input className='input-agregarUno' name="buyprice" onChange={(e)=>handleChangeInput(e)} value={editable.buyprice}/>
-        </div>
+        </div> */}
 
         <div 
           className='cotainerIcon-agregarUno'> 
@@ -155,18 +148,8 @@ export default function EditInfo({params,visible}) {
           className='cotainerIcon-agregarUno'>
           <p className='text-agregarUno'> Imagen: {editable.image} </p>
           <input className='input-agregarUno' name="image" onChange={(e)=>handleChangeInput(e)} value={editable.image}/>
-        </div>
-          <div className='containerNavBar-agregarUno'>   
-            <button
-                className='button-agregarUno'
-                onClick={()=>eliminar()}
-                ><Icon path={mdiDeleteForever} size={2} color='white'/><p className='text-button-agregarUno'>Eliminar</p></button>
-            <button
-                className='button-agregarUno'
-                onClick={()=>guardar()}
-                ><Icon path={mdiContentSave} size={2} color='white'/><p className='text-button-agregarUno'>Guardar</p></button>
-          </div>
-          
+        </div>    
+    </div>
     </div>
            
 )

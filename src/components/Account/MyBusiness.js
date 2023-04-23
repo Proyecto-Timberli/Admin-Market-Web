@@ -7,6 +7,8 @@ import Icon from '@mdi/react';
 import { useNavigate } from 'react-router';
 import { mdiStorefront } from '@mdi/js';
 import { mdiContentSave } from '@mdi/js';
+import { mdiArrowLeft} from '@mdi/js';
+import {alertConfirmacion} from '../Reusables/Alerts'
 const inconColor =("rgb(52, 51, 72)")
 
 
@@ -50,8 +52,8 @@ const MyBusiness=()=>{
 
     const save = ()=>{
       postMyBusiness()
-      alert('Se actualizo la informacion')
       navigate("/account")
+      return true
     }
     const handleChangeInput = (e)=>{
         setEditable({
@@ -61,6 +63,21 @@ const MyBusiness=()=>{
       }
     console.log("------------------------")
     return(
+      <div className='container-MenuProductos'>
+        <div className='imgBackGroundCustom'></div>
+          <div className='container-nav-MenuProductos'>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos' onClick={() => navigate(-1)}>    
+                      <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
+                  </button>
+              </div>
+              {(apiDoc?.myBusiness!==editable)&&
+               <div className='button-Container-MenuProductos'>
+               <button className='button-MenuProductos' onClick={()=>alertConfirmacion("Actualizar Informacion?",null,save,"Complete los campos")}>    
+                   <Icon path={mdiContentSave} size={2} color='#1a6b91' />   
+                   <p className='text-button-MenuProductos'>Actualizar Informacion</p> 
+               </button></div>}
+        </div>
         <div className='container-mybusiness'>
             
                 <button  className='button-MenuProductos'>    
@@ -90,15 +107,9 @@ const MyBusiness=()=>{
                 <div className='cotainerIcon-agregarUno'>
                     <p className='text-agregarUno'>Telefono:</p>
                     <input className='input-agregarUno' name="telefono" onChange={(e)=>handleChangeInput(e)} value={editable.telefono}/>
-                </div>
-                {(apiDoc?.myBusiness!==editable)&&
-                <div className='containerNavBar-agregarUno'>   
-                    <button  className='button-agregarUno' onClick={()=>save()}>    
-                        <Icon path={mdiContentSave} size={2} color="white" />   
-                        <p className='text-button-agregarUno'>Guardar Cambios</p>
-                    </button>
-                </div>}          
+                </div>    
         </div>        
+        </div>
     );
 }
 export default MyBusiness

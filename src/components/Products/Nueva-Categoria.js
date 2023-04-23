@@ -8,14 +8,14 @@ import {postFirestore, deleteFirestore} from '../../Firebase/ApiFunctions';
 import Loading from '../Reusables/Loading';
 ////////////////////////////////////////////////////
 import Icon from '@mdi/react';
-
+import {useNavigate } from 'react-router-dom';
+import { mdiArrowLeft} from '@mdi/js';
 import { mdiContentSave } from '@mdi/js';
 import { mdiDeleteForever } from '@mdi/js';
-
+const inconColor =("rgb(52, 51, 72)")
 
 export default function NuevaCategoria(){
-  console.log("------------------------")
-  console.log("NuevaCategoria")
+  const navigate = useNavigate()
   const {userProfile} = useAuth()
   /////////////////////////////////////////////////
   const [categoriesApi,setCategoriesApi]= useState(null)
@@ -85,6 +85,15 @@ export default function NuevaCategoria(){
   };
   console.log("------------------------")
   return (
+    <div className='container-MenuProductos'>
+      <div className='imgBackGroundCustom'></div>
+            <div className='container-nav-MenuProductos'>
+                <div className='button-Container-MenuProductos'>
+                    <button className='button-MenuProductos' onClick={() => navigate(-1)}>    
+                        <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
+                    </button>
+                </div>:<div className='button-Container-MenuProductos'></div>
+            </div>
     <div className='container-categorias'>
       <h2 className='title-categorias'>Categorias</h2>
       <input
@@ -122,6 +131,6 @@ export default function NuevaCategoria(){
          )}
       </div>  
     </div>
-    
+    </div>
   );
 };

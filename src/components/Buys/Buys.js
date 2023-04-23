@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////
-import './Sells.css'
+import './Buys.css'
 import React, {useEffect, useState } from "react";
 ////////////////////////////////////////////////////
 import {useAuth} from '../../Context/authContext'
@@ -10,6 +10,9 @@ import { useNavigate } from 'react-router';
 import {useLocation} from 'react-router-dom';
 import Icon from '@mdi/react';
 import { mdiPlusBox } from '@mdi/js';
+import { mdiArrowLeft } from '@mdi/js';
+import { formatDate } from '../../Firebase/ApiFunctions';
+
 const inconColor =("rgb(52, 51, 72)")
 export default function Buys(){
     console.log("------------------------")
@@ -70,37 +73,40 @@ export default function Buys(){
             <div className='imgBackGroundCustom'></div>
             <div className = 'container-nav-MenuProductos'>              
                   <div className='button-Container-MenuProductos'>
-                    <button className='button-MenuProductos' onClick={() => navigate('/newbuy')}>    
+                  {!idProvider? <button className='button-MenuProductos' onClick={() => navigate('/newbuy')}>    
                         <Icon path={mdiPlusBox} size={2} color={inconColor} />   
                         <p className='text-button-MenuProductos'>Nueva Compra</p>
-                    </button>
+                    </button>:
+                      <button className='button-MenuProductos' onClick={() => navigate(-1)}>    
+                      <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
+                  </button>}
                   </div>
             </div>
 
-        <div className='container-Sells'>
+        <div className='container-Buys'>
             {!idProvider&&<input
-                    className='textInput-Sells'
+                    className='textInput-Buys'
                     onChangeText={(e) => filtroBusqueda(e)}
                     value={filterBySearch}
                     placeholder="Buscar compra..."
                 /> }                      
             
-            <div className='lista-Sells'>
-                <p className='text-Sells'>Nro Compra</p>
-                <p className='text-Sells'>Total</p>
-                <p className='text-Sells'>Fecha </p>
+            <div className='lista-Buys'>
+                <p className='text-Buys'>Nro Compra</p>
+                <p className='text-Buys'>Total</p>
+                <p className='text-Buys'>Fecha </p>
             </div>
-            <div className='container2-Sells'>
+            <div className='container2-Buys'>
             {!salesApi?<Loading/>:
             dataRender.map(item=>
                 <button 
-                    className='buttonCard-Sells'
+                    className='buttonCard-Buys'
                     onClick={() => navigate("/buyresumen",{state:item})}>  
                     <CardVenta
                         key={item.id+"p"}
                         id={item.id}
                         total={item.total?financial(item.total):null}
-                        fecha={item.createdDate}
+                        fecha={formatDate(item.createdDate).formatDate+" / "+formatDate(item.createdDate).hora}
                         resumen={item.sellProducts}
                         // client={item.client}
                         // idClient={item.idClient}

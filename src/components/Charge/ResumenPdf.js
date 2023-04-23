@@ -1,6 +1,7 @@
 import { useEffect,useState } from 'react';
 import {Document,Page,Text,View,Image} from '@react-pdf/renderer';
 import QRCode  from  "react-qr-code" ;
+import { formatDate } from '../../Firebase/ApiFunctions';
 
 export default function ResumenPdf({sell,businessDate}){
     const {negocio,de,cuit,telefono,} = businessDate.myBusiness
@@ -29,7 +30,7 @@ return(
                     <Text style={{fontSize:'12px',textAlign:'left'}}>{de}</Text>
                     <Text style={{fontSize:'12px',textAlign:'left'}}>Cuit: {cuit}</Text>
                     <Text style={{fontSize:'12px',textAlign:'left'}}>Telefono: {telefono}</Text>
-                    <Text style={{fontSize:'12px',textAlign:'left'}}>Fecha: {createdDate}</Text>
+                    <Text style={{fontSize:'12px',textAlign:'left'}}>Fecha:{" "+formatDate(createdDate).formatDate+" / "+formatDate(createdDate).hora}</Text>
                     <Text style={{fontSize:'12px',textAlign:'left'}}>Nro de venta: {id}</Text>
                     {client&&<><Text style={{width:'80%',fontSize:'12px',textAlign:'left'}}>Cliente: {client}</Text>
                     <Text style={{width:'80%',fontSize:'12px',textAlign:'left'}}>Nro de Cliente: {idClient}</Text></>}

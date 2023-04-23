@@ -4,7 +4,6 @@ import './AddClient.css'
 import {useAuth} from '../../Context/authContext'
 import {getFirestore, doc} from 'firebase/firestore';
 import {putFirestore, deleteFirestore} from '../../Firebase/ApiFunctions'
-import {Modal} from '../Reusables/Modal'
 ////////////////////////////////////////////////////
 import Icon from '@mdi/react';
 import { mdiContentSave } from '@mdi/js';
@@ -12,6 +11,9 @@ import { mdiArrowLeft }from '@mdi/js';
 import { useNavigate } from 'react-router';
 import {useLocation} from 'react-router-dom';
 import { mdiDeleteForever } from '@mdi/js';
+import {alertConfirmacion} from '../Reusables/Alerts'
+const inconColor =("rgb(52, 51, 72)")
+
 export default function ClientInfoEdit() {
   const navigate = useNavigate()
   const locate = useLocation()
@@ -39,7 +41,6 @@ export default function ClientInfoEdit() {
 
   /////////////////////////////////////////////////
   /////////////////////////////////////////////////
-  const[modalSalir,setModalSalir]= useState(false)
 
   const handleChangeInput = (e)=>{
     setEditable({
@@ -53,18 +54,37 @@ export default function ClientInfoEdit() {
   const eliminar = () => {
     console.log("eliminar")
     deleteClient()
-    alert("Cliente Eliminado");
     navigate("/customers")
+    return true
   }
   const guardar = () => {
     putClient(editable)
-    console.log("guardar")
-    alert("Cliente Actualizado");
+    return true
   }
   return (
+    <div className='container-MenuProductos'>
+    <div className='imgBackGroundCustom'></div>
+          <div className='container-nav-MenuProductos'>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos' onClick={() => navigate(-1)}>    
+                      <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
+                  </button>
+              </div>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos' onClick={()=>alertConfirmacion("Eliminar Cliente?",null,eliminar)}>    
+                      <Icon path={mdiDeleteForever} size={2} color='#1a6b91' />   
+                      <p className='text-button-MenuProductos'>Eliminar</p> 
+                  </button>
+              </div>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos'onClick={()=>alertConfirmacion("Actualizar Cliente?",null,guardar)}>    
+                      <Icon path={mdiContentSave} size={2} color='#1a6b91' />   
+                      <p className='text-button-MenuProductos'>Guardar</p> 
+                  </button>
+              </div>
+          </div>
        <div className='container-AddClient'>
          <div className="container2-AddClient">
-         {modalSalir&&<Modal functionCheckOk={eliminar}setStateModal={setModalSalir} mensaje={'Quiere eliminar este cliente?'}/>}
               <p className = 'textTitle-AddClient'>Cliente: {editable.identifier}</p>
 
             <div 
@@ -90,22 +110,8 @@ export default function ClientInfoEdit() {
             
             ><p className="textWhite">Historial de ventas</p></button>
             <button className="button2-AddClient"><p className="textWhite">Pedidos</p></button>
-            <div 
-                className = 'containerNavBar-AddClient'>   
-              <button
-                  className='buttonNavBar-AddClient'
-                  onClick={()=>salir()}
-                ><Icon path={mdiArrowLeft} size={2} color='black'/><p >Salir</p></button>
-              <button
-                  className='buttonNavBar-AddClient'
-                  onClick={()=>setModalSalir(true)}
-                ><Icon path={mdiDeleteForever} size={2} color='black'/><p >Eliminar</p></button>
-              <button 
-                  className='buttonNavBar-AddClient'
-                  onClick={()=>guardar()}
-                ><Icon path={mdiContentSave} size={2} color='black'/><p >Guardar</p></button>
             </div>
-            </div>
+      </div>
       </div>
   )
 }

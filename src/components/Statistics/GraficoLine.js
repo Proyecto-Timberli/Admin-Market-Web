@@ -40,7 +40,7 @@ const options = {
     }
   }
 }
-export default function GraficoLine({scores, scores2, labels, labelName1, labelName2}) {
+export default function GraficoLine({scores, scores2, labels, labelName1, backgroundColor}) {
   const data = 
     {
       datasets:[
@@ -51,7 +51,7 @@ export default function GraficoLine({scores, scores2, labels, labelName1, labelN
           borderColor:'aqua',
           pointRadius:3,
           pointBackgroundColor: 'black',
-          backgroundColor: 'rgba(0,255,0,0.3)',
+          backgroundColor: backgroundColor,
           
         },
         // {

@@ -13,7 +13,6 @@ import { mdiArrowLeft } from '@mdi/js';
 const Customers= ({desde,functionModal,setModalClient}) => {
   console.log("------------------------")
   console.log("Customers")
-  const route ={params:null}
   const {userPermissions} = useAuth() 
   const {userProfile} = useAuth()
   const [customersApi,setCustomersApi]= useState(null)

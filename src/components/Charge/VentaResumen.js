@@ -5,7 +5,7 @@ import React, {useEffect, useState } from "react";
 ////////////////////////////////////////////////////
 import {useAuth} from '../../Context/authContext'
 import {getFirestore, doc ,getDoc} from 'firebase/firestore';
-import {deleteFirestore,putFirestore} from '../../Firebase/ApiFunctions'
+import {deleteFirestore,putFirestore,formatDate } from '../../Firebase/ApiFunctions'
 ////////////////////////////////////////////////////
 import { useNavigate } from 'react-router';
 import {useLocation} from 'react-router-dom';
@@ -19,6 +19,7 @@ import QRCode  from  "react-qr-code" ;
 import ResumenPdf from './ResumenPdf';
 import { PDFViewer } from '@react-pdf/renderer';
 import CanvasQR from './canvasQR';
+import {alertConfirmacion} from '../Reusables/Alerts'
 ////////////////////////////////////////////////////
 const VentaResumen = ()=>{
   const {userProfile} = useAuth()
@@ -61,8 +62,8 @@ useEffect(()=>{
   const anular = (products) => {
     deleteSale()
     putProductsStock(products)
-    alert("Venta Anulada");
     navigate('sells')
+    return true
   }
 
 /////////////////////////////////////////////////////////
@@ -96,7 +97,7 @@ useEffect(()=>{
                         </button>
                   </div>
                   <div className='button-Container-MenuProductos'>
-                        <button  className='button-MenuProductos' onClick={()=>anular(data)}>
+                        <button  className='button-MenuProductos' onClick={()=>alertConfirmacion("Anular Venta?",null,()=>anular(data))}>
                           <Icon path={mdiDeleteForever} size={2} color='rgb(52, 51, 72)'/>
                           <p className='text-button-MenuProductos'>Anular</p>
                         </button>
@@ -116,7 +117,7 @@ useEffect(()=>{
                 <div className='lista-VentaResumen'>
                   <div>
                     <p className='text-VentaResumen'>Nro de venta: {id}</p>
-                    <p className='text-VentaResumen'>Fecha: {createdDate} </p>
+                    <p className='text-VentaResumen'>Fecha: {formatDate(createdDate).formatDate+" / "+formatDate(createdDate).hora} </p>
                     <p className='text-VentaResumen'>Cliente: {client?client:"ninguno"}</p>
                     <p className='text-VentaResumen'>Nro de Cliente: {idClient?idClient:"ninguno"}</p>
                     <p className='text-VentaResumen'>Forma de Pago: {wayToPay?wayToPay:"ninguna"} </p>

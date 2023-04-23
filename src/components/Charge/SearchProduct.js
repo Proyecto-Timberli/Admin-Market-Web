@@ -5,17 +5,14 @@ import {useAuth} from '../../Context/authContext'
 import {getFirestore, collection, getDocs} from 'firebase/firestore';
 ////////////////////////////////////////////////////
 import CardProduct from "./CardProduct";
-import CategoriesSelect from '../Products/CategoryFilter'
-// import CategoriesSelect from './Buscar/FIltro Categorias/FiltroCategorias'
 import Loading from '../Reusables/Loading'
-// import BarCode from '../BarCode/BarCode'
-// import BarCodeIcon from '../BarCode/BarCodeIcon'
+
 ////////////////////////////////////////////////////
 import {useNavigate } from 'react-router-dom';
 
 import Icon from '@mdi/react';
 import { mdiArrowLeft } from '@mdi/js';
-
+import SelectComponent from '../Reusables/Select'
 ////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 
@@ -28,6 +25,7 @@ const SearchProducts = ({setRoute,setSearchProductsState}) => {
     const navigate = useNavigate()
   /////////////////////////////////////////////////////
     const [productsApi,setProductsApi]=useState(null)
+    
     const getProducts =  ()=>{
       const selectedC = collection(getFirestore(), "users/"+userProfile+"/products")
         getDocs(selectedC)
@@ -42,12 +40,18 @@ const SearchProducts = ({setRoute,setSearchProductsState}) => {
       getProducts()
     },[]);
     let arrayAMostrar = productsApi;
-    // useEffect(() => {
-    //   
-
-    // },[]);
-    
-  /////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////
+    const [etiquetaSelect,setEtiquetaSelect]= useState({name:'Ninguna'})
+    const [categoriesApi,setCategoriesApi]= useState([])
+    const getCategories =  ()=>{
+      const selectedC = collection(getFirestore(), "users/"+userProfile+"/categories")
+        getDocs(selectedC)
+        .then(res => setCategoriesApi(res.docs.map(category=>({id:category.id,...category.data()}))))
+    }
+    useEffect(() => {
+        getCategories()
+    },[]);
+  ////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////
   //Funcion Filtro Scann
   const [scannOn,setScannOn]=useState(false)
@@ -64,13 +68,17 @@ const SearchProducts = ({setRoute,setSearchProductsState}) => {
   }
   /////////////////////////////////////////////////////
   /////////////////////////////////////////////////////
-  //Funcion Filtro catgorias
+   //Funcion Filtro catgorias
+   useEffect(() => {
+    filtroCategory(etiquetaSelect)
+  },[etiquetaSelect]);
   const [filtroCategoria,setFiltroCategoria]= useState(null)
   function filtroCategory(category) {
     if (!productsApi){return} 
     if (!category){return setFiltroCategoria(null)}
+    if (category.name==='Ninguna'){return setFiltroCategoria(null)}
     return (
-      setFiltroCategoria(productsApi.filter((e) =>e.category && e.category.includes(category)))     
+      setFiltroCategoria(productsApi.filter((e) =>e.category && e.category.includes(category.name)))     
     )
   }
   if (filtroCategoria){
@@ -158,7 +166,13 @@ const SearchProducts = ({setRoute,setSearchProductsState}) => {
                 placeholder="Buscar..."
                 />
               
-              <CategoriesSelect filtrar={filtroCategory}/> 
+              <SelectComponent
+              text={'Selecciona una etiqueta'}
+              text2={etiquetaSelect.name}
+              arraySelects={[...categoriesApi,{id:'Ninguna',name:'Ninguna'}
+              ]}
+              selectFunction={setEtiquetaSelect}
+            />
             </div>
             <div className='container-cardProducts-MenuProducts'>
               {!productsApi?<Loading/>:<>

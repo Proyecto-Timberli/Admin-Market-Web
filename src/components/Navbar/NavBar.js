@@ -43,7 +43,15 @@ export default function NavBar (){
             </div>
         )}else if(patch==='http://localhost:3000/myProfiles'){
             return(
-                <div className='container-navBar'></div>
+                <div className={clicked?'container-navBar active-navBar':'container-navBar-login'}>
+                <div className='logo-navBar'>
+                      <img className='imgLogo-navBar' src={ImagenLogo}/>
+                      <div className='textContainerLogo-navBar'>
+                          <p className='textLogo-navBar'>Business Admin</p>
+                          <p className='textLogo2-navBar'>TIMBERLI</p>
+                      </div>
+                  </div>
+          </div>
             )
         }else {
             return(

@@ -1,16 +1,16 @@
-.container-Sells{
+.container-Buys{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.textInput-Sells{
+.textInput-Buys{
     padding: 10px;
     width:24%;
     height:25px;
     margin-top:20px;
     border-radius:30px;
-    background-color:#f1eaea;
+    background-color:white;
     margin-top:20px;
     border-bottom-width:2;
     border-bottom-color:#2C7DA0;
@@ -19,21 +19,21 @@
     border-right: none;
     text-align: center;
 }
-.lista-Sells{
+.lista-Buys{
     width: 45%;
     display: flex;
     justify-content: space-between;
 }
-.text-Sells{
+.text-Buys{
     color: black;
 }
-.container2-Sells{
+.container2-Buys{
     width: 55%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.buttonCard-Sells{
+.buttonCard-Buys{
     margin-top: 15px;
     border: none;
     background: linear-gradient(#F8E9E9,#B9C7CA);
@@ -41,26 +41,27 @@
     width: 100%;
     height: 80px;
     align-items: center;
+    background: bisque;
 }
 @media screen and (max-width: 700px) {
-    .lista-Sells{
+    .lista-Buys{
         width: 65%;
         display: flex;
         justify-content: space-between;
     }
-    .container2-Sells{
+    .container2-Buys{
         width: 75%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .textInput-Sells{
+    .textInput-Buys{
         padding: 10px;
         width:50%;
         height:25px;
         margin-top:20px;
         border-radius:30px;
-        background-color:#f1eaea;
+        background-color:white;
         margin-top:20px;
         border-bottom-width:2;
         border-bottom-color:#2C7DA0;
@@ -69,7 +70,7 @@
         border-right: none;
         text-align: center;
     }
-    .text-Sells{
+    .text-Buys{
         color: black;
         font-size: 12px;
     }

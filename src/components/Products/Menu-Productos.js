@@ -179,7 +179,8 @@ const Productos = () => {
             {arrayAMostrar.map(item=>
                 <div className='button-cardProduct-Products-container'>
                   <button className='button-cardProduct-Products'
-                      onClick={()=>onPressHandler(item)}>
+                      // onClick={()=>onPressHandler(item)}>
+                        onClick={()=>navigate('editInfo', { state: item})}>
                       {/* onLongPress={()=> onLongPressHandler(item)} */}
                       <CardProduct
                           key={item.id}

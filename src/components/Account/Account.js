@@ -38,27 +38,21 @@ const Cuenta=()=>{
         <div className='container-account'>
             <div className='imgBackGroundCustom'></div>
             <div className='container-nav-MenuProductos'>
-                <div className='button-Container-MenuProductos'>
-                    <button  className='button-MenuProductos' onClick={()=>setScreen("myaccount")}>    
-                        <Icon path={mdiAccountBox} size={2} color={inconColor} />   
-                        <p className='text-button-MenuProductos'>Mi cuenta</p>
-                    </button>
-                </div>
             
                 <div className='button-Container-MenuProductos'>
-                    <button  className='button-MenuProductos' onClick={()=>setScreen("mybusiness")}>    
+                    <button  className='button-MenuProductos' onClick={()=>navigate("myBusiness")}>    
                         <Icon path={mdiStorefront} size={2} color={inconColor} />   
                         <p className='text-button-MenuProductos'>Mi Negocio</p>
                     </button>   
                 </div>
                 <div className='button-Container-MenuProductos'>
-                    <button  className='button-MenuProductos' onClick={()=>setScreen("myprofiles")}>    
+                    <button  className='button-MenuProductos' onClick={()=>navigate("myProfiles")}>    
                         <Icon path={mdiAccountConvert} size={2} color={inconColor} />   
                         <p className='text-button-MenuProductos'>Mis Perfiles</p>
                     </button>  
                 </div>
                 <div className='button-Container-MenuProductos'>
-                    <button  className='button-MenuProductos' onClick={()=>setScreen("linkprofile")}>    
+                    <button  className='button-MenuProductos' onClick={()=>navigate("linkProfile")}>    
                         <Icon path={mdiLinkVariantPlus} size={2} color={inconColor} />   
                         <p className='text-button-MenuProductos'>Vincular Usuario</p>
                     </button>
@@ -71,10 +65,7 @@ const Cuenta=()=>{
                 </div> */}
             </div>  
             <div className='container-screen-MenuProducts'>
-                {screen==='myprofiles'&&<MyProfiles/>}
-                {screen==='mybusiness'&&<MyBusiness/>}
-                {screen==='myaccount'&&<MyAccount/>}
-                {screen==='linkprofile'&&<LinkProfile/>}
+               <MyAccount/>
             </div>
         </div>
     );

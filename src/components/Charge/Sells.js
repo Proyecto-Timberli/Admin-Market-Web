@@ -3,12 +3,15 @@ import './Sells.css'
 import React, {useEffect, useState } from "react";
 ////////////////////////////////////////////////////
 import {useAuth} from '../../Context/authContext'
-import {getFirestore, collection, getDocs, Timestamp} from 'firebase/firestore';
+import {getFirestore, collection, getDocs } from 'firebase/firestore';
 import Loading from '../Reusables/Loading'
 import CardVenta from './CardSell'
 import { useNavigate } from 'react-router';
 import {useLocation} from 'react-router-dom';
-
+import { formatDate } from '../../Firebase/ApiFunctions';
+import Icon from '@mdi/react';
+import { mdiArrowLeft } from '@mdi/js';
+const inconColor =("rgb(52, 51, 72)")
 
 export default function Ventas(){
     console.log("------------------------")
@@ -65,9 +68,17 @@ export default function Ventas(){
    console.log("------------------------")
    /////////////////////////////////////////////////////
     return(
+        <div className='container-MenuProductos'>
+                <div className='imgBackGroundCustom'></div>
+                {idClient&&
+                    <div className='container-nav-MenuProductos'>
+                    <div className='button-Container-MenuProductos'>
+                        <button className='button-MenuProductos' onClick={() => navigate(-1)}>    
+                            <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
+                        </button>
+                    </div>
+                </div>}
         <div className='container-Sells'>
-            <div className='imgBackGroundCustom'></div>
-           
             {!idClient&&<input
                     className='textInput-Sells'
                     onChangeText={(e) => filtroBusqueda(e)}
@@ -90,7 +101,7 @@ export default function Ventas(){
                         key={item.id+"p"}
                         id={item.id}
                         total={item.total?financial(item.total):null}
-                        fecha={item.createdDate}
+                        fecha={formatDate(item.createdDate).formatDate+" / "+formatDate(item.createdDate).hora}
                         resumen={item.sellProducts}
                         // client={item.client}
                         // idClient={item.idClient}
@@ -99,6 +110,7 @@ export default function Ventas(){
                 </button> )}
             </div>     
         </div>   
+        </div>
     )
 
 }

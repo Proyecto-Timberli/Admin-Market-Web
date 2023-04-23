@@ -1,16 +1,14 @@
 
 
 QUEDA POR HACER
-
-#5 formatear todas las fechas
-#3 Categorias plantear 
-#7 pasar llos modales de confirmacion a alertConfirmacion
-#8 Navbar en mis perfiles al inicio
+#3 Categorias vista plantear rehacer
 
 #10 login imagen
 #11 register imagen
 #4 falta venta resumen qr
+
 #7 Estilos en vincular perfil analizar
+#8 Estilos 
 
 #6 profundizar estadisticas
 #9 profundizar landing page

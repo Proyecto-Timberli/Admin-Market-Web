@@ -26,6 +26,7 @@
       padding: 10px;
       justify-content:space-between;
       background: linear-gradient(#F8E9E9,#B9C7CA);
+      background: rgb(198, 196, 255);
 } 
 .texto2-CardProductInCart { color: black; text-align: center; width:30%; }
 .texto3-CardProductInCart { color: black; text-align: right; width: 30%; }

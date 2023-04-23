@@ -124,10 +124,10 @@ export default function Statistics() {
           <p className='statsNeto'>Ingreso neto: {financial(sumaArray(renderDates.scores))-financial(sumaArray(renderDates2.scores))}</p>
         </div>
        <div className="graficoContainer-Statistics">
-          {renderDates&&<GraficoLine scores={renderDates.scores}  labels={renderDates.labels} labelName1={'Ventas'} />}
+          {renderDates&&<GraficoLine scores={renderDates.scores}  labels={renderDates.labels} labelName1={'Ventas'} backgroundColor={'rgba(0,255,0,0.3)'}/>}
         </div> 
         <div className="graficoContainer-Statistics">
-          {renderDates2&&<GraficoLine scores={renderDates2.scores}  labels={renderDates2.labels} labelName1={'Compras'} />}
+          {renderDates2&&<GraficoLine scores={renderDates2.scores}  labels={renderDates2.labels} labelName1={'Compras'} backgroundColor={'bisque'}/>}
         </div> 
       </div>
      

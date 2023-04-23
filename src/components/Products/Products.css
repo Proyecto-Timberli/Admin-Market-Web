@@ -19,7 +19,7 @@
     width:24%;
     height:25px;
     border-radius:30px;
-    background-color:#f1eaea;
+    background-color:white;
     margin-top:2%;
     border-bottom-width:2;
     border-bottom-color:#2C7DA0;
@@ -73,6 +73,7 @@
   background: linear-gradient(#F8E9E9,#B9C7CA);
   margin: 10px;
   min-height: 97%;
+  background:rgb(198, 196, 255); ;
 }
 @media screen and (max-width: 700px) {
     .container-cardProducts-MenuProducts{
@@ -89,7 +90,7 @@
         width:50%;
         height:25px;
         border-radius:30px;
-        background-color:#f1eaea;
+        background-color:white;
         margin-top:2%;
         border-bottom-width:2;
         border-bottom-color:#2C7DA0;

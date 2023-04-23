@@ -8,11 +8,12 @@ import { mdiCheckboxMarked } from '@mdi/js';
 import { mdiCloseBox } from '@mdi/js';
 import { mdiContentSaveCheck } from '@mdi/js';
 import { mdiArrowLeft } from '@mdi/js';
+import {alertConfirmacion} from '../Reusables/Alerts'
+import { useNavigate } from 'react-router';
 ////////////////////////////////////////////////////
 const ConfigProfile = ({active})=>{
-    console.log("------------------------")
-    console.log("ConfigProfile")
     const {user} = useAuth()
+    const navigate = useNavigate()
     const [permissions, setPermissions] = useState({
         name:"",
         modifyProducts: false,
@@ -51,20 +52,27 @@ const ConfigProfile = ({active})=>{
     const completedProfile = ()=>{
         if(permissions.name){
             postProfileForUsers(permissions)
-            alert("Perfil Agregado")
-            active(false)
-        }else{alert("Complete los campos")}
+            navigate(-1)
+            return true
+        }else{return false}
     }
     console.log("------------------------")
     return (
-        <>
+        <div className='container-MenuProductos'>
+            <div className = 'container-nav-MenuProductos'>              
+            <div className='button-Container-MenuProductos'>
+                <button  className='button-ConfigPofile' onClick={() => navigate(-1)}>
+                    <Icon path={mdiArrowLeft} size={2} color='rgb(52, 51, 72)'/>
+                </button>
+            </div>
+            <div className='button-Container-MenuProductos'>
+                <button  className='button-ConfigPofile'onClick={()=>alertConfirmacion("Crear Perfil?",null,completedProfile,"Complete los campos")}>
+                    <Icon path={mdiContentSaveCheck} size={2} color='#1a6b91'/>
+                    <p className='text-button-MenuProductos'>Crear Profile</p> 
+                </button>
+            </div>
+        </div>
         <div className='container-ConfigProfile'>
-                        {/* <div className = 'container-nav-MenuProductos'>              
-                  <div className='button-Container-MenuProductos'> */}
-                        <button  className='button-ConfigPofile' onClick={() => active(false)}>
-                          <Icon path={mdiArrowLeft} size={1.5} color='rgb(52, 51, 72)'/>
-                        </button>
-                  {/* </div> */}
             <div className='containerInput-ConfigProfile'>
                 <p className='textBold-ConfigProfile'>Perfil:</p>
                 <input
@@ -178,19 +186,10 @@ const ConfigProfile = ({active})=>{
                     <button className='buttonIcon-ConfigProfile' onClick={()=>checkNull("accesToProviders")}><Icon path={mdiCloseBox} size={1.5} color="red" /></button> 
                 </div>
                 }
-            </div> 
-            <button
-                className='buttonColor-ConfigProfile'
-                onClick={()=>completedProfile()}
-                iconSelect={"content-save-check"}
-            >
-                <Icon path={mdiContentSaveCheck} size={2} color="white" />
-                <p className='textWhite-ConfigProfile'>Crear Profile</p>
-            </button>
-            
-        
+            </div>
         </div> 
-        </>
+        </div>
+        
     )
 }
 export default ConfigProfile;

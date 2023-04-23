@@ -4,12 +4,14 @@ import React, {useState } from "react";
 import {useAuth} from '../../Context/authContext'
 import {getFirestore, collection} from 'firebase/firestore';
 import {postFirestore} from '../../Firebase/ApiFunctions'
-import Modal from '../Reusables/Modal'
 ////////////////////////////////////////////////////
 import Icon from '@mdi/react';
 import { mdiContentSave } from '@mdi/js';
 import { mdiArrowLeft }from '@mdi/js';
 import { useNavigate } from 'react-router';
+import {alertConfirmacion} from '../Reusables/Alerts'
+const inconColor =("rgb(52, 51, 72)")
+
 export default function AddProvider() {
   const {userProfile} = useAuth()
   /////////////////////////////////////////////////
@@ -38,17 +40,29 @@ export default function AddProvider() {
   const salir = () => {
     navigate("/providers")
   }
-  const eliminar = () => {
-    console.log("eliminar")
-    setModalSalir(true)
-  }
+
   const agregar = () => {
+    if(!editable.identifier){return false}
     postClient(editable)
-    console.log("agregar")
-    alert("Provedor Agregado");
     navigate('/providers')
+    return true
   }
   return (
+    <div className='container-MenuProductos'>
+    <div className='imgBackGroundCustom'></div>
+          <div className='container-nav-MenuProductos'>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos' onClick={() => navigate(-1)}>    
+                      <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
+                  </button>
+              </div>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos'  onClick={()=>alertConfirmacion("Agregar Provedor?",null,agregar,"Complete los campos")}>    
+                      <Icon path={mdiContentSave} size={2} color='#1a6b91' />   
+                      <p className='text-button-MenuProductos'>Agregar</p> 
+                  </button>
+              </div>
+          </div>
        <div className='container-AddClient'>
          <div className="container2-AddClient">
          {/* {modalSalir&&<Modal cnavigation={navigation}stateModal={setModalSalir}/>} */}
@@ -71,20 +85,8 @@ export default function AddProvider() {
               <p className = 'text-AddClient'> Ubicacion: </p>
               <input className='input-AddClient' placeholder="Escribe aqui" name="location" onChange={(e)=>handleChangeInput(e)} value={editable.location}/>
             </div>
-          
-          
-            <div 
-                className = 'containerNavBar-AddClient'>   
-              <button
-                  className='buttonNavBar-AddClient'
-                  onClick={()=>salir()}
-                ><Icon path={mdiArrowLeft} size={2} color='black'/><p >Salir</p></button>
-              <button 
-                  className='buttonNavBar-AddClient'
-                  onClick={()=>agregar()}
-                ><Icon path={mdiContentSave} size={2} color='black'/><p >Agregar</p></button>
             </div>
-            </div>
+      </div>
       </div>
   )
 }

@@ -7,6 +7,7 @@
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(#F8E9E9,#B9C7CA);
+    background: rgb(198, 196, 255);
 }
 
 .text1-CardProductCharge { color: black; text-align: left; width: 30%; }
@@ -38,6 +39,7 @@
         justify-content: space-between;
         align-items: center;
         background: linear-gradient(#F8E9E9,#B9C7CA);
+        background: rgb(198, 196, 255);
     }
     .input-CardProductCharge{
        font-size: 12px;

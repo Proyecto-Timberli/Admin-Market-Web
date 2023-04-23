@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: none;
 
 }
 .container-Customers{
@@ -10,7 +11,6 @@
     display: flex;
     flex-direction: column;
     align-items:center;
-    background-color:#fff;
 }
 .caja-Customers{
     width:60%;
@@ -26,7 +26,7 @@
     height:25px;
     margin-top:20px;
     border-radius:30px;
-    background-color:#f1eaea;
+    background-color:white;
     margin-top:20px;
     border-bottom-width:2;
     border-bottom-color:#2C7DA0;
@@ -67,6 +67,7 @@
     width: 55%;
     border: none;
     background: linear-gradient(#F8E9E9,#B9C7CA);
+    background: rgb(198, 196, 255);;
 }
 @media screen and (max-width: 700px) {
     .buttonCard-Customers{
@@ -92,7 +93,7 @@
         height:25px;
         margin-top:20px;
         border-radius:30px;
-        background-color:#f1eaea;
+        background-color:white;
         margin-top:20px;
         border-bottom-width:2;
         border-bottom-color:#2C7DA0;

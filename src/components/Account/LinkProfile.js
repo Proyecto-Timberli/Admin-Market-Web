@@ -5,15 +5,16 @@ import {postFirestore} from '../../Firebase/ApiFunctions'
 import {useAuth} from '../../Context/authContext'
 import Loading from '../Reusables/Loading'
 import Icon from '@mdi/react';
-import { mdiChevronRight } from '@mdi/js';
+import { mdiPlusBox} from '@mdi/js';
 import { mdiArrowLeft } from '@mdi/js';
 import ConfigProfile from './ConfigProflie'
 import {alertConfirmacion} from '../Reusables/Alerts'
+import {  useNavigate } from 'react-router';
+const inconColor =("rgb(52, 51, 72)")
 
 const LinkProfile=()=>{
-    console.log("------------------------")
-    console.log("LinkProfileToUser")
     const {user} = useAuth()
+    const navigate = useNavigate()
     const[profileSettings,setProfileSettings]= useState(null)
     const [userCode, setUserCode] = useState(null)
     const [valideCode,setValideCode]= useState(null)
@@ -61,16 +62,24 @@ const LinkProfile=()=>{
     ////////////////////////////////////////////////////////////////////
     // postLinkProfile(profileSelected,code)
     return( 
+        <div className='container-MenuProductos'>
+        <div className='imgBackGroundCustom'></div>
+          <div className='container-nav-MenuProductos'>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos' onClick={() => navigate(-1)}>    
+                      <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
+                  </button>                  
+              </div>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos' onClick={()=>navigate('configProfile')}>    
+                      <Icon path={mdiPlusBox} size={2} color={inconColor} />   
+                      <p className='text-button-MenuProductos'>Agregar un Perfil</p> 
+                  </button>                  
+              </div>
+        </div>
         <>{configProfile?<ConfigProfile active={setConfigProfile}/>:
         <div className='container-LinkProfile'>
             <h3 className='title-LinkProfile'>Vincular Usuario</h3>
-            <button 
-                className='button-LinkProfile'
-                onClick={()=>setConfigProfile(true)}
-                >   
-                <p className='textBold-LinkProfile'>Configurar Un Perfil</p>
-                <Icon path={mdiChevronRight} size={1} color={"black"}/>    
-            </button>
             <div className='containerList-LinkProfile'>
                 <p className='text1-LinkProfile'>Selecciona un perfil para vincularlo</p>
             {!profileSettings?<Loading/>:
@@ -108,6 +117,7 @@ const LinkProfile=()=>{
                 </button>}               
         </div>   }
         </> 
+        </div>
     ) 
 }
 export default LinkProfile

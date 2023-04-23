@@ -23,7 +23,7 @@
     margin-bottom: 5px;
 }
 .profileButton-LinkProfile{
-    background: linear-gradient(#F8E9E9,#B9C7CA);
+    background: rgb(198, 196, 255);
     width: 70%;
     height: 25px;
     display: flex;
@@ -63,7 +63,6 @@
     text-align: center;
 }
 .buttonColor-LinkProfile{
-    background: linear-gradient(#206593,#25EADE);
     background:  #1a6b91;
     width: 22%;
     border: none;
@@ -90,108 +89,33 @@
     .title-LinkProfile{
         font-size: 15px;
     }
-    .button-LinkProfile{
-        width: 25%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: none;
-        background-color:  white;
-        height: 30px;
-    }
     .text1-LinkProfile{
         font-size: 12px;
     }
     .containerList-LinkProfile{
-        width: 60%;
-        height: 220px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        width: 70%;
+    }
+    .input-LinkProfile{
+        width: 40%;
+    }
+    .buttonColor-LinkProfile{
+        width: 50%;
+    }
+    .buttonNoColor-LinkProfile{
+        width: 50%;
     }
 }
 @media screen and (max-width: 700px) {
-    .button-LinkProfile{
-        width: 30%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: none;
-        background-color:  white;
-        height: 30px;
+    .containerList-LinkProfile{
+        width: 90%;
     }
     .input-LinkProfile{
-        padding: 10px;
-        width:38%;
-        height:25px;
-        background-color:transparent;
-        margin-top:2%;
-        border-bottom-width:2;
-        border-bottom-color:#2C7DA0;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        text-align: center;
+        width: 60%;
     }
     .buttonColor-LinkProfile{
-        background: linear-gradient(#206593,#25EADE);
-        background:  #1a6b91;
-        width: 45%;
-        border: none;
-        border-radius: 20px;
-        margin-top: 15px;
-        margin-bottom: 15px;
+        width: 70%;
     }
     .buttonNoColor-LinkProfile{
-        background: linear-gradient(#b9c7cadc,#b9c7cadc);
-        width: 45%;
-        border: none;
-        border-radius: 20px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-}
-@media screen and (max-width: 600px) {
-    .button-LinkProfile{
-        width: 40%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: none;
-        background-color:  white;
-        height: 30px;
-    }
-}
-@media screen and (max-width: 500px) {
-    .button-LinkProfile{
-        width: 45%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: none;
-        background-color:  white;
-        height: 30px;
-    }
-}
-@media screen and (max-width: 400px) {
-    .button-LinkProfile{
-        width: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: none;
-        background-color:  white;
-        height: 30px;
-    }
-}
-@media screen and (max-width: 350px) {
-    .button-LinkProfile{
-        width: 60%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: none;
-        background-color:  white;
-        height: 30px;
+        width: 70%;
     }
 }

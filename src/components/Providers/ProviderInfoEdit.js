@@ -4,7 +4,6 @@ import React, {useState } from "react";
 import {useAuth} from '../../Context/authContext'
 import {getFirestore, doc} from 'firebase/firestore';
 import {putFirestore, deleteFirestore} from '../../Firebase/ApiFunctions'
-import {Modal} from '../Reusables/Modal'
 ////////////////////////////////////////////////////
 import Icon from '@mdi/react';
 import { mdiContentSave } from '@mdi/js';
@@ -12,6 +11,9 @@ import { mdiArrowLeft }from '@mdi/js';
 import { useNavigate } from 'react-router';
 import {useLocation} from 'react-router-dom';
 import { mdiDeleteForever } from '@mdi/js';
+import {alertConfirmacion} from '../Reusables/Alerts'
+const inconColor =("rgb(52, 51, 72)")
+
 export default function ProviderInfoEdit() {
     const navigate = useNavigate()
     const locate = useLocation()
@@ -39,7 +41,7 @@ export default function ProviderInfoEdit() {
 
   /////////////////////////////////////////////////
   /////////////////////////////////////////////////
-  const[modalSalir,setModalSalir]= useState(false)
+
 
   const handleChangeInput = (e)=>{
     setEditable({
@@ -47,26 +49,40 @@ export default function ProviderInfoEdit() {
       [e.target.name]:e.target.value
     })
   }
-  const salir = () => {
-    navigate("/providers")
-  }
+
   const eliminar = () => {
-    console.log("eliminar")
     deleteClient()
-    alert("Provedor Eliminado");
     navigate("/providers")
+    return true
   }
   const guardar = () => {
     putClient(editable)
-    console.log("guardar")
-    alert("Provedor Actualizado");
+    return true
   }
   return (
+    <div className='container-MenuProductos'>
+    <div className='imgBackGroundCustom'></div>
+          <div className='container-nav-MenuProductos'>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos' onClick={() => navigate(-1)}>    
+                      <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
+                  </button>
+              </div>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos' onClick={()=>alertConfirmacion("Eliminar Provedor?",null,eliminar)}>    
+                      <Icon path={mdiDeleteForever} size={2} color='#1a6b91' />   
+                      <p className='text-button-MenuProductos'>Eliminar</p> 
+                  </button>
+              </div>
+              <div className='button-Container-MenuProductos'>
+                  <button className='button-MenuProductos'onClick={()=>alertConfirmacion("Actualizar Provedor?",null,guardar)}>    
+                      <Icon path={mdiContentSave} size={2} color='#1a6b91' />   
+                      <p className='text-button-MenuProductos'>Guardar</p> 
+                  </button>
+              </div>
+          </div>
        <div className='container-AddClient'>
          <div className="container2-AddClient">
-         {modalSalir&&<Modal functionCheckOk={eliminar}setStateModal={setModalSalir} mensaje={'Quiere eliminar este provedor?'}/>}
-              <p className = 'textTitle-AddClient'>Provedor: {editable.identifier}</p>
-
             <div 
               className='containerIcon-AddClient'>       
               <p className = 'text-AddClient'> Nombre: </p>
@@ -86,26 +102,11 @@ export default function ProviderInfoEdit() {
             </div>
             <button 
               className="button2-AddClient"
-              onClick={() => console.log('navigate("/buys",{state:id})')}
-            
-            ><p className="textWhite">Historial de ventas</p></button>
+              onClick={() => navigate("/buys",{state:id})}
+            ><p className="textWhite">Historial de Compras</p></button>
             <button className="button2-AddClient"><p className="textWhite">Pedidos</p></button>
-            <div 
-                className = 'containerNavBar-AddClient'>   
-              <button
-                  className='buttonNavBar-AddClient'
-                  onClick={()=>salir()}
-                ><Icon path={mdiArrowLeft} size={2} color='black'/><p >Salir</p></button>
-              <button
-                  className='buttonNavBar-AddClient'
-                  onClick={()=>setModalSalir(true)}
-                ><Icon path={mdiDeleteForever} size={2} color='black'/><p >Eliminar</p></button>
-              <button 
-                  className='buttonNavBar-AddClient'
-                  onClick={()=>guardar()}
-                ><Icon path={mdiContentSave} size={2} color='black'/><p >Guardar</p></button>
             </div>
-            </div>
+      </div>
       </div>
   )
 }

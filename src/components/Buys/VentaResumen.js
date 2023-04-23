@@ -19,6 +19,7 @@ import QRCode  from  "react-qr-code" ;
 import ResumenPdf from './ResumenPdf';
 import { PDFViewer } from '@react-pdf/renderer';
 import CanvasQR from './canvasQR';
+import {alertConfirmacion} from '../Reusables/Alerts'
 ////////////////////////////////////////////////////
 const VentaResumen = ()=>{
   const {userProfile} = useAuth()
@@ -61,8 +62,8 @@ useEffect(()=>{
   const anular = (products) => {
     deleteSale()
     putProductsStock(products)
-    alert("Venta Anulada");
     navigate('sells')
+    return true
   }
 
 /////////////////////////////////////////////////////////
@@ -96,7 +97,7 @@ useEffect(()=>{
                         </button>
                   </div>
                   <div className='button-Container-MenuProductos'>
-                        <button  className='button-MenuProductos' onClick={()=>anular(data)}>
+                        <button  className='button-MenuProductos' onClick={()=>alertConfirmacion("Anular Venta?",null,()=>anular(data))}>
                           <Icon path={mdiDeleteForever} size={2} color='rgb(52, 51, 72)'/>
                           <p className='text-button-MenuProductos'>Anular</p>
                         </button>

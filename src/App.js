@@ -30,6 +30,14 @@ import SellResumen from './components/Charge/VentaResumen'
 import Buys from './components/Buys/Buys'
 import NewBuy from './components/Buys/newBuy'
 import BuyResumen from './components/Buys/BuyResmune'
+// porducts
+import NewCategory from './components/Products/Nueva-Categoria'
+import AddOne from './components/Products/Agregar-uno'
+import EditInfo from './components/Products/EditInfo'
+// account
+import LinkProfile from './components/Account/LinkProfile';
+import MyBusiness from './components/Account/MyBusiness';
+import ConfigProfile from './components/Account/ConfigProflie'
 function App() {
   return (
     <BrowserRouter> 
@@ -50,18 +58,34 @@ function App() {
 
       <Route path="/sellresumen" element={<SellResumen/>}/>
 
-
+      {/* VISTA CLIENTES */}
       <Route path="/customers/addclient" element={<AddClient/>}/>
       <Route path="/customers/clientinfoedit" element={<ClientInfoEdit/>}/>
-      {/* <Route path="/error" element={<ErrorPage/>}/> */}
+      
+      {/* VISTA PROVEDORES */}
       <Route path="/providers/addprovider" element={<AddProvider/>}/>
       <Route path="/providers/providerinfoedit" element={<ProviderInfoEdit/>}/>
 
+      {/* VISTA ESTADISTICAS */}
       <Route path="/statistics" element={<Statistics/>}/>
 
+      {/* VISTA COMPRAS */}
       <Route path="/buys" element={<Buys/>}/>
       <Route path="/newbuy" element={<NewBuy/>}/>
       <Route path="/buyresumen" element={<BuyResumen/>}/>
+
+      {/* VISTA PRODUCTOS */}
+      <Route path="/products/addproduct" element={<AddOne/>}/>
+      <Route path="/products/newCategory" element={<NewCategory/>}/>
+      <Route path="/products/editInfo" element={<EditInfo/>}/>
+
+      {/* VISTA CUENTA */}
+      <Route path="/account/myProfiles" element={<MyProfiles/>}/>
+      <Route path="/account/myBusiness" element={<MyBusiness/>}/>
+      <Route path="/account/linkProfile" element={<LinkProfile/>}/>
+      <Route path="/account/linkProfile/configProfile" element={<ConfigProfile/>}/>
+
+      {/* <Route path="/error" element={<ErrorPage/>}/> */}
 
     </Routes>
     </AuthProvider>
