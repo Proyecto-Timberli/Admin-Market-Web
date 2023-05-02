@@ -1,4 +1,5 @@
 .container-navBar {
+    width: 67%;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 23%;
@@ -116,14 +117,14 @@
     background-color: transparent;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1099px) {
     .burger-navBar {
         display: none;
     }
 
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1099px) {
     .logo-navBar {
         padding-top: 7px;
         padding-bottom: 7px;

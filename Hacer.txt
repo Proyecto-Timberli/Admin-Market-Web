@@ -1,16 +1,20 @@
 
 
 QUEDA POR HACER
-#3 Categorias vista plantear rehacer
-
-#10 login imagen
-#11 register imagen
+#1 Home
+#2 login imagen
+#3 register imagen
 #4 falta venta resumen qr
 
-#7 Estilos en vincular perfil analizar
-#8 Estilos 
+#5 Categorias vista plantear rehacer
+#6 Mostar en ventas y compras el perfil que hiso la operacion
+#7 Log de actividades que muestren el perfil
 
-#6 profundizar estadisticas
-#9 profundizar landing page
+#8 Eliminar perfiles config profile y perfiles vinculados
+#9 screen notfound estilos
 
-#12 analizar como seguir
+#10 profundizar estadisticas
+#11 profundizar landing page
+
+
+

@@ -11,7 +11,7 @@ import { mdiArrowLeft } from '@mdi/js';
 import {alertConfirmacion} from '../Reusables/Alerts'
 import { useNavigate } from 'react-router';
 ////////////////////////////////////////////////////
-const ConfigProfile = ({active})=>{
+const ConfigProfile = ()=>{
     const {user} = useAuth()
     const navigate = useNavigate()
     const [permissions, setPermissions] = useState({

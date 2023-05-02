@@ -57,6 +57,7 @@ const LinkProfile=()=>{
         setProfileSelected(null)
         setUserCode("")
         setValideCode(null)
+        return true
     }   
     console.log("------------------------")
     ////////////////////////////////////////////////////////////////////

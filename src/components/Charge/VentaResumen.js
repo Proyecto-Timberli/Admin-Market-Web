@@ -22,7 +22,7 @@ import CanvasQR from './canvasQR';
 import {alertConfirmacion} from '../Reusables/Alerts'
 ////////////////////////////////////////////////////
 const VentaResumen = ()=>{
-  const {userProfile} = useAuth()
+  const {userProfile, userPermissions} = useAuth()
 /////////////////////////////////////////////////////////
 const navigate = useNavigate()
 const locate = useLocation()
@@ -96,12 +96,12 @@ useEffect(()=>{
                           <p className='text-button-MenuProductos'>Volver</p>
                         </button>
                   </div>
-                  <div className='button-Container-MenuProductos'>
+                  {userPermissions.modifySales&&<div className='button-Container-MenuProductos'>
                         <button  className='button-MenuProductos' onClick={()=>alertConfirmacion("Anular Venta?",null,()=>anular(data))}>
                           <Icon path={mdiDeleteForever} size={2} color='rgb(52, 51, 72)'/>
                           <p className='text-button-MenuProductos'>Anular</p>
                         </button>
-                  </div>
+                  </div>}
                   <div className='button-Container-MenuProductos'>
                         <button  className='button-MenuProductos' 
                         onClick={()=>{algoprueba()}}

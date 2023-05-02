@@ -1,7 +1,8 @@
 import React from "react";
 import './CardProduct.css'
+
 const CardProduct = ({ id, nombre, categoria, precio, listaSeleccionados}) => {
-  
+
   listaSeleccionados = listaSeleccionados? listaSeleccionados.map(e=>e.id):[0]
 
   return (

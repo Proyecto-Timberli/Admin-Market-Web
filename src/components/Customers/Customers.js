@@ -82,12 +82,12 @@ const Customers= ({desde,functionModal,setModalClient}) => {
             value={filterBySearch}
             placeholder="Buscar cliente..."
             />
-            {/* {userPermissions.modifyClients? */}
+            {userPermissions?.modifyClients?
             <button onClick={()=>navigate("addclient")}
                 className='button-Customers'> 
                 <p className = 'textButton-Customers'>Agregar Cliente</p>
             </button>
-            {/* :null} */}
+            :null}
             <div className='container2-Customers'>
               <p className='text-customer'>Cliente</p>
               <p className='text-customer'>Telefono</p>

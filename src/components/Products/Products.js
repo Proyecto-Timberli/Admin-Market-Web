@@ -16,22 +16,22 @@ export default function MenuProductos(){
         <div className='container-MenuProductos'>
             <div className='imgBackGroundCustom'></div>
             <div className='container-nav-MenuProductos'>
-                {true?
-                // userPermissions.modifyProducts?
+                
+                {userPermissions?.modifyProducts&&
                 <div className='button-Container-MenuProductos'>
                     <button className='button-MenuProductos' onClick={() => navigate('newCategory')}>    
                         <Icon path={mdiShape} size={2} color={inconColor} />   
                         <p className='text-button-MenuProductos'>Categorias</p>
                     </button>
-                </div>:<div className='button-Container-MenuProductos'></div>}
-                {true?
-                // userPermissions.modifyProducts?W
+                </div>}
+                
+                {userPermissions?.modifyProducts&&
                 <div className='button-Container-MenuProductos'>
                     <button className='button-MenuProductos' onClick={() => navigate('addproduct')}>    
                         <Icon path={mdiPlusBox} size={2} color={inconColor} />   
                         <p className='text-button-MenuProductos'>Agregar Producto</p>
                     </button>
-                </div>:<div className='button-Container-MenuProductos'></div>}
+                </div>}
             </div>
             <div className='container-screen-MenuProducts'>
                 <Products/>

@@ -70,18 +70,18 @@ export default function ClientInfoEdit() {
                       <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
                   </button>
               </div>
-              <div className='button-Container-MenuProductos'>
+              {userPermissions?.modifyClients&&<div className='button-Container-MenuProductos'>
                   <button className='button-MenuProductos' onClick={()=>alertConfirmacion("Eliminar Cliente?",null,eliminar)}>    
                       <Icon path={mdiDeleteForever} size={2} color='#1a6b91' />   
                       <p className='text-button-MenuProductos'>Eliminar</p> 
                   </button>
-              </div>
-              <div className='button-Container-MenuProductos'>
+              </div>}
+              {userPermissions?.modifyClients&&<div className='button-Container-MenuProductos'>
                   <button className='button-MenuProductos'onClick={()=>alertConfirmacion("Actualizar Cliente?",null,guardar)}>    
                       <Icon path={mdiContentSave} size={2} color='#1a6b91' />   
                       <p className='text-button-MenuProductos'>Guardar</p> 
                   </button>
-              </div>
+              </div>}
           </div>
        <div className='container-AddClient'>
          <div className="container2-AddClient">

@@ -27,7 +27,7 @@ const Productos = () => {
   console.log("------------------------")
   console.log("Productos")
    /////////////////////////////////////////////////////
-    const {userProfile} = useAuth() 
+    const {userProfile,userPermissions} = useAuth() 
     const navigate = useNavigate()
   /////////////////////////////////////////////////////
     const [productsApi,setProductsApi]=useState(null)
@@ -191,7 +191,7 @@ const Productos = () => {
                           listaSeleccionados={arraySeleccionados}
                       />
                   </button>
-                  <button   onClick={()=>onLongPressHandler(item)} className='checkbox-products'>{arraySeleccionados?.includes(item)?<Icon path={mdiCheckboxMarkedOutline} size={1} />:<Icon path={mdiCheckboxBlankOutline} size={1} />}</button>
+                  {userPermissions?.modifyProducts&&<button   onClick={()=>onLongPressHandler(item)} className='checkbox-products'>{arraySeleccionados?.includes(item)?<Icon path={mdiCheckboxMarkedOutline} size={1} />:<Icon path={mdiCheckboxBlankOutline} size={1} />}</button>}
                 </div> 
                 )}
                 </>}

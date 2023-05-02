@@ -3,7 +3,7 @@ import './App.css';
 import { Route, Routes, BrowserRouter} from 'react-router-dom';
 import {AuthProvider, } from './Context/authContext'
 import NavBar from './components/Navbar/NavBar'
-// import ErrorPage from './components/Error/ErrorPage'
+import ErrorPage from './components/Error/ErrorPage'
 import Products from './components/Products/Products'
 import Account from './components/Account/Account'
 import Customers from './components/Customers/Customers'
@@ -38,6 +38,12 @@ import EditInfo from './components/Products/EditInfo'
 import LinkProfile from './components/Account/LinkProfile';
 import MyBusiness from './components/Account/MyBusiness';
 import ConfigProfile from './components/Account/ConfigProflie'
+// home
+import Home from './components/Home/Home'
+
+//
+import ProtectedRoutes from './components/Error/ProtectedRoute';
+
 function App() {
   return (
     <BrowserRouter> 
@@ -47,46 +53,50 @@ function App() {
       <Route path="/" element={<LandingPage/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
-      <Route path="/starting" element={<Starting/>}/>
-      <Route path="/myProfiles" element={<MyProfiles/>}/>
-      <Route path="/products" element={<Products/>} />
-      <Route path="/customers" element={<Customers/>}/>
-      <Route path="/providers" element={<Providers/>}/>
-      <Route path="/charge" element={<Charge/>}/>
-      <Route path="/account" element={<Account/>}/>
-      <Route path="/sells" element={<Sells/>}/>
-
-      <Route path="/sellresumen" element={<SellResumen/>}/>
-
-      {/* VISTA CLIENTES */}
-      <Route path="/customers/addclient" element={<AddClient/>}/>
-      <Route path="/customers/clientinfoedit" element={<ClientInfoEdit/>}/>
       
-      {/* VISTA PROVEDORES */}
-      <Route path="/providers/addprovider" element={<AddProvider/>}/>
-      <Route path="/providers/providerinfoedit" element={<ProviderInfoEdit/>}/>
+      <Route element={<ProtectedRoutes/>}>
+        <Route path="/starting" element={<Starting/>}/>
+        <Route path="/myProfiles" element={<MyProfiles/>}/>
+        {/* VISTA COBRAR */}
+        <Route path="/charge" element={<Charge/>}/>
+        <Route path="/sells" element={<Sells/>}/>
+        <Route path="/sellresumen" element={<SellResumen/>}/>
 
-      {/* VISTA ESTADISTICAS */}
-      <Route path="/statistics" element={<Statistics/>}/>
+        {/* VISTA HOME */}
+        <Route path="/menuPrincipal" element={<Home/>}/>
 
-      {/* VISTA COMPRAS */}
-      <Route path="/buys" element={<Buys/>}/>
-      <Route path="/newbuy" element={<NewBuy/>}/>
-      <Route path="/buyresumen" element={<BuyResumen/>}/>
+        {/* VISTA CLIENTES */}
+        <Route path="/customers" element={<Customers/>}/>
+        <Route path="/customers/addclient" element={<AddClient/>}/>
+        <Route path="/customers/clientinfoedit" element={<ClientInfoEdit/>}/>      
 
-      {/* VISTA PRODUCTOS */}
-      <Route path="/products/addproduct" element={<AddOne/>}/>
-      <Route path="/products/newCategory" element={<NewCategory/>}/>
-      <Route path="/products/editInfo" element={<EditInfo/>}/>
+        {/* VISTA PROVEDORES */}
+        <Route path="/products" element={<Products/>} />
+        <Route path="/providers" element={<Providers/>}/>
+        <Route path="/providers/addprovider" element={<AddProvider/>}/>
+        <Route path="/providers/providerinfoedit" element={<ProviderInfoEdit/>}/>
 
-      {/* VISTA CUENTA */}
-      <Route path="/account/myProfiles" element={<MyProfiles/>}/>
-      <Route path="/account/myBusiness" element={<MyBusiness/>}/>
-      <Route path="/account/linkProfile" element={<LinkProfile/>}/>
-      <Route path="/account/linkProfile/configProfile" element={<ConfigProfile/>}/>
+        {/* VISTA ESTADISTICAS */}
+        <Route path="/statistics" element={<Statistics/>}/>
 
-      {/* <Route path="/error" element={<ErrorPage/>}/> */}
+        {/* VISTA COMPRAS */}
+        <Route path="/buys" element={<Buys/>}/>
+        <Route path="/newbuy" element={<NewBuy/>}/>
+        <Route path="/buyresumen" element={<BuyResumen/>}/>
 
+        {/* VISTA PRODUCTOS */}
+        <Route path="/products/addproduct" element={<AddOne/>}/>
+        <Route path="/products/newCategory" element={<NewCategory/>}/>
+        <Route path="/products/editInfo" element={<EditInfo/>}/>
+
+        {/* VISTA CUENTA */}
+        <Route path="/account" element={<Account/>}/>
+        <Route path="/account/myProfiles" element={<MyProfiles/>}/>
+        <Route path="/account/myBusiness" element={<MyBusiness/>}/>
+        <Route path="/account/linkProfile" element={<LinkProfile/>}/>
+        <Route path="/account/linkProfile/configProfile" element={<ConfigProfile/>}/>
+      </Route>
+      <Route path="*" element={<ErrorPage/>}/>
     </Routes>
     </AuthProvider>
     </BrowserRouter> 

@@ -68,18 +68,18 @@ export default function ProviderInfoEdit() {
                       <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
                   </button>
               </div>
-              <div className='button-Container-MenuProductos'>
+              {userPermissions?.modifyProviders&&<div className='button-Container-MenuProductos'>
                   <button className='button-MenuProductos' onClick={()=>alertConfirmacion("Eliminar Provedor?",null,eliminar)}>    
                       <Icon path={mdiDeleteForever} size={2} color='#1a6b91' />   
                       <p className='text-button-MenuProductos'>Eliminar</p> 
                   </button>
-              </div>
-              <div className='button-Container-MenuProductos'>
+              </div>}
+              {userPermissions?.modifyProviders&&<div className='button-Container-MenuProductos'>
                   <button className='button-MenuProductos'onClick={()=>alertConfirmacion("Actualizar Provedor?",null,guardar)}>    
                       <Icon path={mdiContentSave} size={2} color='#1a6b91' />   
                       <p className='text-button-MenuProductos'>Guardar</p> 
                   </button>
-              </div>
+              </div>}
           </div>
        <div className='container-AddClient'>
          <div className="container2-AddClient">

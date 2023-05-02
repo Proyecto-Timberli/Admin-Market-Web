@@ -64,12 +64,12 @@
 }
 .imgBackGroundCustom{
     position: absolute; 
-    left: 50vw;
-    transform: rotate(-18deg);
+    left: 44vw;
+    transform: rotate(-20deg);
     z-index: -1;
-    width: 1284px;
-    height: 590px;
-    bottom: 20vw;
+    width: 600px;
+    height: 1000px;
+    bottom: 10vw;
     opacity: 0.09;
     background: rgb(52, 51, 72);
     border-radius: 400px;

@@ -1,0 +1,11 @@
+.container-ErrorPage{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.error-ErrorPage{
+    font-size: 100px;
+}

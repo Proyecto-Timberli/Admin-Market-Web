@@ -17,7 +17,7 @@ const inconColor =("rgb(52, 51, 72)")
 export default function Buys(){
     console.log("------------------------")
     console.log("Ventas")
-    const {userProfile} = useAuth()
+    const {userProfile,userPermissions} = useAuth()
     const location = useLocation()
     const navigate = useNavigate()
     //////////////////////filtro por cliente///////////////////////////////
@@ -73,13 +73,13 @@ export default function Buys(){
             <div className='imgBackGroundCustom'></div>
             <div className = 'container-nav-MenuProductos'>              
                   <div className='button-Container-MenuProductos'>
-                  {!idProvider? <button className='button-MenuProductos' onClick={() => navigate('/newbuy')}>    
+                  {!idProvider&&userPermissions.modifyBuys? <button className='button-MenuProductos' onClick={() => navigate('/newbuy')}>    
                         <Icon path={mdiPlusBox} size={2} color={inconColor} />   
                         <p className='text-button-MenuProductos'>Nueva Compra</p>
-                    </button>:
-                      <button className='button-MenuProductos' onClick={() => navigate(-1)}>    
+                    </button>:null}
+                    {idProvider?<button className='button-MenuProductos' onClick={() => navigate(-1)}>    
                       <Icon path={mdiArrowLeft} size={2} color={inconColor} />   
-                  </button>}
+                  </button>:null}
                   </div>
             </div>
 
