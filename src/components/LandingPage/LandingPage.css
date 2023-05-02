@@ -76,6 +76,9 @@
 }
 
 @media screen and (max-width: 1100px) {
+    .imgBackGroundCustom{
+       display: none;
+    }
     .ipsu-LandingPage{
         padding-right: 4%;
         width: 92%; 

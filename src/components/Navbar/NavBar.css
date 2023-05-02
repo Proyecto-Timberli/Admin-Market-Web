@@ -149,6 +149,7 @@
     }
 
     .container-navBar {
+        width: 100%;
         padding-top: 7px;
         padding-bottom: 7px;
         padding-right: 0%;
@@ -161,6 +162,7 @@
     }
 
     .container-navBar.active-navBar {
+        width: 100%;
         padding-top: 65px;
         padding-bottom: 0px;
         padding-right: 0%;
@@ -197,6 +199,7 @@
     }
 
     .container-navBar-login {
+        width: 100%;
         padding-top: 7px;
         padding-bottom: 7px;
         padding-right: 0%;
