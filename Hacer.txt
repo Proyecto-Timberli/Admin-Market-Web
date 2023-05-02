@@ -2,6 +2,7 @@
 
 QUEDA POR HACER
 #1 Home
+#2 controlar campos login register
 #2 login imagen
 #3 register imagen
 #4 falta venta resumen qr
