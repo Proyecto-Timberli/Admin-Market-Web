@@ -1,6 +1,6 @@
 
 
-import './Card-Product-In-Cart.css'
+import './CardProductInCart.css'
 import React , {useEffect, useState} from "react";
 import Icon from '@mdi/react';
 import { mdiCartPlus } from '@mdi/js';
