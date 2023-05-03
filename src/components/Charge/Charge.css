@@ -179,7 +179,9 @@
         flex-wrap: wrap;
         z-index: 0;
     }
-    
+    .container-cart{
+        margin-bottom: 250px;
+    }
     .container-cart{
         width: 90%;
         min-height: 600px;
