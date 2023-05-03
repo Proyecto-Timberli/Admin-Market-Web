@@ -197,7 +197,7 @@
         margin-top: -15px;
     }
     .container5-cobrar{
-        width: 40%;
+        width: 50%;
         display: flex;
         flex-direction: column;
     }
@@ -208,6 +208,14 @@
         border: none;
         border-radius: 15px;
         margin-left: 0;
+        
+    }
+    .container4-cobrar{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        align-items:center;
         
     }
 }
@@ -263,7 +271,7 @@
             justify-content: left;
         }
         .container4-cobrar{
-            width: 54%;
+            width: 100%;
             display: flex;
             flex-direction: row;
             justify-content:space-between;
