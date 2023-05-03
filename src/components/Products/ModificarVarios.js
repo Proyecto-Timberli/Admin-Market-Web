@@ -144,13 +144,13 @@ export default function ModificarVarios({estado,listaSeleccionados,setListaSelec
                         <div className = 'containerNavBar-ModificarVarios'>   
                             <button onClick={()=>salir()} className='buttonNavBar-ModificarVarios'>
                                 <Icon path={mdiArrowLeft} size={2} />
-                                <p>Salir</p>
+                                
                             </button>
                             <button 
                                 onClick={()=>alertConfirmacion("Actualizar Precios?",null,guardar,"Complete los campos y Aplica los cambios")}
                                 className='buttonNavBar-ModificarVarios'>
                                 <Icon path={mdiContentSave} size={2} color={"rgb(52, 51, 72)"}/>
-                                <p>Guardar</p>
+                                
                             </button>
                         </div>                  
                     
