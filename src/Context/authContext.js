@@ -15,9 +15,13 @@ export function AuthProvider({children}){
     const [userPermissions,setUserPermissions]=useState(null)
     const [loading, setLoading] = useState(true)
     const signup = (email , password ) => 
-        createUserWithEmailAndPassword(auth, email, password);
+        createUserWithEmailAndPassword(auth, email, password)
+        .then(function(res) {return ({successful:res})})
+        .catch(function(res) {return ({error:res.message})});
     const login = async (email, password ) =>
         signInWithEmailAndPassword(auth, email, password)
+        .then(function(res) {return ({successful:res})})
+        .catch(function(res) {return ({error:res.message})});
     const logout = () => signOut(auth)
     const loginWithGoogle =  () => {
         const googleProvider =  new GoogleAuthProvider()

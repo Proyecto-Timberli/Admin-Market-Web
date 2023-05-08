@@ -12,6 +12,7 @@ import {useNavigate } from 'react-router-dom';
 import { mdiArrowLeft} from '@mdi/js';
 import { mdiContentSave } from '@mdi/js';
 import { mdiDeleteForever } from '@mdi/js';
+import {alertConfirmacion} from '../Reusables/Alerts'
 const inconColor =("rgb(52, 51, 72)")
 
 export default function NuevaCategoria(){
@@ -66,22 +67,24 @@ export default function NuevaCategoria(){
     }
     if (e.name == "") {
       alert("Debes completar los campos");
-      return;
+      return null
     }
     if (namesCategorias(categoriesApi).includes(e.name)) {
       alert("Esa categoria ya existe!");
-      return;
+      return null
     }  
     setLoadingOn(true);
     postCategory(e)
     setText("")
     alert("Categoria agregada")
+    return true
   };
   const eliminarCategoria = async function (e) {
     console.log("eliminar categoria")
     setLoadingOn(true);
     deleteCategory(categoria)
     alert("Categoria Eliminada");
+    return true
   };
   console.log("------------------------")
   return (
@@ -95,24 +98,25 @@ export default function NuevaCategoria(){
                 </div>:<div className='button-Container-MenuProductos'></div>
             </div>
     <div className='container-categorias'>
-      <h2 className='title-categorias'>Categorias</h2>
-      <input
-          className='textInput-categorias'
-          placeholder="Escriba su nueva categoria aquí..."
-          onChange={(e) => setText(e.target.value)}
-          value={text}
-        />
+      <h3 className='title-categorias'>Nueva Etiqueta</h3>
+          <div
+          className='cotainerIcon-categorias'>      
+          <p className='text-agregarUno'> Etiqueta: </p>
+          {/* <Editar dato={"price"} setState={setDato} stateModal={setModal}/> */}
+          <input className='input-agregarUno' placeholder="Escriba su nueva etiqueta aquí..." value={text} onChange={(e) => setText(e.target.value)}/>
+        </div>
        {/* NavBar() -------------------------------------------*/}
        <div className = 'navBarContainer-categorias'>   
                             <button 
                                 className='buttonNavBar-categorias'
-                                onClick={()=>agregarCategoria({name:text})}
+                                onClick={()=>alertConfirmacion("Agregar Etiqueta?",null,()=>agregarCategoria({name:text}),null)}
                                 buttonSize={30}
                             >
                                 <Icon path={mdiContentSave} size={2} color={"black"}/>
-                                <p>Agregar</p>
+                                <p>Agregar Etiqueta</p>
                             </button>
         </div>   
+        <h3 className='title-categorias'>Etiquetas</h3>
       <div className='categoriasContainer-categorias'>
       {!categoriesApi||loadingOn?<Loading/>:
         categoriesApi.map(item=>
@@ -122,7 +126,8 @@ export default function NuevaCategoria(){
             </button>
             {categoria === item?  (
             <div className='buttonDeleteContainer-categorias'>
-              <button  onClick={() => eliminarCategoria(categoria)} className='buttonDelete-categorias'>
+              <button  className='buttonDelete-categorias'
+              onClick={()=>alertConfirmacion("Agregar Etiqueta?",null,() => eliminarCategoria(categoria),null)}>
               <Icon path={mdiDeleteForever} size={1} color={"red"}/>
               </button>
             </div>

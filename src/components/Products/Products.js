@@ -21,7 +21,7 @@ export default function MenuProductos(){
                 <div className='button-Container-MenuProductos'>
                     <button className='button-MenuProductos' onClick={() => navigate('newCategory')}>    
                         <Icon path={mdiShape} size={2} color={inconColor} />   
-                        <p className='text-button-MenuProductos'>Categorias</p>
+                        <p className='text-button-MenuProductos'>Etiquetas</p>
                     </button>
                 </div>}
                 

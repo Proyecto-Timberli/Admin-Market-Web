@@ -98,20 +98,31 @@ const Productos = () => {
   /////////////////////////////////////////////////////
   /////////////////////////////////////////////////////
   //Funcion Busqueda Nombre
-  function filtroName(array, search, attibute) {
+  function filtro(array, search, attibute) {
     if (!array){return} 
+    console.log(array.filter(
+      (e) =>
+        e[attibute] && e[attibute].toLowerCase().includes(search.toLowerCase())
+    ))
     return array.filter(
       (e) =>
         e[attibute] && e[attibute].toLowerCase().includes(search.toLowerCase())
     );
   }
   const [filterBySearch, setFilterBySearch] = useState("");
-  let filtro = filtroName(arrayAMostrar, filterBySearch, "name");
+  let filtroName = filtro(arrayAMostrar, filterBySearch, "name"); 
+  let filtroMarca = filtro(arrayAMostrar, filterBySearch, "make")
+  let filtroCode = filtro(arrayAMostrar, filterBySearch, "barCode")
   const filtroBusqueda = function (e) {
     setFilterBySearch(e);
-  };
+  };  
   if (filterBySearch !== "") {
-    arrayAMostrar = filtro;
+    if(!filtroName.length&&!filtroMarca.length&&!filtroCode.length){
+      arrayAMostrar = filtroName;
+    }
+    if(filtroMarca.length){arrayAMostrar = filtroMarca;}
+    if(filtroName.length){arrayAMostrar = filtroName;}
+    if(filtroCode.length){arrayAMostrar = filtroCode;}
   }
   /////////////////////////////////////////////////////
   /////////////////////////////////////////////////////

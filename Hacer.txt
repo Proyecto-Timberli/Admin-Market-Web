@@ -2,12 +2,10 @@
 
 QUEDA POR HACER
 #1 Home
-#2 controlar campos login register
 #2 login imagen
 #3 register imagen
 #4 falta venta resumen qr
 
-#5 Categorias vista plantear rehacer
 #6 Mostar en ventas y compras el perfil que hiso la operacion
 #7 Log de actividades que muestren el perfil
 

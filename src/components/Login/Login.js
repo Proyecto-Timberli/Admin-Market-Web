@@ -6,6 +6,18 @@ import {ButtonLoginGoogle} from './ButtonLogin'
 import {useAuth} from '../../Context/authContext'
 // import validateForm from '../register/validation.js';
 
+export function validate(input) {
+  const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
+  let errors = {};
+  if (!input.email) {
+    errors.email = '*ingresa un email'
+  }
+  if (!input.password){
+    errors.summary = '*ingresa una contraseña'
+  }
+  
+  return errors;
+};
 function Login(){
   console.log("------------------------")
   console.log("Login")
@@ -13,40 +25,32 @@ function Login(){
   //////////////////////////////////////////////////////////////
   const {login, loginWithGoogle, user} = useAuth()
   //////////////////////////////////////////////////////////////
-  // const initalState = null
   
   const [state, setState] = useState({
     email: "",
-    password: "ss",
+    password: "",
   });
-//   const [formErrors, setFormErrors] = useState({ 
-//     error: "" ,
-//     email: "",
-//     password: "",
-//   })
+  const [formErrors, setFormErrors] = useState(false)
   
   const navigate = useNavigate()
   
-
   const handleChangeText = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
-//   const handleInputOnBlur = (e) => {
-//     setFormErrors({
-//         ...formErrors,
-//         [e.target.name]: validateForm(formData)[e.target.name],
-//     });
-//   }
+
   const handleSubmit = async () => {
-      try{
-        await login(state.email, state.password)
-        
-        navigate('/starting')
-      }
-      catch(error){
-        console.log(error)
-      }
-      
+        setFormErrors(true)
+        if(Object.keys(validate(state)).length){
+          console.log(validate(state))
+        }else{
+          let loginRes = null
+          loginRes =  await login(state.email, state.password)
+          if(Object.keys(loginRes)[0]==='error'){
+            setFormErrors(loginRes)
+          }else if(Object.keys(loginRes)[0]==='successful'){
+            navigate('/starting')
+          }
+        }   
   };
   const handleGoogleLogin = async () => {
       try{
@@ -76,13 +80,14 @@ function Login(){
             <h2 className="sub-title-login">Logea con tu cuenta</h2>
             <input 
                 className="text-input-login" 
-                type='text'
+                type='email'
                 name='email'
                 value={state.email}
                 placeholder="Ingresa un email" 
                 onChange={handleChangeText}
                 // onBlur={handleInputOnBlur}
             />
+            <div className='redError-container'>{validate(state).email&&formErrors&&<p className='redError'>{validate(state).email}</p>}</div>
             <input 
                 className="text-input-login" 
                 type='password'
@@ -93,6 +98,8 @@ function Login(){
                 onChange={handleChangeText}
                 // onBlur={handleInputOnBlur}
             />
+            <div className='redError-container'>{validate(state).password&&formErrors&&<p className='redError'>{validate(state).password}</p>}</div>
+            {Object.keys(formErrors)[0]==='error'&&<div className='redError-container'><p className='redError'>{formErrors.error}</p></div>}
             <ButtonLogin onPress={handleSubmit}/>
             <ButtonLoginGoogle onPress={handleGoogleLogin}/>
 
