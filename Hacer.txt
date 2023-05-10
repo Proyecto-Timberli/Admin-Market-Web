@@ -5,6 +5,7 @@ QUEDA POR HACER
 #2 login imagen
 #3 register imagen
 #4 falta venta resumen qr
+#5 controlar campos porductos, clientes customer y negocio
 
 #6 Mostar en ventas y compras el perfil que hiso la operacion
 #7 Log de actividades que muestren el perfil

@@ -13,7 +13,7 @@ export default function LandingPage (){
                 <p className='subTitle-LandingPage'>Podes utilizar nuestros servicios desde la web o podes descargar la App en tu telefono.</p>
                 <div className='buttonscontainer-LandingPage'>
                     <div className='button-LandingPage' onClick={()=>navigate('account/myProfiles')}><img src={imagen2} width={40} height={40}/><p className='textbutton-LandingPage'>Ingresa desde la web</p></div>
-                    <div className='button-LandingPage'><img src={imagen1} width={40} height={40}/><p className='textbutton-LandingPage'>App para android</p></div>
+                    <a href='https://expo.dev/artifacts/eas/gF5ZhiLncy8Er3CWHWZe6n.apk' className='button-LandingPage'><img src={imagen1} width={40} height={40}/><p className='textbutton-LandingPage'>App para android</p></a>
                 </div>
             </div>
             <div className='imagen-LandingPage'>
