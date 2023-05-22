@@ -7,7 +7,7 @@ import ImagenLogo from '../../assets/LogoOnly.png'
 import Icon from '@mdi/react';
 import { mdiLogout } from '@mdi/js';
 import {alertConfirmacion} from '../Reusables/Alerts'
-
+const { REACT_APP_PATCH } = process.env
 export default function NavBar (){
     const {logout,user,userPermissions} = useAuth()
     const navigate = useNavigate()
@@ -24,10 +24,10 @@ export default function NavBar (){
     }
 
 
-        if(user&&(patch==='http://localhost:3000/'||patch==='http://localhost:3000/login'||patch==='http://localhost:3000/register'||patch==='http://localhost:3000/starting')){
+        if(user&&(patch===REACT_APP_PATCH||patch===REACT_APP_PATCH+'login'||patch===REACT_APP_PATCH+'register'||patch===REACT_APP_PATCH+'starting')){
             return(
                 <div className={clicked?'container-navBar active-navBar':'container-navBar-login'}>
-                      <div className='logo-navBar' onClick={()=>navigate('/menuPrincipal')}>
+                      <div className='logo-navBar' onClick={()=>navigate(user?'/menuPrincipal':'/')}>
                             <img className='imgLogo-navBar' src={ImagenLogo}/>
                             <div className='textContainerLogo-navBar'>
                                 <p className='textLogo-navBar'>Business Admin</p>
@@ -39,10 +39,10 @@ export default function NavBar (){
                         <Icon path={mdiLogout} size={1.3} color={'#1a6b91'} />   
                     </button>  
                 </div>)
-        }else if (patch==='http://localhost:3000/'||patch==='http://localhost:3000/login'||patch==='http://localhost:3000/register'||patch==='http://localhost:3000/starting'){
+        }else if (patch===REACT_APP_PATCH||patch===REACT_APP_PATCH+'login'||patch===REACT_APP_PATCH+'register'||patch===REACT_APP_PATCH+'starting'){
             return(
                 <div className={clicked?'container-navBar active-navBar':'container-navBar-login'}>
-                      <div className='logo-navBar' onClick={()=>navigate('/menuPrincipal')}>
+                      <div className='logo-navBar' onClick={()=>navigate(user?'/menuPrincipal':'/')}>
                             <img className='imgLogo-navBar' src={ImagenLogo}/>
                             <div className='textContainerLogo-navBar'>
                                 <p className='textLogo-navBar'>Business Admin</p>
@@ -53,7 +53,7 @@ export default function NavBar (){
                     <button className={clicked?'button-navBar':'buttonOculto-navBar'} onClick={()=>navigate('/login')}><p className='textButton-Navbar'>Inicia sesión</p></button>
                     <button className={clicked?'button-navBar':'buttonOculto-navBar'} onClick={()=>navigate('/register')}><p className='textButton-Navbar'>Registrate</p></button>
                 </div>)
-        }else if(patch==='http://localhost:3000/myProfiles'){
+        }else if(patch===REACT_APP_PATCH+'myProfiles'){
             return(
                 <div className={clicked?'container-navBar active-navBar':'container-navBar-login'}>
                 <div className='logo-navBar' >
@@ -67,7 +67,7 @@ export default function NavBar (){
         }else if (!user){
             return(
                 <div className={clicked?'container-navBar active-navBar':'container-navBar-login'}>
-                      <div className='logo-navBar' onClick={()=>navigate('/menuPrincipal')}>
+                      <div className='logo-navBar' onClick={()=>navigate(user?'/menuPrincipal':'/')}>
                             <img className='imgLogo-navBar' src={ImagenLogo}/>
                             <div className='textContainerLogo-navBar'>
                                 <p className='textLogo-navBar'>Business Admin</p>
@@ -81,7 +81,7 @@ export default function NavBar (){
         }else {
             return(
                 <div className={clicked?'container-navBar active-navBar':'container-navBar'}>
-                   <div className='logo-navBar' onClick={()=>navigate('/menuPrincipal')}>
+                   <div className='logo-navBar' onClick={()=>navigate(user?'/menuPrincipal':'/')}>
                         <img className='imgLogo-navBar' src={ImagenLogo}/>
                         <div className='textContainerLogo-navBar'>
                             <p className='textLogo-navBar'>Business Admin</p>
